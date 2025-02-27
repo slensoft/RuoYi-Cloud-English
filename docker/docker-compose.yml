@@ -19,6 +19,8 @@ services:
   ruoyi-mysql:
     container_name: ruoyi-mysql
     image: mysql:5.7
+    # 解决 MacOS 系统，M 系列芯片无法启动问题（放开下面这行注释即可）
+#    platform: linux/amd64
     build:
       context: ./mysql
     ports:
