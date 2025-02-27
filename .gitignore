@@ -44,3 +44,17 @@ nbdist/
 !*/build/*.java
 !*/build/*.html
 !*/build/*.xml
+
+# local Docker
+docker/mysql/data/
+docker/mysql/db/*.sql
+docker/mysql/logs/
+docker/nacos/logs/
+docker/ruoyi/**/jar/*.jar
+docker/ruoyi/**/jar/logs/
+
+# macOS
+.DS_Store
+
+# AI
+.cursor/
