@@ -5,19 +5,19 @@ import com.ruoyi.common.core.exception.CaptchaException;
 import com.ruoyi.common.core.web.domain.AjaxResult;
 
 /**
- * 验证码处理
+ * Captcha processing
  *
  * @author ruoyi
  */
 public interface ValidateCodeService
 {
     /**
-     * 生成验证码
+     * Generate captcha
      */
     public AjaxResult createCaptcha() throws IOException, CaptchaException;
 
     /**
-     * 校验验证码
+     * Verify captcha
      */
     public void checkCaptcha(String key, String value) throws CaptchaException;
 }

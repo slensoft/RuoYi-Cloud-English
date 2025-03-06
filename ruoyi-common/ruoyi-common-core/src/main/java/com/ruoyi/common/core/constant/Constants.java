@@ -1,134 +1,134 @@
 package com.ruoyi.common.core.constant;
 
 /**
- * 通用常量信息
+ * General constant information
  * 
  * @author ruoyi
  */
 public class Constants
 {
     /**
-     * UTF-8 字符集
+     * UTF-8 character set
      */
     public static final String UTF8 = "UTF-8";
 
     /**
-     * GBK 字符集
+     * GBK character set
      */
     public static final String GBK = "GBK";
 
     /**
-     * www主域
+     * www main domain
      */
     public static final String WWW = "www.";
 
     /**
-     * RMI 远程方法调用
+     * RMI remote method invocation
      */
     public static final String LOOKUP_RMI = "rmi:";
 
     /**
-     * LDAP 远程方法调用
+     * LDAP remote method invocation
      */
     public static final String LOOKUP_LDAP = "ldap:";
 
     /**
-     * LDAPS 远程方法调用
+     * LDAPS remote method invocation
      */
     public static final String LOOKUP_LDAPS = "ldaps:";
 
     /**
-     * http请求
+     * http request
      */
     public static final String HTTP = "http://";
 
     /**
-     * https请求
+     * https request
      */
     public static final String HTTPS = "https://";
 
     /**
-     * 成功标记
+     * Success flag
      */
     public static final Integer SUCCESS = 200;
 
     /**
-     * 失败标记
+     * Failure flag
      */
     public static final Integer FAIL = 500;
 
     /**
-     * 登录成功状态
+     * Login success status
      */
     public static final String LOGIN_SUCCESS_STATUS = "0";
 
     /**
-     * 登录失败状态
+     * Login failure status
      */
     public static final String LOGIN_FAIL_STATUS = "1";
 
     /**
-     * 登录成功
+     * Login success
      */
     public static final String LOGIN_SUCCESS = "Success";
 
     /**
-     * 注销
+     * Logout
      */
     public static final String LOGOUT = "Logout";
 
     /**
-     * 注册
+     * Register
      */
     public static final String REGISTER = "Register";
 
     /**
-     * 登录失败
+     * Login failure
      */
     public static final String LOGIN_FAIL = "Error";
 
     /**
-     * 当前记录起始索引
+     * Current record start index
      */
     public static final String PAGE_NUM = "pageNum";
 
     /**
-     * 每页显示记录数
+     * Number of records per page
      */
     public static final String PAGE_SIZE = "pageSize";
 
     /**
-     * 排序列
+     * Sort column
      */
     public static final String ORDER_BY_COLUMN = "orderByColumn";
 
     /**
-     * 排序的方向 "desc" 或者 "asc".
+     * Sort direction "desc" or "asc".
      */
     public static final String IS_ASC = "isAsc";
 
     /**
-     * 验证码有效期（分钟）
+     * Verification code validity period (minutes)
      */
     public static final long CAPTCHA_EXPIRATION = 2;
 
     /**
-     * 资源映射路径 前缀
+     * Resource mapping path prefix
      */
     public static final String RESOURCE_PREFIX = "/profile";
 
     /**
-     * 自动识别json对象白名单配置（仅允许解析的包名，范围越小越安全）
+     * Automatic recognition json object white list configuration (only allow parsed package names, the smaller the range the safer)
      */
     public static final String[] JSON_WHITELIST_STR = { "org.springframework", "com.ruoyi" };
 
     /**
-     * 定时任务白名单配置（仅允许访问的包名，如其他需要可以自行添加）
+     * Scheduled task white list configuration (only allow access package names, if other needs can be added by yourself)
      */
     public static final String[] JOB_WHITELIST_STR = { "com.ruoyi.job.task" };
 
     /**
-     * 定时任务违规的字符
+     * Scheduled task illegal characters
      */
     public static final String[] JOB_ERROR_STR = { "java.net.URL", "javax.naming.InitialContext", "org.yaml.snakeyaml",
             "org.springframework", "org.apache", "com.ruoyi.common.core.utils.file" };

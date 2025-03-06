@@ -28,7 +28,7 @@ import com.ruoyi.system.api.model.LoginUser;
 import com.ruoyi.system.service.ISysUserService;
 
 /**
- * 个人信息 业务处理
+ * Personal Information Business Handler
  * 
  * @author ruoyi
  */
@@ -46,7 +46,7 @@ public class SysProfileController extends BaseController
     private RemoteFileService remoteFileService;
 
     /**
-     * 个人信息
+     * Personal Information
      */
     @GetMapping
     public AjaxResult profile()
@@ -60,9 +60,9 @@ public class SysProfileController extends BaseController
     }
 
     /**
-     * 修改用户
+     * Modify User
      */
-    @Log(title = "个人信息", businessType = BusinessType.UPDATE)
+    @Log(title = "Personal Information", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult updateProfile(@RequestBody SysUser user)
     {
@@ -74,25 +74,25 @@ public class SysProfileController extends BaseController
         currentUser.setSex(user.getSex());
         if (StringUtils.isNotEmpty(user.getPhonenumber()) && !userService.checkPhoneUnique(currentUser))
         {
-            return error("修改用户'" + loginUser.getUsername() + "'失败，手机号码已存在");
+            return error("Failed to modify user '" + loginUser.getUsername() + "', phone number already exists");
         }
         if (StringUtils.isNotEmpty(user.getEmail()) && !userService.checkEmailUnique(currentUser))
         {
-            return error("修改用户'" + loginUser.getUsername() + "'失败，邮箱账号已存在");
+            return error("Failed to modify user '" + loginUser.getUsername() + "', email already exists");
         }
         if (userService.updateUserProfile(currentUser))
         {
-            // 更新缓存用户信息
+            // Update cached user information
             tokenService.setLoginUser(loginUser);
             return success();
         }
-        return error("修改个人信息异常，请联系管理员");
+        return error("Error modifying personal information, please contact administrator");
     }
 
     /**
-     * 重置密码
+     * Reset Password
      */
-    @Log(title = "个人信息", businessType = BusinessType.UPDATE)
+    @Log(title = "Personal Information", businessType = BusinessType.UPDATE)
     @PutMapping("/updatePwd")
     public AjaxResult updatePwd(@RequestBody Map<String, String> params)
     {
@@ -103,27 +103,27 @@ public class SysProfileController extends BaseController
         String password = loginUser.getSysUser().getPassword();
         if (!SecurityUtils.matchesPassword(oldPassword, password))
         {
-            return error("修改密码失败，旧密码错误");
+            return error("Failed to modify password, old password is incorrect");
         }
         if (SecurityUtils.matchesPassword(newPassword, password))
         {
-            return error("新密码不能与旧密码相同");
+            return error("New password cannot be the same as old password");
         }
         newPassword = SecurityUtils.encryptPassword(newPassword);
         if (userService.resetUserPwd(userName, newPassword) > 0)
         {
-            // 更新缓存用户密码
+            // Update cached user password
             loginUser.getSysUser().setPassword(newPassword);
             tokenService.setLoginUser(loginUser);
             return success();
         }
-        return error("修改密码异常，请联系管理员");
+        return error("Error modifying password, please contact administrator");
     }
     
     /**
-     * 头像上传
+     * Avatar Upload
      */
-    @Log(title = "用户头像", businessType = BusinessType.UPDATE)
+    @Log(title = "User Avatar", businessType = BusinessType.UPDATE)
     @PostMapping("/avatar")
     public AjaxResult avatar(@RequestParam("avatarfile") MultipartFile file)
     {
@@ -133,24 +133,24 @@ public class SysProfileController extends BaseController
             String extension = FileTypeUtils.getExtension(file);
             if (!StringUtils.equalsAnyIgnoreCase(extension, MimeTypeUtils.IMAGE_EXTENSION))
             {
-                return error("文件格式不正确，请上传" + Arrays.toString(MimeTypeUtils.IMAGE_EXTENSION) + "格式");
+                return error("File format incorrect, please upload " + Arrays.toString(MimeTypeUtils.IMAGE_EXTENSION) + " format");
             }
             R<SysFile> fileResult = remoteFileService.upload(file);
             if (StringUtils.isNull(fileResult) || StringUtils.isNull(fileResult.getData()))
             {
-                return error("文件服务异常，请联系管理员");
+                return error("File service error, please contact administrator");
             }
             String url = fileResult.getData().getUrl();
             if (userService.updateUserAvatar(loginUser.getUsername(), url))
             {
                 AjaxResult ajax = AjaxResult.success();
                 ajax.put("imgUrl", url);
-                // 更新缓存用户头像
+                // Update cached user avatar
                 loginUser.getSysUser().setAvatar(url);
                 tokenService.setLoginUser(loginUser);
                 return ajax;
             }
         }
-        return error("上传图片异常，请联系管理员");
+        return error("Error uploading image, please contact administrator");
     }
 }

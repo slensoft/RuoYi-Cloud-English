@@ -1,7 +1,7 @@
 package com.ruoyi.common.log.enums;
 
 /**
- * 操作状态
+ * Operation status
  * 
  * @author ruoyi
  *
@@ -9,12 +9,12 @@ package com.ruoyi.common.log.enums;
 public enum BusinessStatus
 {
     /**
-     * 成功
+     * Success
      */
     SUCCESS,
 
     /**
-     * 失败
+     * Fail
      */
     FAIL,
 }

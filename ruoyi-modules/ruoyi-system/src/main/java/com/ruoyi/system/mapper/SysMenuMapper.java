@@ -5,121 +5,121 @@ import org.apache.ibatis.annotations.Param;
 import com.ruoyi.system.domain.SysMenu;
 
 /**
- * 菜单表 数据层
+ * Menu Table Data Layer
  * 
  * @author ruoyi
  */
 public interface SysMenuMapper
 {
     /**
-     * 查询系统菜单列表
+     * Query system menu list
      * 
-     * @param menu 菜单信息
-     * @return 菜单列表
+     * @param menu Menu information
+     * @return Menu list
      */
     public List<SysMenu> selectMenuList(SysMenu menu);
 
     /**
-     * 根据用户所有权限
+     * Query all user permissions
      * 
-     * @return 权限列表
+     * @return Permission list
      */
     public List<String> selectMenuPerms();
 
     /**
-     * 根据用户查询系统菜单列表
+     * Query system menu list by user
      * 
-     * @param menu 菜单信息
-     * @return 菜单列表
+     * @param menu Menu information
+     * @return Menu list
      */
     public List<SysMenu> selectMenuListByUserId(SysMenu menu);
 
     /**
-     * 根据角色ID查询权限
+     * Query permissions by role ID
      * 
-     * @param roleId 角色ID
-     * @return 权限列表
+     * @param roleId Role ID
+     * @return Permission list
      */
     public List<String> selectMenuPermsByRoleId(Long roleId);
 
     /**
-     * 根据用户ID查询权限
+     * Query permissions by user ID
      * 
-     * @param userId 用户ID
-     * @return 权限列表
+     * @param userId User ID
+     * @return Permission list
      */
     public List<String> selectMenuPermsByUserId(Long userId);
 
     /**
-     * 根据用户ID查询菜单
+     * Query all menu tree
      * 
-     * @return 菜单列表
+     * @return Menu list
      */
     public List<SysMenu> selectMenuTreeAll();
 
     /**
-     * 根据用户ID查询菜单
+     * Query menu tree by user ID
      * 
-     * @param userId 用户ID
-     * @return 菜单列表
+     * @param userId User ID
+     * @return Menu list
      */
     public List<SysMenu> selectMenuTreeByUserId(Long userId);
 
     /**
-     * 根据角色ID查询菜单树信息
+     * Query menu tree information by role ID
      * 
-     * @param roleId 角色ID
-     * @param menuCheckStrictly 菜单树选择项是否关联显示
-     * @return 选中菜单列表
+     * @param roleId Role ID
+     * @param menuCheckStrictly Whether menu tree selection items are associated with display
+     * @return Selected menu list
      */
     public List<Long> selectMenuListByRoleId(@Param("roleId") Long roleId, @Param("menuCheckStrictly") boolean menuCheckStrictly);
 
     /**
-     * 根据菜单ID查询信息
+     * Query information by menu ID
      * 
-     * @param menuId 菜单ID
-     * @return 菜单信息
+     * @param menuId Menu ID
+     * @return Menu information
      */
     public SysMenu selectMenuById(Long menuId);
 
     /**
-     * 是否存在菜单子节点
+     * Check if menu has child nodes
      * 
-     * @param menuId 菜单ID
-     * @return 结果
+     * @param menuId Menu ID
+     * @return Result
      */
     public int hasChildByMenuId(Long menuId);
 
     /**
-     * 新增菜单信息
+     * Add menu information
      * 
-     * @param menu 菜单信息
-     * @return 结果
+     * @param menu Menu information
+     * @return Result
      */
     public int insertMenu(SysMenu menu);
 
     /**
-     * 修改菜单信息
+     * Modify menu information
      * 
-     * @param menu 菜单信息
-     * @return 结果
+     * @param menu Menu information
+     * @return Result
      */
     public int updateMenu(SysMenu menu);
 
     /**
-     * 删除菜单管理信息
+     * Delete menu management information
      * 
-     * @param menuId 菜单ID
-     * @return 结果
+     * @param menuId Menu ID
+     * @return Result
      */
     public int deleteMenuById(Long menuId);
 
     /**
-     * 校验菜单名称是否唯一
+     * Check if menu name is unique
      * 
-     * @param menuName 菜单名称
-     * @param parentId 父菜单ID
-     * @return 结果
+     * @param menuName Menu name
+     * @param parentId Parent menu ID
+     * @return Result
      */
     public SysMenu checkMenuNameUnique(@Param("menuName") String menuName, @Param("parentId") Long parentId);
 }

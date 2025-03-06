@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * HTML过滤器，用于去除XSS漏洞隐患。
+ * HTML Filter, used to remove XSS vulnerability risks.
  *
  * @author ruoyi
  */
@@ -245,7 +245,7 @@ public final class HTMLFilter
             // try and form html
             //
             s = regexReplace(P_END_ARROW, "", s);
-            // 不追加结束标签
+            // Do not append the closing tag
             s = regexReplace(P_BODY_TO_END, "<$1>", s);
             s = regexReplace(P_XML_CONTENT, "$1<$2", s);
 
@@ -523,7 +523,7 @@ public final class HTMLFilter
                 final String one = m.group(1); // (>|^)
                 final String two = m.group(2); // ([^<]+?)
                 final String three = m.group(3); // (<|$)
-                // 不替换双引号为&quot;，防止json格式无效 regexReplace(P_QUOTE, "&quot;", two)
+                // Do not replace double quotes with &quot; to prevent invalid JSON format
                 m.appendReplacement(buf, Matcher.quoteReplacement(one + two + three));
             }
             m.appendTail(buf);

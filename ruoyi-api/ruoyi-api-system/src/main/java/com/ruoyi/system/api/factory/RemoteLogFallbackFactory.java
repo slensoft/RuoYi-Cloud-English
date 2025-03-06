@@ -10,8 +10,8 @@ import com.ruoyi.system.api.domain.SysLogininfor;
 import com.ruoyi.system.api.domain.SysOperLog;
 
 /**
- * 日志服务降级处理
- * 
+ * Log service downgrade processing
+ *
  * @author ruoyi
  */
 @Component
@@ -22,19 +22,19 @@ public class RemoteLogFallbackFactory implements FallbackFactory<RemoteLogServic
     @Override
     public RemoteLogService create(Throwable throwable)
     {
-        log.error("日志服务调用失败:{}", throwable.getMessage());
+        log.error("Log service call failed: {}", throwable.getMessage());
         return new RemoteLogService()
         {
             @Override
             public R<Boolean> saveLog(SysOperLog sysOperLog, String source)
             {
-                return R.fail("保存操作日志失败:" + throwable.getMessage());
+                return R.fail("Failed to save operation log: " + throwable.getMessage());
             }
 
             @Override
             public R<Boolean> saveLogininfor(SysLogininfor sysLogininfor, String source)
             {
-                return R.fail("保存登录日志失败:" + throwable.getMessage());
+                return R.fail("Failed to save login log: " + throwable.getMessage());
             }
         };
 

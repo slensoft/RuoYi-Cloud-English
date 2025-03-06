@@ -6,7 +6,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 /**
- * bean对象属性验证
+ * Bean Object Property Validation
  * 
  * @author ruoyi
  */

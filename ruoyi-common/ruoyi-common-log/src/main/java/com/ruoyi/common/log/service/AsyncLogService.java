@@ -8,7 +8,7 @@ import com.ruoyi.system.api.RemoteLogService;
 import com.ruoyi.system.api.domain.SysOperLog;
 
 /**
- * 异步调用日志服务
+ * Asynchronous log service call
  * 
  * @author ruoyi
  */
@@ -19,7 +19,7 @@ public class AsyncLogService
     private RemoteLogService remoteLogService;
 
     /**
-     * 保存系统日志记录
+     * Save system log record
      */
     @Async
     public void saveSysLog(SysOperLog sysOperLog) throws Exception

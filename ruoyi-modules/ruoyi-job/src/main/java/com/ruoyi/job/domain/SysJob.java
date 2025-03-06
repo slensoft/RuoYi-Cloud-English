@@ -14,44 +14,44 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
 import com.ruoyi.job.util.CronUtils;
 
 /**
- * 定时任务调度表 sys_job
- * 
+ * Scheduled task scheduling table sys_job
+ *
  * @author ruoyi
  */
 public class SysJob extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 任务ID */
-    @Excel(name = "任务序号", cellType = ColumnType.NUMERIC)
+    /** Task ID */
+    @Excel(name = "Task ID", cellType = ColumnType.NUMERIC)
     private Long jobId;
 
-    /** 任务名称 */
-    @Excel(name = "任务名称")
+    /** Task name */
+    @Excel(name = "Task name")
     private String jobName;
 
-    /** 任务组名 */
-    @Excel(name = "任务组名")
+    /** Task group name */
+    @Excel(name = "Task group name")
     private String jobGroup;
 
-    /** 调用目标字符串 */
-    @Excel(name = "调用目标字符串")
+    /** Invoke target string */
+    @Excel(name = "Invoke target string")
     private String invokeTarget;
 
-    /** cron执行表达式 */
-    @Excel(name = "执行表达式 ")
+    /** Cron execution expression */
+    @Excel(name = "Execution expression")
     private String cronExpression;
 
-    /** cron计划策略 */
-    @Excel(name = "计划策略 ", readConverterExp = "0=默认,1=立即触发执行,2=触发一次执行,3=不触发立即执行")
+    /** Cron plan strategy */
+    @Excel(name = "Plan strategy", readConverterExp = "0=default,1=trigger immediately,2=trigger once,3=do not trigger immediately")
     private String misfirePolicy = ScheduleConstants.MISFIRE_DEFAULT;
 
-    /** 是否并发执行（0允许 1禁止） */
-    @Excel(name = "并发执行", readConverterExp = "0=允许,1=禁止")
+    /** Whether to execute concurrently (0 allowed 1 prohibited) */
+    @Excel(name = "Concurrent execution", readConverterExp = "0=allowed,1=prohibited")
     private String concurrent;
 
-    /** 任务状态（0正常 1暂停） */
-    @Excel(name = "任务状态", readConverterExp = "0=正常,1=暂停")
+    /** Task status (0 normal 1 paused) */
+    @Excel(name = "Task status", readConverterExp = "0=normal,1=paused")
     private String status;
 
     public Long getJobId()
@@ -64,8 +64,8 @@ public class SysJob extends BaseEntity
         this.jobId = jobId;
     }
 
-    @NotBlank(message = "任务名称不能为空")
-    @Size(min = 0, max = 64, message = "任务名称不能超过64个字符")
+    @NotBlank(message = "Task name cannot be empty")
+    @Size(min = 0, max = 64, message = "Task name cannot exceed 64 characters")
     public String getJobName()
     {
         return jobName;
@@ -86,8 +86,8 @@ public class SysJob extends BaseEntity
         this.jobGroup = jobGroup;
     }
 
-    @NotBlank(message = "调用目标字符串不能为空")
-    @Size(min = 0, max = 500, message = "调用目标字符串长度不能超过500个字符")
+    @NotBlank(message = "Invoke target string cannot be empty")
+    @Size(min = 0, max = 500, message = "Invoke target string length cannot exceed 500 characters")
     public String getInvokeTarget()
     {
         return invokeTarget;
@@ -98,8 +98,8 @@ public class SysJob extends BaseEntity
         this.invokeTarget = invokeTarget;
     }
 
-    @NotBlank(message = "Cron执行表达式不能为空")
-    @Size(min = 0, max = 255, message = "Cron执行表达式不能超过255个字符")
+    @NotBlank(message = "Cron execution expression cannot be empty")
+    @Size(min = 0, max = 255, message = "Cron execution expression cannot exceed 255 characters")
     public String getCronExpression()
     {
         return cronExpression;

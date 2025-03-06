@@ -4,79 +4,79 @@ import java.util.List;
 import com.ruoyi.system.domain.SysConfig;
 
 /**
- * 参数配置 服务层
+ * Parameter Configuration Service Layer
  * 
  * @author ruoyi
  */
 public interface ISysConfigService
 {
     /**
-     * 查询参数配置信息
+     * Query parameter configuration information
      * 
-     * @param configId 参数配置ID
-     * @return 参数配置信息
+     * @param configId Parameter configuration ID
+     * @return Parameter configuration information
      */
     public SysConfig selectConfigById(Long configId);
 
     /**
-     * 根据键名查询参数配置信息
+     * Query parameter configuration information by key name
      * 
-     * @param configKey 参数键名
-     * @return 参数键值
+     * @param configKey Parameter key name
+     * @return Parameter key value
      */
     public String selectConfigByKey(String configKey);
 
     /**
-     * 查询参数配置列表
+     * Query parameter configuration list
      * 
-     * @param config 参数配置信息
-     * @return 参数配置集合
+     * @param config Parameter configuration information
+     * @return Parameter configuration collection
      */
     public List<SysConfig> selectConfigList(SysConfig config);
 
     /**
-     * 新增参数配置
+     * Add parameter configuration
      * 
-     * @param config 参数配置信息
-     * @return 结果
+     * @param config Parameter configuration information
+     * @return Result
      */
     public int insertConfig(SysConfig config);
 
     /**
-     * 修改参数配置
+     * Modify parameter configuration
      * 
-     * @param config 参数配置信息
-     * @return 结果
+     * @param config Parameter configuration information
+     * @return Result
      */
     public int updateConfig(SysConfig config);
 
     /**
-     * 批量删除参数信息
+     * Batch delete parameter information
      * 
-     * @param configIds 需要删除的参数ID
+     * @param configIds Parameter IDs to be deleted
      */
     public void deleteConfigByIds(Long[] configIds);
 
     /**
-     * 加载参数缓存数据
+     * Load parameter cache data
      */
     public void loadingConfigCache();
 
     /**
-     * 清空参数缓存数据
+     * Clear parameter cache data
      */
     public void clearConfigCache();
 
     /**
-     * 重置参数缓存数据
+     * Reset parameter cache data
      */
     public void resetConfigCache();
 
     /**
-     * 校验参数键名是否唯一
+     * Check if parameter key name is unique
      * 
-     * @param config 参数信息
-     * @return 结果
+     * @param config Parameter information
+     * @return Result
      */
     public boolean checkConfigKeyUnique(SysConfig config);
 }

@@ -11,7 +11,7 @@ import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import com.ruoyi.common.core.utils.file.FileTypeUtils;
 
 /**
- * FastDFS 文件存储
+ * FastDFS file storage
  *
  * @author ruoyi
  */
@@ -19,7 +19,7 @@ import com.ruoyi.common.core.utils.file.FileTypeUtils;
 public class FastDfsSysFileServiceImpl implements ISysFileService
 {
     /**
-     * 域名或本机访问地址
+     * Domain or local access address
      */
     @Value("${fdfs.domain}")
     public String domain;
@@ -28,10 +28,10 @@ public class FastDfsSysFileServiceImpl implements ISysFileService
     private FastFileStorageClient storageClient;
 
     /**
-     * FastDfs文件上传接口
+     * FastDfs file upload interface
      *
-     * @param file 上传的文件
-     * @return 访问地址
+     * @param file Uploaded file
+     * @return Access address
      * @throws Exception
      */
     @Override

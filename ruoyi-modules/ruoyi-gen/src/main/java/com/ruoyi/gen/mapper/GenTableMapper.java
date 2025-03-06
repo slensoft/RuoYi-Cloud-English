@@ -4,80 +4,80 @@ import java.util.List;
 import com.ruoyi.gen.domain.GenTable;
 
 /**
- * 业务 数据层
- * 
+ * Business data layer
+ *
  * @author ruoyi
  */
 public interface GenTableMapper
 {
     /**
-     * 查询业务列表
-     * 
-     * @param genTable 业务信息
-     * @return 业务集合
+     * Query business list
+     *
+     * @param genTable Business information
+     * @return Business collection
      */
     public List<GenTable> selectGenTableList(GenTable genTable);
 
     /**
-     * 查询据库列表
-     * 
-     * @param genTable 业务信息
-     * @return 数据库表集合
+     * Query database list
+     *
+     * @param genTable Business information
+     * @return Database table collection
      */
     public List<GenTable> selectDbTableList(GenTable genTable);
 
     /**
-     * 查询据库列表
-     * 
-     * @param tableNames 表名称组
-     * @return 数据库表集合
+     * Query database list
+     *
+     * @param tableNames Table name group
+     * @return Database table collection
      */
     public List<GenTable> selectDbTableListByNames(String[] tableNames);
 
     /**
-     * 查询所有表信息
-     * 
-     * @return 表信息集合
+     * Query all table information
+     *
+     * @return Table information collection
      */
     public List<GenTable> selectGenTableAll();
 
     /**
-     * 查询表ID业务信息
-     * 
-     * @param id 业务ID
-     * @return 业务信息
+     * Query table ID business information
+     *
+     * @param id Business ID
+     * @return Business information
      */
     public GenTable selectGenTableById(Long id);
 
     /**
-     * 查询表名称业务信息
-     * 
-     * @param tableName 表名称
-     * @return 业务信息
+     * Query table name business information
+     *
+     * @param tableName Table name
+     * @return Business information
      */
     public GenTable selectGenTableByName(String tableName);
 
     /**
-     * 新增业务
-     * 
-     * @param genTable 业务信息
-     * @return 结果
+     * Add business
+     *
+     * @param genTable Business information
+     * @return Result
      */
     public int insertGenTable(GenTable genTable);
 
     /**
-     * 修改业务
-     * 
-     * @param genTable 业务信息
-     * @return 结果
+     * Modify business
+     *
+     * @param genTable Business information
+     * @return Result
      */
     public int updateGenTable(GenTable genTable);
 
     /**
-     * 批量删除业务
-     * 
-     * @param ids 需要删除的数据ID
-     * @return 结果
+     * Batch delete business
+     *
+     * @param ids IDs of data to be deleted
+     * @return Result
      */
     public int deleteGenTableByIds(Long[] ids);
 }

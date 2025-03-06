@@ -5,7 +5,7 @@ import java.util.Set;
 import com.ruoyi.system.api.domain.SysUser;
 
 /**
- * 用户信息
+ * User information
  *
  * @author ruoyi
  */
@@ -14,47 +14,47 @@ public class LoginUser implements Serializable
     private static final long serialVersionUID = 1L;
 
     /**
-     * 用户唯一标识
+     * User unique identifier
      */
     private String token;
 
     /**
-     * 用户名id
+     * Username id
      */
     private Long userid;
 
     /**
-     * 用户名
+     * Username
      */
     private String username;
 
     /**
-     * 登录时间
+     * Login time
      */
     private Long loginTime;
 
     /**
-     * 过期时间
+     * Expiration time
      */
     private Long expireTime;
 
     /**
-     * 登录IP地址
+     * Login IP address
      */
     private String ipaddr;
 
     /**
-     * 权限列表
+     * Permission list
      */
     private Set<String> permissions;
 
     /**
-     * 角色列表
+     * Role list
      */
     private Set<String> roles;
 
     /**
-     * 用户信息
+     * User information
      */
     private SysUser sysUser;
 

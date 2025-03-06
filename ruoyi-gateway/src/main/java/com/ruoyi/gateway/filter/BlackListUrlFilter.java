@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.ruoyi.common.core.utils.ServletUtils;
 
 /**
- * 黑名单过滤器
+ * Blacklist filter
  * 
  * @author ruoyi
  */
@@ -24,7 +24,7 @@ public class BlackListUrlFilter extends AbstractGatewayFilterFactory<BlackListUr
             String url = exchange.getRequest().getURI().getPath();
             if (config.matchBlacklist(url))
             {
-                return ServletUtils.webFluxResponseWriter(exchange.getResponse(), "请求地址不允许访问");
+                return ServletUtils.webFluxResponseWriter(exchange.getResponse(), "Request address is not allowed to access");
             }
 
             return chain.filter(exchange);

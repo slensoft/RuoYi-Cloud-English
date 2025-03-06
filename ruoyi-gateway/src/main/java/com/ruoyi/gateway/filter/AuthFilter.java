@@ -22,7 +22,7 @@ import io.jsonwebtoken.Claims;
 import reactor.core.publisher.Mono;
 
 /**
- * 网关鉴权
+ * Gateway Authentication
  * 
  * @author ruoyi
  */
@@ -31,7 +31,7 @@ public class AuthFilter implements GlobalFilter, Ordered
 {
     private static final Logger log = LoggerFactory.getLogger(AuthFilter.class);
 
-    // 排除过滤的 uri 地址，nacos自行添加
+    // URI addresses to exclude from filtering, add to nacos manually
     @Autowired
     private IgnoreWhiteProperties ignoreWhite;
 
@@ -46,7 +46,7 @@ public class AuthFilter implements GlobalFilter, Ordered
         ServerHttpRequest.Builder mutate = request.mutate();
 
         String url = request.getURI().getPath();
-        // 跳过不需要验证的路径
+        // Skip paths that don't need verification
         if (StringUtils.matches(url, ignoreWhite.getWhites()))
         {
             return chain.filter(exchange);
@@ -54,31 +54,31 @@ public class AuthFilter implements GlobalFilter, Ordered
         String token = getToken(request);
         if (StringUtils.isEmpty(token))
         {
-            return unauthorizedResponse(exchange, "令牌不能为空");
+            return unauthorizedResponse(exchange, "Token cannot be empty");
         }
         Claims claims = JwtUtils.parseToken(token);
         if (claims == null)
         {
-            return unauthorizedResponse(exchange, "令牌已过期或验证不正确！");
+            return unauthorizedResponse(exchange, "Token has expired or is invalid!");
         }
         String userkey = JwtUtils.getUserKey(claims);
         boolean islogin = redisService.hasKey(getTokenKey(userkey));
         if (!islogin)
         {
-            return unauthorizedResponse(exchange, "登录状态已过期");
+            return unauthorizedResponse(exchange, "Login status has expired");
         }
         String userid = JwtUtils.getUserId(claims);
         String username = JwtUtils.getUserName(claims);
         if (StringUtils.isEmpty(userid) || StringUtils.isEmpty(username))
         {
-            return unauthorizedResponse(exchange, "令牌验证失败");
+            return unauthorizedResponse(exchange, "Token verification failed");
         }
 
-        // 设置用户信息到请求
+        // Set user information to request
         addHeader(mutate, SecurityConstants.USER_KEY, userkey);
         addHeader(mutate, SecurityConstants.DETAILS_USER_ID, userid);
         addHeader(mutate, SecurityConstants.DETAILS_USERNAME, username);
-        // 内部请求来源参数清除
+        // Clear internal request source parameter
         removeHeader(mutate, SecurityConstants.FROM_SOURCE);
         return chain.filter(exchange.mutate().request(mutate.build()).build());
     }
@@ -101,12 +101,12 @@ public class AuthFilter implements GlobalFilter, Ordered
 
     private Mono<Void> unauthorizedResponse(ServerWebExchange exchange, String msg)
     {
-        log.error("[鉴权异常处理]请求路径:{},错误信息:{}", exchange.getRequest().getPath(), msg);
+        log.error("[Authentication Exception] Request path:{}, Error message:{}", exchange.getRequest().getPath(), msg);
         return ServletUtils.webFluxResponseWriter(exchange.getResponse(), msg, HttpStatus.UNAUTHORIZED);
     }
 
     /**
-     * 获取缓存key
+     * Get cache key
      */
     private String getTokenKey(String token)
     {
@@ -114,12 +114,12 @@ public class AuthFilter implements GlobalFilter, Ordered
     }
 
     /**
-     * 获取请求token
+     * Get request token
      */
     private String getToken(ServerHttpRequest request)
     {
         String token = request.getHeaders().getFirst(SecurityConstants.AUTHORIZATION_HEADER);
-        // 如果前端设置了令牌前缀，则裁剪掉前缀
+        // If the frontend has set a token prefix, trim it off
         if (StringUtils.isNotEmpty(token) && token.startsWith(TokenConstants.PREFIX))
         {
             token = token.replaceFirst(TokenConstants.PREFIX, StringUtils.EMPTY);

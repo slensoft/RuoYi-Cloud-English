@@ -11,7 +11,7 @@
     <artifactId>ruoyi-common-security</artifactId>
 
     <description>
-        ruoyi-common-security安全模块
+        ruoyi-common-security security module
     </description>
 
     <dependencies>

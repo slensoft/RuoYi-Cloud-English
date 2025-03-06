@@ -7,8 +7,8 @@ import com.ruoyi.common.core.annotation.Excel.ColumnType;
 import com.ruoyi.common.core.web.domain.BaseEntity;
 
 /**
- * 系统访问记录表 sys_logininfor
- * 
+ * System access record table sys_logininfor
+ *
  * @author ruoyi
  */
 public class SysLogininfor extends BaseEntity
@@ -16,28 +16,28 @@ public class SysLogininfor extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     /** ID */
-    @Excel(name = "序号", cellType = ColumnType.NUMERIC)
+    @Excel(name = "Info ID", cellType = ColumnType.NUMERIC)
     private Long infoId;
 
-    /** 用户账号 */
-    @Excel(name = "用户账号")
+    /** User account */
+    @Excel(name = "User account")
     private String userName;
 
-    /** 状态 0成功 1失败 */
-    @Excel(name = "状态", readConverterExp = "0=成功,1=失败")
+    /** Status 0 success 1 failure */
+    @Excel(name = "Status", readConverterExp = "0=success,1=failure")
     private String status;
 
-    /** 地址 */
-    @Excel(name = "地址")
+    /** Address */
+    @Excel(name = "Address")
     private String ipaddr;
 
-    /** 描述 */
-    @Excel(name = "描述")
+    /** Description */
+    @Excel(name = "Description")
     private String msg;
 
-    /** 访问时间 */
+    /** Access time */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Excel(name = "访问时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
+    @Excel(name = "Access time", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date accessTime;
 
     public Long getInfoId()

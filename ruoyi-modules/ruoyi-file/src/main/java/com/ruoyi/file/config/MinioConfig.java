@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import io.minio.MinioClient;
 
 /**
- * Minio 配置信息
+ * Minio configuration information
  *
  * @author ruoyi
  */
@@ -15,22 +15,22 @@ import io.minio.MinioClient;
 public class MinioConfig
 {
     /**
-     * 服务地址
+     * Service address
      */
     private String url;
 
     /**
-     * 用户名
+     * Username
      */
     private String accessKey;
 
     /**
-     * 密码
+     * Password
      */
     private String secretKey;
 
     /**
-     * 存储桶名称
+     * Bucket name
      */
     private String bucketName;
 

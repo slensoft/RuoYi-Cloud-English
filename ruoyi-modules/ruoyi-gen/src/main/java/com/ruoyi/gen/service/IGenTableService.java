@@ -5,117 +5,117 @@ import java.util.Map;
 import com.ruoyi.gen.domain.GenTable;
 
 /**
- * 业务 服务层
+ * Business Service Layer
  * 
  * @author ruoyi
  */
 public interface IGenTableService
 {
     /**
-     * 查询业务列表
+     * Query business list
      * 
-     * @param genTable 业务信息
-     * @return 业务集合
+     * @param genTable Business information
+     * @return Business collection
      */
     public List<GenTable> selectGenTableList(GenTable genTable);
 
     /**
-     * 查询据库列表
+     * Query database list
      * 
-     * @param genTable 业务信息
-     * @return 数据库表集合
+     * @param genTable Business information
+     * @return Database table collection
      */
     public List<GenTable> selectDbTableList(GenTable genTable);
 
     /**
-     * 查询据库列表
+     * Query database list
      * 
-     * @param tableNames 表名称组
-     * @return 数据库表集合
+     * @param tableNames Table name group
+     * @return Database table collection
      */
     public List<GenTable> selectDbTableListByNames(String[] tableNames);
 
     /**
-     * 查询所有表信息
+     * Query all table information
      * 
-     * @return 表信息集合
+     * @return Table information collection
      */
     public List<GenTable> selectGenTableAll();
 
     /**
-     * 查询业务信息
+     * Query business information
      * 
-     * @param id 业务ID
-     * @return 业务信息
+     * @param id Business ID
+     * @return Business information
      */
     public GenTable selectGenTableById(Long id);
 
     /**
-     * 修改业务
+     * Modify business
      * 
-     * @param genTable 业务信息
-     * @return 结果
+     * @param genTable Business information
+     * @return Result
      */
     public void updateGenTable(GenTable genTable);
 
     /**
-     * 删除业务信息
+     * Delete business information
      * 
-     * @param tableIds 需要删除的表数据ID
-     * @return 结果
+     * @param tableIds Table data IDs to be deleted
+     * @return Result
      */
     public void deleteGenTableByIds(Long[] tableIds);
 
     /**
-     * 导入表结构
+     * Import table structure
      * 
-     * @param tableList 导入表列表
+     * @param tableList Import table list
      */
     public void importGenTable(List<GenTable> tableList);
 
     /**
-     * 预览代码
+     * Preview code
      * 
-     * @param tableId 表编号
-     * @return 预览数据列表
+     * @param tableId Table ID
+     * @return Preview data list
      */
     public Map<String, String> previewCode(Long tableId);
 
     /**
-     * 生成代码（下载方式）
+     * Generate code (download method)
      * 
-     * @param tableName 表名称
-     * @return 数据
+     * @param tableName Table name
+     * @return Data
      */
     public byte[] downloadCode(String tableName);
 
     /**
-     * 生成代码（自定义路径）
+     * Generate code (custom path)
      * 
-     * @param tableName 表名称
-     * @return 数据
+     * @param tableName Table name
+     * @return Data
      */
     public void generatorCode(String tableName);
 
     /**
-     * 同步数据库
+     * Synchronize database
      * 
-     * @param tableName 表名称
+     * @param tableName Table name
      */
     public void synchDb(String tableName);
 
     /**
-     * 批量生成代码（下载方式）
+     * Batch generate code (download method)
      * 
-     * @param tableNames 表数组
-     * @return 数据
+     * @param tableNames Table array
+     * @return Data
      */
     public byte[] downloadCode(String[] tableNames);
 
     /**
-     * 修改保存参数校验
+     * Modify and save parameter validation
      * 
-     * @param genTable 业务信息
+     * @param genTable Business information
      */
     public void validateEdit(GenTable genTable);
 }

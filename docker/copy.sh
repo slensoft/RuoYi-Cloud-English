@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# 复制项目的文件到对应docker路径，便于一键生成镜像。
+# Copy project files to the corresponding docker path for one-click image generation.
 usage() {
 	echo "Usage: sh copy.sh"
 	exit 1

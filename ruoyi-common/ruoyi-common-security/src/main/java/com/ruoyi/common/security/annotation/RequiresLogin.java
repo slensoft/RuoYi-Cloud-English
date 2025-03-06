@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 登录认证：只有登录之后才能进入该方法
+ * Login authentication: This method can only be accessed after login
  * 
  * @author ruoyi
  *

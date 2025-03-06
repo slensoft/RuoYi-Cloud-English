@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ruoyi.file.utils.FileUploadUtils;
 
 /**
- * 本地文件存储
+ * Local file storage
  * 
  * @author ruoyi
  */
@@ -16,28 +16,28 @@ import com.ruoyi.file.utils.FileUploadUtils;
 public class LocalSysFileServiceImpl implements ISysFileService
 {
     /**
-     * 资源映射路径 前缀
+     * Resource mapping path prefix
      */
     @Value("${file.prefix}")
     public String localFilePrefix;
 
     /**
-     * 域名或本机访问地址
+     * Domain or local access address
      */
     @Value("${file.domain}")
     public String domain;
     
     /**
-     * 上传文件存储在本地的根路径
+     * Root path for storing uploaded files locally
      */
     @Value("${file.path}")
     private String localFilePath;
 
     /**
-     * 本地文件上传接口
+     * Local file upload interface
      * 
-     * @param file 上传的文件
-     * @return 访问地址
+     * @param file Uploaded file
+     * @return Access address
      * @throws Exception
      */
     @Override

@@ -3,7 +3,7 @@ package com.ruoyi.common.security.annotation;
 import java.lang.annotation.*;
 
 /**
- * 内部认证注解
+ * Internal authentication annotation
  * 
  * @author ruoyi
  */
@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 public @interface InnerAuth
 {
     /**
-     * 是否校验用户信息
+     * Whether to verify user information
      */
     boolean isUser() default false;
 }

@@ -12,8 +12,8 @@ import com.ruoyi.file.service.ISysFileService;
 import com.ruoyi.system.api.domain.SysFile;
 
 /**
- * 文件请求处理
- * 
+ * File request handling
+ *
  * @author ruoyi
  */
 @RestController
@@ -25,14 +25,14 @@ public class SysFileController
     private ISysFileService sysFileService;
 
     /**
-     * 文件上传请求
+     * File upload request
      */
     @PostMapping("upload")
     public R<SysFile> upload(MultipartFile file)
     {
         try
         {
-            // 上传并返回访问地址
+            // Upload and return access address
             String url = sysFileService.uploadFile(file);
             SysFile sysFile = new SysFile();
             sysFile.setName(FileUtils.getName(url));
@@ -41,7 +41,7 @@ public class SysFileController
         }
         catch (Exception e)
         {
-            log.error("上传文件失败", e);
+            log.error("Failed to upload file", e);
             return R.fail(e.getMessage());
         }
     }

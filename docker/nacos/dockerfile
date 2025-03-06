@@ -1,7 +1,7 @@
-# 基础镜像
+# Base image
 FROM nacos/nacos-server
 # author
 MAINTAINER ruoyi
 
-# 复制conf文件到路径
+# Copy conf file to path
 COPY ./conf/application.properties /home/nacos/conf/application.properties

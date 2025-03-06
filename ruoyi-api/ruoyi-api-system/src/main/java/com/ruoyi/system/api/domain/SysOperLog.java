@@ -7,80 +7,80 @@ import com.ruoyi.common.core.annotation.Excel.ColumnType;
 import com.ruoyi.common.core.web.domain.BaseEntity;
 
 /**
- * 操作日志记录表 oper_log
- * 
+ * Operation log record table oper_log
+ *
  * @author ruoyi
  */
 public class SysOperLog extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 日志主键 */
-    @Excel(name = "操作序号", cellType = ColumnType.NUMERIC)
+    /** Operation log ID */
+    @Excel(name = "Operation log ID", cellType = ColumnType.NUMERIC)
     private Long operId;
 
-    /** 操作模块 */
-    @Excel(name = "操作模块")
+    /** Operation module */
+    @Excel(name = "Operation module")
     private String title;
 
-    /** 业务类型（0其它 1新增 2修改 3删除） */
-    @Excel(name = "业务类型", readConverterExp = "0=其它,1=新增,2=修改,3=删除,4=授权,5=导出,6=导入,7=强退,8=生成代码,9=清空数据")
+    /** Business type (0 other 1 new 2 modify 3 delete) */
+    @Excel(name = "Business type", readConverterExp = "0=other,1=new,2=modify,3=delete,4=authorize,5=export,6=import,7=force quit,8=generate code,9=clear data")
     private Integer businessType;
 
-    /** 业务类型数组 */
+    /** Business type array */
     private Integer[] businessTypes;
 
-    /** 请求方法 */
-    @Excel(name = "请求方法")
+    /** Request method */
+    @Excel(name = "Request method")
     private String method;
 
-    /** 请求方式 */
-    @Excel(name = "请求方式")
+    /** Request method */
+    @Excel(name = "Request method")
     private String requestMethod;
 
-    /** 操作类别（0其它 1后台用户 2手机端用户） */
-    @Excel(name = "操作类别", readConverterExp = "0=其它,1=后台用户,2=手机端用户")
+    /** Operation category (0 other 1 backend user 2 mobile user) */
+    @Excel(name = "Operation category", readConverterExp = "0=other,1=backend user,2=mobile user")
     private Integer operatorType;
 
-    /** 操作人员 */
-    @Excel(name = "操作人员")
+    /** Operator */
+    @Excel(name = "Operator")
     private String operName;
 
-    /** 部门名称 */
-    @Excel(name = "部门名称")
+    /** Department name */
+    @Excel(name = "Department name")
     private String deptName;
 
-    /** 请求url */
-    @Excel(name = "请求地址")
+    /** Request url */
+    @Excel(name = "Request address")
     private String operUrl;
 
-    /** 操作地址 */
-    @Excel(name = "操作地址")
+    /** Operation address */
+    @Excel(name = "Operation address")
     private String operIp;
 
-    /** 请求参数 */
-    @Excel(name = "请求参数")
+    /** Request parameters */
+    @Excel(name = "Request parameters")
     private String operParam;
 
-    /** 返回参数 */
-    @Excel(name = "返回参数")
+    /** Return parameters */
+    @Excel(name = "Return parameters")
     private String jsonResult;
 
-    /** 操作状态（0正常 1异常） */
-    @Excel(name = "状态", readConverterExp = "0=正常,1=异常")
+    /** Operation status (0 normal 1 abnormal) */
+    @Excel(name = "Status", readConverterExp = "0=normal,1=abnormal")
     private Integer status;
 
-    /** 错误消息 */
-    @Excel(name = "错误消息")
+    /** Error message */
+    @Excel(name = "Error message")
     private String errorMsg;
 
-    /** 操作时间 */
+    /** Operation time */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Excel(name = "操作时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
+    @Excel(name = "Operation time", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date operTime;
 
-    /** 消耗时间 */
-    @Excel(name = "消耗时间", suffix = "毫秒")
+    /** Time consumed */
+    @Excel(name = "Time consumed", suffix = "milliseconds")
     private Long costTime;
 
     public Long getOperId()

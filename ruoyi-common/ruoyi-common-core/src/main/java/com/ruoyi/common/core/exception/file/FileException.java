@@ -3,8 +3,8 @@ package com.ruoyi.common.core.exception.file;
 import com.ruoyi.common.core.exception.base.BaseException;
 
 /**
- * 文件信息异常类
- * 
+ * File information exception class
+ *
  * @author ruoyi
  */
 public class FileException extends BaseException

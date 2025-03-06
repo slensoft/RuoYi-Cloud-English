@@ -1,8 +1,8 @@
 package com.ruoyi.common.core.exception.auth;
 
 /**
- * 未能通过的登录认证异常
- * 
+ * Failed login authentication exception
+ *
  * @author ruoyi
  */
 public class NotLoginException extends RuntimeException

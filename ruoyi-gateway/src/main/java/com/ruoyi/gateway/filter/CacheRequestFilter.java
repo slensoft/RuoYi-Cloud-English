@@ -13,7 +13,7 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * 获取body请求数据（解决流不能重复读取问题）
+ * Get body request data (solve the problem that the stream cannot be read repeatedly)
  * 
  * @author ruoyi
  */
@@ -48,7 +48,7 @@ public class CacheRequestFilter extends AbstractGatewayFilterFactory<CacheReques
         @Override
         public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain)
         {
-            // GET DELETE 不过滤
+            // GET DELETE do not filter
             HttpMethod method = exchange.getRequest().getMethod();
             if (method == null || method == HttpMethod.GET || method == HttpMethod.DELETE)
             {

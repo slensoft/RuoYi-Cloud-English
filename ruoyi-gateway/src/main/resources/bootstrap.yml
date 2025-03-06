@@ -5,31 +5,31 @@ server:
 # Spring
 spring: 
   application:
-    # 应用名称
+    # Application name
     name: ruoyi-gateway
   profiles:
-    # 环境配置
+    # Environment configuration
     active: dev
   cloud:
     nacos:
       discovery:
-        # 服务注册地址
+        # Service registration address
         server-addr: 127.0.0.1:8848
       config:
-        # 配置中心地址
+        # Configuration center address
         server-addr: 127.0.0.1:8848
-        # 配置文件格式
+        # Configuration file format
         file-extension: yml
-        # 共享配置
+        # Shared configuration
         shared-configs:
           - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
     sentinel:
-      # 取消控制台懒加载
+      # Cancel console lazy loading
       eager: true
       transport:
-        # 控制台地址
+        # Console address
         dashboard: 127.0.0.1:8718
-      # nacos配置持久化
+      # Nacos configuration persistence
       datasource:
         ds1:
           nacos:

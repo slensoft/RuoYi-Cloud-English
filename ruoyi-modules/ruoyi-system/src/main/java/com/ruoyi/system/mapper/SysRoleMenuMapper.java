@@ -4,41 +4,41 @@ import java.util.List;
 import com.ruoyi.system.domain.SysRoleMenu;
 
 /**
- * 角色与菜单关联表 数据层
+ * Role and Menu Association Table Data Layer
  * 
  * @author ruoyi
  */
 public interface SysRoleMenuMapper
 {
     /**
-     * 查询菜单使用数量
+     * Query menu usage count
      * 
-     * @param menuId 菜单ID
-     * @return 结果
+     * @param menuId Menu ID
+     * @return Result
      */
     public int checkMenuExistRole(Long menuId);
 
     /**
-     * 通过角色ID删除角色和菜单关联
+     * Delete role and menu association by role ID
      * 
-     * @param roleId 角色ID
-     * @return 结果
+     * @param roleId Role ID
+     * @return Result
      */
     public int deleteRoleMenuByRoleId(Long roleId);
 
     /**
-     * 批量删除角色菜单关联信息
+     * Batch delete role menu association information
      * 
-     * @param ids 需要删除的数据ID
-     * @return 结果
+     * @param ids Data IDs to be deleted
+     * @return Result
      */
     public int deleteRoleMenu(Long[] ids);
 
     /**
-     * 批量新增角色菜单信息
+     * Batch add role menu information
      * 
-     * @param roleMenuList 角色菜单列表
-     * @return 结果
+     * @param roleMenuList Role menu list
+     * @return Result
      */
     public int batchRoleMenu(List<SysRoleMenu> roleMenuList);
 }

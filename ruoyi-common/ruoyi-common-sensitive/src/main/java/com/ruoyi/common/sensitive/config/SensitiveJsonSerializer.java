@@ -14,7 +14,7 @@ import com.ruoyi.common.sensitive.enums.DesensitizedType;
 import com.ruoyi.system.api.model.LoginUser;
 
 /**
- * 数据脱敏序列化过滤
+ * Data desensitization serialization filter
  *
  * @author ruoyi
  */
@@ -49,14 +49,14 @@ public class SensitiveJsonSerializer extends JsonSerializer<String> implements C
     }
 
     /**
-     * 是否需要脱敏处理
+     * Whether desensitization is needed
      */
     private boolean desensitization()
     {
         try
         {
             LoginUser securityUser = SecurityUtils.getLoginUser();
-            // 管理员不脱敏
+            // Administrators are not desensitized
             return !securityUser.getSysUser().isAdmin();
         }
         catch (Exception e)

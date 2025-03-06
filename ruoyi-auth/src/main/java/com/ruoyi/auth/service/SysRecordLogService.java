@@ -10,8 +10,8 @@ import com.ruoyi.system.api.RemoteLogService;
 import com.ruoyi.system.api.domain.SysLogininfor;
 
 /**
- * 记录日志方法
- * 
+ * Record log method
+ *
  * @author ruoyi
  */
 @Component
@@ -21,11 +21,11 @@ public class SysRecordLogService
     private RemoteLogService remoteLogService;
 
     /**
-     * 记录登录信息
-     * 
-     * @param username 用户名
-     * @param status 状态
-     * @param message 消息内容
+     * Record login information
+     *
+     * @param username Username
+     * @param status Status
+     * @param message Message content
      * @return
      */
     public void recordLogininfor(String username, String status, String message)
@@ -34,7 +34,7 @@ public class SysRecordLogService
         logininfor.setUserName(username);
         logininfor.setIpaddr(IpUtils.getIpAddr());
         logininfor.setMsg(message);
-        // 日志状态
+        // Log status
         if (StringUtils.equalsAny(status, Constants.LOGIN_SUCCESS, Constants.LOGOUT, Constants.REGISTER))
         {
             logininfor.setStatus(Constants.LOGIN_SUCCESS_STATUS);

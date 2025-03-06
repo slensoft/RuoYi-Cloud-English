@@ -3,7 +3,7 @@ package com.ruoyi.common.core.exception.file;
 import java.util.Arrays;
 
 /**
- * 文件上传 误异常类
+ * File Upload Extension Exception Class
  * 
  * @author ruoyi
  */

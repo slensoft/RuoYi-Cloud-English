@@ -20,8 +20,8 @@ import com.ruoyi.system.api.domain.SysUser;
 import com.ruoyi.system.api.model.LoginUser;
 
 /**
- * 登录校验方法
- * 
+ * Login verification method
+ *
  * @author ruoyi
  */
 @Component
@@ -40,38 +40,38 @@ public class SysLoginService
     private RedisService redisService;
 
     /**
-     * 登录
+     * Login
      */
     public LoginUser login(String username, String password)
     {
-        // 用户名或密码为空 错误
+        // Username or password is empty error
         if (StringUtils.isAnyBlank(username, password))
         {
-            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "用户/密码必须填写");
-            throw new ServiceException("用户/密码必须填写");
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "User/password must be filled in");
+            throw new ServiceException("User/password must be filled in");
         }
-        // 密码如果不在指定范围内 错误
+        // If the password is not within the specified range error
         if (password.length() < UserConstants.PASSWORD_MIN_LENGTH
                 || password.length() > UserConstants.PASSWORD_MAX_LENGTH)
         {
-            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "用户密码不在指定范围");
-            throw new ServiceException("用户密码不在指定范围");
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "User password is not within the specified range");
+            throw new ServiceException("User password is not within the specified range");
         }
-        // 用户名不在指定范围内 错误
+        // Username is not within the specified range error
         if (username.length() < UserConstants.USERNAME_MIN_LENGTH
                 || username.length() > UserConstants.USERNAME_MAX_LENGTH)
         {
-            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "用户名不在指定范围");
-            throw new ServiceException("用户名不在指定范围");
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "Username is not within the specified range");
+            throw new ServiceException("Username is not within the specified range");
         }
-        // IP黑名单校验
+        // IP blacklist verification
         String blackStr = Convert.toStr(redisService.getCacheObject(CacheConstants.SYS_LOGIN_BLACKIPLIST));
         if (IpUtils.isMatchedIp(blackStr, IpUtils.getIpAddr()))
         {
-            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "很遗憾，访问IP已被列入系统黑名单");
-            throw new ServiceException("很遗憾，访问IP已被列入系统黑名单");
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "Unfortunately, the access IP has been blacklisted by the system");
+            throw new ServiceException("Unfortunately, the access IP has been blacklisted by the system");
         }
-        // 查询用户信息
+        // Query user information
         R<LoginUser> userResult = remoteUserService.getUserInfo(username, SecurityConstants.INNER);
 
         if (R.FAIL == userResult.getCode())
@@ -83,63 +83,63 @@ public class SysLoginService
         SysUser user = userResult.getData().getSysUser();
         if (UserStatus.DELETED.getCode().equals(user.getDelFlag()))
         {
-            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "对不起，您的账号已被删除");
-            throw new ServiceException("对不起，您的账号：" + username + " 已被删除");
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "Sorry, your account has been deleted");
+            throw new ServiceException("Sorry, your account: " + username + " has been deleted");
         }
         if (UserStatus.DISABLE.getCode().equals(user.getStatus()))
         {
-            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "用户已停用，请联系管理员");
-            throw new ServiceException("对不起，您的账号：" + username + " 已停用");
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "User has been disabled, please contact the administrator");
+            throw new ServiceException("Sorry, your account: " + username + " has been disabled");
         }
         passwordService.validate(user, password);
-        recordLogService.recordLogininfor(username, Constants.LOGIN_SUCCESS, "登录成功");
+        recordLogService.recordLogininfor(username, Constants.LOGIN_SUCCESS, "Login successful");
         recordLoginInfo(user.getUserId());
         return userInfo;
     }
 
     /**
-     * 记录登录信息
+     * Record login information
      *
-     * @param userId 用户ID
+     * @param userId User ID
      */
     public void recordLoginInfo(Long userId)
     {
         SysUser sysUser = new SysUser();
         sysUser.setUserId(userId);
-        // 更新用户登录IP
+        // Update user login IP
         sysUser.setLoginIp(IpUtils.getIpAddr());
-        // 更新用户登录时间
+        // Update user login time
         sysUser.setLoginDate(DateUtils.getNowDate());
         remoteUserService.recordUserLogin(sysUser, SecurityConstants.INNER);
     }
 
     public void logout(String loginName)
     {
-        recordLogService.recordLogininfor(loginName, Constants.LOGOUT, "退出成功");
+        recordLogService.recordLogininfor(loginName, Constants.LOGOUT, "Logout successful");
     }
 
     /**
-     * 注册
+     * Register
      */
     public void register(String username, String password)
     {
-        // 用户名或密码为空 错误
+        // Username or password is empty error
         if (StringUtils.isAnyBlank(username, password))
         {
-            throw new ServiceException("用户/密码必须填写");
+            throw new ServiceException("User/password must be filled in");
         }
         if (username.length() < UserConstants.USERNAME_MIN_LENGTH
                 || username.length() > UserConstants.USERNAME_MAX_LENGTH)
         {
-            throw new ServiceException("账户长度必须在2到20个字符之间");
+            throw new ServiceException("Account length must be between 2 and 20 characters");
         }
         if (password.length() < UserConstants.PASSWORD_MIN_LENGTH
                 || password.length() > UserConstants.PASSWORD_MAX_LENGTH)
         {
-            throw new ServiceException("密码长度必须在5到20个字符之间");
+            throw new ServiceException("Password length must be between 5 and 20 characters");
         }
 
-        // 注册用户信息
+        // Register user information
         SysUser sysUser = new SysUser();
         sysUser.setUserName(username);
         sysUser.setNickName(username);
@@ -150,6 +150,6 @@ public class SysLoginService
         {
             throw new ServiceException(registerResult.getMsg());
         }
-        recordLogService.recordLogininfor(username, Constants.REGISTER, "注册成功");
+        recordLogService.recordLogininfor(username, Constants.REGISTER, "Registration successful");
     }
 }

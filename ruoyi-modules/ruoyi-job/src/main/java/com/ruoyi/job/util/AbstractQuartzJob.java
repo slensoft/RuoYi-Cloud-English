@@ -16,7 +16,7 @@ import com.ruoyi.job.domain.SysJobLog;
 import com.ruoyi.job.service.ISysJobLogService;
 
 /**
- * 抽象quartz调用
+ * Abstract quartz call
  *
  * @author ruoyi
  */
@@ -25,7 +25,7 @@ public abstract class AbstractQuartzJob implements Job
     private static final Logger log = LoggerFactory.getLogger(AbstractQuartzJob.class);
 
     /**
-     * 线程本地变量
+     * Thread local variable
      */
     private static ThreadLocal<Date> threadLocal = new ThreadLocal<>();
 
@@ -45,16 +45,16 @@ public abstract class AbstractQuartzJob implements Job
         }
         catch (Exception e)
         {
-            log.error("任务执行异常  - ：", e);
+            log.error("Task execution exception  - :", e);
             after(context, sysJob, e);
         }
     }
 
     /**
-     * 执行前
+     * Before execution
      *
-     * @param context 工作执行上下文对象
-     * @param sysJob 系统计划任务
+     * @param context Job execution context object
+     * @param sysJob System scheduled task
      */
     protected void before(JobExecutionContext context, SysJob sysJob)
     {
@@ -62,10 +62,11 @@ public abstract class AbstractQuartzJob implements Job
     }
 
     /**
-     * 执行后
+     * After execution
      *
-     * @param context 工作执行上下文对象
-     * @param sysJob 系统计划任务
+     * @param context Job execution context object
+     * @param sysJob System scheduled task
+     * @param e Exception during execution
      */
     protected void after(JobExecutionContext context, SysJob sysJob, Exception e)
     {
@@ -79,7 +80,7 @@ public abstract class AbstractQuartzJob implements Job
         sysJobLog.setStartTime(startTime);
         sysJobLog.setStopTime(new Date());
         long runMs = sysJobLog.getStopTime().getTime() - sysJobLog.getStartTime().getTime();
-        sysJobLog.setJobMessage(sysJobLog.getJobName() + " 总共耗时：" + runMs + "毫秒");
+        sysJobLog.setJobMessage(sysJobLog.getJobName() + " Total time: " + runMs + " milliseconds");
         if (e != null)
         {
             sysJobLog.setStatus("1");
@@ -91,16 +92,16 @@ public abstract class AbstractQuartzJob implements Job
             sysJobLog.setStatus("0");
         }
 
-        // 写入数据库当中
+        // Write to the database
         SpringUtils.getBean(ISysJobLogService.class).addJobLog(sysJobLog);
     }
 
     /**
-     * 执行方法，由子类重载
+     * Execute method, overridden by subclasses
      *
-     * @param context 工作执行上下文对象
-     * @param sysJob 系统计划任务
-     * @throws Exception 执行过程中的异常
+     * @param context Job execution context object
+     * @param sysJob System scheduled task
+     * @throws Exception Exception during execution
      */
     protected abstract void doExecute(JobExecutionContext context, SysJob sysJob) throws Exception;
 }

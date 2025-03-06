@@ -10,8 +10,8 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import com.ruoyi.common.core.utils.poi.ExcelHandlerAdapter;
 
 /**
- * 自定义导出Excel数据注解
- * 
+ * Custom export Excel data annotation
+ *
  * @author ruoyi
  */
 @Retention(RetentionPolicy.RUNTIME)
@@ -19,137 +19,137 @@ import com.ruoyi.common.core.utils.poi.ExcelHandlerAdapter;
 public @interface Excel
 {
     /**
-     * 导出时在excel中排序
+     * Sort in excel when exporting
      */
     public int sort() default Integer.MAX_VALUE;
 
     /**
-     * 导出到Excel中的名字.
+     * Name exported to Excel.
      */
     public String name() default "";
 
     /**
-     * 日期格式, 如: yyyy-MM-dd
+     * Date format, such as: yyyy-MM-dd
      */
     public String dateFormat() default "";
 
     /**
-     * 读取内容转表达式 (如: 0=男,1=女,2=未知)
+     * Read content conversion expression (e.g.: 0=male,1=female,2=unknown)
      */
     public String readConverterExp() default "";
 
     /**
-     * 分隔符，读取字符串组内容
+     * Separator, read string group content
      */
     public String separator() default ",";
 
     /**
-     * BigDecimal 精度 默认:-1(默认不开启BigDecimal格式化)
+     * BigDecimal precision default: -1 (BigDecimal formatting is not enabled by default)
      */
     public int scale() default -1;
 
     /**
-     * BigDecimal 舍入规则 默认:BigDecimal.ROUND_HALF_EVEN
+     * BigDecimal rounding rule default: BigDecimal.ROUND_HALF_EVEN
      */
     public int roundingMode() default BigDecimal.ROUND_HALF_EVEN;
 
     /**
-     * 导出时在excel中每个列的高度
+     * Export in excel when exporting the height of each column
      */
     public double height() default 14;
 
     /**
-     * 导出时在excel中每个列的宽度
+     * Export in excel when exporting the width of each column
      */
     public double width() default 16;
 
     /**
-     * 文字后缀,如% 90 变成90%
+     * Text suffix, such as% 90 becomes 90%
      */
     public String suffix() default "";
 
     /**
-     * 当值为空时,字段的默认值
+     * Default value of the field when the value is empty
      */
     public String defaultValue() default "";
 
     /**
-     * 提示信息
+     * Prompt information
      */
     public String prompt() default "";
 
     /**
-     * 是否允许内容换行 
+     * Whether to allow content to wrap
      */
     public boolean wrapText() default false;
 
     /**
-     * 设置只能选择不能输入的列内容.
+     * Set the content that can only be selected but not input.
      */
     public String[] combo() default {};
 
     /**
-     * 是否需要纵向合并单元格,应对需求:含有list集合单元格)
+     * Whether to merge cells vertically, for needs: containing list cell unit)
      */
     public boolean needMerge() default false;
 
     /**
-     * 是否导出数据,应对需求:有时我们需要导出一份模板,这是标题需要但内容需要用户手工填写.
+     * Whether to export data, for needs: sometimes we need to export a template, this title is needed but the content needs to be filled in by the user manually.
      */
     public boolean isExport() default true;
 
     /**
-     * 另一个类中的属性名称,支持多级获取,以小数点隔开
+     * Property name in another class, support multi-level acquisition, separated by dots
      */
     public String targetAttr() default "";
 
     /**
-     * 是否自动统计数据,在最后追加一行统计数据总和
+     * Whether to automatically count data, add a row of statistical data total at the end
      */
     public boolean isStatistics() default false;
 
     /**
-     * 导出类型（0数字 1字符串）
+     * Export type (0 number 1 string)
      */
     public ColumnType cellType() default ColumnType.STRING;
 
     /**
-     * 导出列头背景颜色
+     * Export column header background color
      */
     public IndexedColors headerBackgroundColor() default IndexedColors.GREY_50_PERCENT;
 
     /**
-     * 导出列头字体颜色
+     * Export column header font color
      */
     public IndexedColors headerColor() default IndexedColors.WHITE;
 
     /**
-     * 导出单元格背景颜色
+     * Export cell background color
      */
     public IndexedColors backgroundColor() default IndexedColors.WHITE;
 
     /**
-     * 导出单元格字体颜色
+     * Export cell font color
      */
     public IndexedColors color() default IndexedColors.BLACK;
 
     /**
-     * 导出字段对齐方式
+     * Export field alignment
      */
     public HorizontalAlignment align() default HorizontalAlignment.CENTER;
 
     /**
-     * 自定义数据处理器
+     * Custom data processor
      */
     public Class<?> handler() default ExcelHandlerAdapter.class;
 
     /**
-     * 自定义数据处理器参数
+     * Custom data processor parameter
      */
     public String[] args() default {};
 
     /**
-     * 字段类型（0：导出导入；1：仅导出；2：仅导入）
+     * Field type (0: export and import; 1: export only; 2: import only)
      */
     Type type() default Type.ALL;
 

@@ -1,8 +1,8 @@
 package com.ruoyi.auth.form;
 
 /**
- * 用户注册对象
- * 
+ * User registration object
+ *
  * @author ruoyi
  */
 public class RegisterBody extends LoginBody

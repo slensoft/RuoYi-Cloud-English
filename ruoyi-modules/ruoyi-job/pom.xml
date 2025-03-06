@@ -12,7 +12,7 @@
     <artifactId>ruoyi-modules-job</artifactId>
 
     <description>
-        ruoyi-modules-job定时任务
+        ruoyi-modules-job scheduled tasks
     </description>
 
     <dependencies>

@@ -1,7 +1,7 @@
 package com.ruoyi.common.core.exception;
 
 /**
- * 权限异常
+ * Permission Exception
  * 
  * @author ruoyi
  */

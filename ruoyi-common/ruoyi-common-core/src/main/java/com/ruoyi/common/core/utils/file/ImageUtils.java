@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 图片处理工具类
+ * Image Processing Utility Class
  *
  * @author ruoyi
  */
@@ -27,7 +27,7 @@ public class ImageUtils
         }
         catch (Exception e)
         {
-            log.error("图片加载异常 {}", e);
+            log.error("Image loading exception {}", e);
             return null;
         }
         finally
@@ -46,23 +46,23 @@ public class ImageUtils
         }
         catch (Exception e)
         {
-            log.error("获取图片异常 {}", e);
+            log.error("Error getting image {}", e);
         }
         return null;
     }
 
     /**
-     * 读取文件为字节数据
+     * Read file as byte data
      * 
-     * @param url 地址
-     * @return 字节数据
+     * @param url URL
+     * @return Byte data
      */
     public static byte[] readFile(String url)
     {
         InputStream in = null;
         try
         {
-            // 网络地址
+            // Network address
             URL urlObj = new URL(url);
             URLConnection urlConnection = urlObj.openConnection();
             urlConnection.setConnectTimeout(30 * 1000);
@@ -73,7 +73,7 @@ public class ImageUtils
         }
         catch (Exception e)
         {
-            log.error("访问文件异常 {}", e);
+            log.error("File access exception {}", e);
             return null;
         }
         finally

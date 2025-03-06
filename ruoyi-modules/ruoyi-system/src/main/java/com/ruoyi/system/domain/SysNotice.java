@@ -8,7 +8,7 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
 import com.ruoyi.common.core.xss.Xss;
 
 /**
- * 通知公告表 sys_notice
+ * Notice Announcement Table sys_notice
  * 
  * @author ruoyi
  */
@@ -16,19 +16,19 @@ public class SysNotice extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 公告ID */
+    /** Notice ID */
     private Long noticeId;
 
-    /** 公告标题 */
+    /** Notice Title */
     private String noticeTitle;
 
-    /** 公告类型（1通知 2公告） */
+    /** Notice Type (1 Notice 2 Announcement) */
     private String noticeType;
 
-    /** 公告内容 */
+    /** Notice Content */
     private String noticeContent;
 
-    /** 公告状态（0正常 1关闭） */
+    /** Notice Status (0 Normal 1 Closed) */
     private String status;
 
     public Long getNoticeId()
@@ -46,9 +46,9 @@ public class SysNotice extends BaseEntity
         this.noticeTitle = noticeTitle;
     }
 
-    @Xss(message = "公告标题不能包含脚本字符")
-    @NotBlank(message = "公告标题不能为空")
-    @Size(min = 0, max = 50, message = "公告标题不能超过50个字符")
+    @Xss(message = "Notice title cannot contain script characters")
+    @NotBlank(message = "Notice title cannot be empty")
+    @Size(min = 0, max = 50, message = "Notice title cannot exceed 50 characters")
     public String getNoticeTitle()
     {
         return noticeTitle;

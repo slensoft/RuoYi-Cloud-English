@@ -5,13 +5,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.ruoyi.common.security.interceptor.HeaderInterceptor;
 
 /**
- * 拦截器配置
+ * Interceptor configuration
  *
  * @author ruoyi
  */
 public class WebMvcConfig implements WebMvcConfigurer
 {
-    /** 不需要拦截地址 */
+    /** Addresses that do not need to be intercepted */
     public static final String[] excludeUrls = { "/login", "/logout", "/refresh" };
 
     @Override
@@ -24,7 +24,7 @@ public class WebMvcConfig implements WebMvcConfigurer
     }
 
     /**
-     * 自定义请求头拦截器
+     * Custom request header interceptor
      */
     public HeaderInterceptor getHeaderInterceptor()
     {

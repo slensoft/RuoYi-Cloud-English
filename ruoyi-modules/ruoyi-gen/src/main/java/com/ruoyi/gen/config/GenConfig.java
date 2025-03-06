@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * 代码生成相关配置
+ * Code generation related configuration
  * 
  * @author ruoyi
  */
@@ -12,19 +12,19 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "gen")
 public class GenConfig
 {
-    /** 作者 */
+    /** Author */
     public static String author;
 
-    /** 生成包路径 */
+    /** Package path for generation */
     public static String packageName;
 
-    /** 自动去除表前缀 */
+    /** Automatically remove table prefix */
     public static boolean autoRemovePre;
 
-    /** 表前缀 */
+    /** Table prefix */
     public static String tablePrefix;
 
-    /** 是否允许生成文件覆盖到本地（自定义路径） */
+    /** Whether to allow file generation to overwrite locally (custom path) */
     public static boolean allowOverwrite;
 
     public static String getAuthor()

@@ -1,117 +1,117 @@
 package com.ruoyi.common.core.constant;
 
 /**
- * 代码生成通用常量
- * 
+ * Code generation general constants
+ *
  * @author ruoyi
  */
 public class GenConstants
 {
-    /** 单表（增删改查） */
+    /** Single table (add, delete, modify, query) */
     public static final String TPL_CRUD = "crud";
 
-    /** 树表（增删改查） */
+    /** Tree table (add, delete, modify, query) */
     public static final String TPL_TREE = "tree";
 
-    /** 主子表（增删改查） */
+    /** Main-sub table (add, delete, modify, query) */
     public static final String TPL_SUB = "sub";
 
-    /** 树编码字段 */
+    /** Tree code field */
     public static final String TREE_CODE = "treeCode";
 
-    /** 树父编码字段 */
+    /** Tree parent code field */
     public static final String TREE_PARENT_CODE = "treeParentCode";
 
-    /** 树名称字段 */
+    /** Tree name field */
     public static final String TREE_NAME = "treeName";
 
-    /** 上级菜单ID字段 */
+    /** Parent menu ID field */
     public static final String PARENT_MENU_ID = "parentMenuId";
 
-    /** 上级菜单名称字段 */
+    /** Parent menu name field */
     public static final String PARENT_MENU_NAME = "parentMenuName";
 
-    /** 数据库字符串类型 */
+    /** Database string type */
     public static final String[] COLUMNTYPE_STR = { "char", "varchar", "nvarchar", "varchar2" };
 
-    /** 数据库文本类型 */
+    /** Database text type */
     public static final String[] COLUMNTYPE_TEXT = { "tinytext", "text", "mediumtext", "longtext" };
 
-    /** 数据库时间类型 */
+    /** Database time type */
     public static final String[] COLUMNTYPE_TIME = { "datetime", "time", "date", "timestamp" };
 
-    /** 数据库数字类型 */
+    /** Database number type */
     public static final String[] COLUMNTYPE_NUMBER = { "tinyint", "smallint", "mediumint", "int", "number", "integer",
             "bit", "bigint", "float", "double", "decimal" };
 
-    /** 页面不需要编辑字段 */
+    /** Fields that do not need to be edited on the page */
     public static final String[] COLUMNNAME_NOT_EDIT = { "id", "create_by", "create_time", "del_flag" };
 
-    /** 页面不需要显示的列表字段 */
+    /** Fields that do not need to be displayed in the list on the page */
     public static final String[] COLUMNNAME_NOT_LIST = { "id", "create_by", "create_time", "del_flag", "update_by",
             "update_time" };
 
-    /** 页面不需要查询字段 */
+    /** Fields that do not need to be queried on the page */
     public static final String[] COLUMNNAME_NOT_QUERY = { "id", "create_by", "create_time", "del_flag", "update_by",
             "update_time", "remark" };
 
-    /** Entity基类字段 */
+    /** Entity base field */
     public static final String[] BASE_ENTITY = { "createBy", "createTime", "updateBy", "updateTime", "remark" };
 
-    /** Tree基类字段 */
+    /** Tree base field */
     public static final String[] TREE_ENTITY = { "parentName", "parentId", "orderNum", "ancestors" };
 
-    /** 文本框 */
+    /** Text box */
     public static final String HTML_INPUT = "input";
 
-    /** 文本域 */
+    /** Text area */
     public static final String HTML_TEXTAREA = "textarea";
 
-    /** 下拉框 */
+    /** Drop-down box */
     public static final String HTML_SELECT = "select";
 
-    /** 单选框 */
+    /** Single selection box */
     public static final String HTML_RADIO = "radio";
 
-    /** 复选框 */
+    /** Multiple selection box */
     public static final String HTML_CHECKBOX = "checkbox";
 
-    /** 日期控件 */
+    /** Date control */
     public static final String HTML_DATETIME = "datetime";
 
-    /** 图片上传控件 */
+    /** Image upload control */
     public static final String HTML_IMAGE_UPLOAD = "imageUpload";
 
-    /** 文件上传控件 */
+    /** File upload control */
     public static final String HTML_FILE_UPLOAD = "fileUpload";
 
-    /** 富文本控件 */
+    /** Rich text control */
     public static final String HTML_EDITOR = "editor";
 
-    /** 字符串类型 */
+    /** String type */
     public static final String TYPE_STRING = "String";
 
-    /** 整型 */
+    /** Integer type */
     public static final String TYPE_INTEGER = "Integer";
 
-    /** 长整型 */
+    /** Long type */
     public static final String TYPE_LONG = "Long";
 
-    /** 浮点型 */
+    /** Float type */
     public static final String TYPE_DOUBLE = "Double";
 
-    /** 高精度计算类型 */
+    /** High precision calculation type */
     public static final String TYPE_BIGDECIMAL = "BigDecimal";
 
-    /** 时间类型 */
+    /** Time type */
     public static final String TYPE_DATE = "Date";
 
-    /** 模糊查询 */
+    /** Fuzzy query */
     public static final String QUERY_LIKE = "LIKE";
 
-    /** 相等查询 */
+    /** Equal query */
     public static final String QUERY_EQ = "EQ";
 
-    /** 需要 */
+    /** Need */
     public static final String REQUIRE = "1";
 }

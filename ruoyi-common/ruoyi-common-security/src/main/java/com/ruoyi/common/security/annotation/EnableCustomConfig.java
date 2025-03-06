@@ -17,13 +17,13 @@ import com.ruoyi.common.security.feign.FeignAutoConfiguration;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-// 表示通过aop框架暴露该代理对象,AopContext能够访问
+// Expose the proxy object through the AOP framework, allowing AopContext to access
 @EnableAspectJAutoProxy(exposeProxy = true)
-// 指定要扫描的Mapper类的包的路径
+// Specify the path of the Mapper class package to scan
 @MapperScan("com.ruoyi.**.mapper")
-// 开启线程异步执行
+// Enable asynchronous thread execution
 @EnableAsync
-// 自动加载类
+// Auto-load classes
 @Import({ ApplicationConfig.class, FeignAutoConfiguration.class })
 public @interface EnableCustomConfig
 {

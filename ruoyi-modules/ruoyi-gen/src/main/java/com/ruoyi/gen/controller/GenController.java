@@ -30,7 +30,7 @@ import com.ruoyi.gen.service.IGenTableColumnService;
 import com.ruoyi.gen.service.IGenTableService;
 
 /**
- * 代码生成 操作处理
+ * Code generation operation handling
  * 
  * @author ruoyi
  */
@@ -45,7 +45,7 @@ public class GenController extends BaseController
     private IGenTableColumnService genTableColumnService;
 
     /**
-     * 查询代码生成列表
+     * Query code generation list
      */
     @RequiresPermissions("tool:gen:list")
     @GetMapping("/list")
@@ -57,7 +57,7 @@ public class GenController extends BaseController
     }
 
     /**
-     * 修改代码生成业务
+     * Modify code generation business
      */
     @RequiresPermissions("tool:gen:query")
     @GetMapping(value = "/{tableId}")
@@ -74,7 +74,7 @@ public class GenController extends BaseController
     }
 
     /**
-     * 查询数据库列表
+     * Query database list
      */
     @RequiresPermissions("tool:gen:list")
     @GetMapping("/db/list")
@@ -86,7 +86,7 @@ public class GenController extends BaseController
     }
 
     /**
-     * 查询数据表字段列表
+     * Query table column list
      */
     @GetMapping(value = "/column/{tableId}")
     public TableDataInfo columnList(Long tableId)
@@ -99,25 +99,25 @@ public class GenController extends BaseController
     }
 
     /**
-     * 导入表结构（保存）
+     * Import table structure (save)
      */
     @RequiresPermissions("tool:gen:import")
-    @Log(title = "代码生成", businessType = BusinessType.IMPORT)
+    @Log(title = "Code generation", businessType = BusinessType.IMPORT)
     @PostMapping("/importTable")
     public AjaxResult importTableSave(String tables)
     {
         String[] tableNames = Convert.toStrArray(tables);
-        // 查询表信息
+        // Query table information
         List<GenTable> tableList = genTableService.selectDbTableListByNames(tableNames);
         genTableService.importGenTable(tableList);
         return success();
     }
 
     /**
-     * 修改保存代码生成业务
+     * Modify and save code generation business
      */
     @RequiresPermissions("tool:gen:edit")
-    @Log(title = "代码生成", businessType = BusinessType.UPDATE)
+    @Log(title = "Code generation", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult editSave(@Validated @RequestBody GenTable genTable)
     {
@@ -127,10 +127,10 @@ public class GenController extends BaseController
     }
 
     /**
-     * 删除代码生成
+     * Delete code generation
      */
     @RequiresPermissions("tool:gen:remove")
-    @Log(title = "代码生成", businessType = BusinessType.DELETE)
+    @Log(title = "Code generation", businessType = BusinessType.DELETE)
     @DeleteMapping("/{tableIds}")
     public AjaxResult remove(@PathVariable Long[] tableIds)
     {
@@ -139,7 +139,7 @@ public class GenController extends BaseController
     }
 
     /**
-     * 预览代码
+     * Preview code
      */
     @RequiresPermissions("tool:gen:preview")
     @GetMapping("/preview/{tableId}")
@@ -150,10 +150,10 @@ public class GenController extends BaseController
     }
 
     /**
-     * 生成代码（下载方式）
+     * Generate code (download method)
      */
     @RequiresPermissions("tool:gen:code")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
+    @Log(title = "Code generation", businessType = BusinessType.GENCODE)
     @GetMapping("/download/{tableName}")
     public void download(HttpServletResponse response, @PathVariable("tableName") String tableName) throws IOException
     {
@@ -162,26 +162,26 @@ public class GenController extends BaseController
     }
 
     /**
-     * 生成代码（自定义路径）
+     * Generate code (custom path)
      */
     @RequiresPermissions("tool:gen:code")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
+    @Log(title = "Code generation", businessType = BusinessType.GENCODE)
     @GetMapping("/genCode/{tableName}")
     public AjaxResult genCode(@PathVariable("tableName") String tableName)
     {
         if (!GenConfig.isAllowOverwrite())
         {
-            return AjaxResult.error("【系统预设】不允许生成文件覆盖到本地");
+            return AjaxResult.error("【System preset】File overwriting to local is not allowed");
         }
         genTableService.generatorCode(tableName);
         return success();
     }
 
     /**
-     * 同步数据库
+     * Synchronize database
      */
     @RequiresPermissions("tool:gen:edit")
-    @Log(title = "代码生成", businessType = BusinessType.UPDATE)
+    @Log(title = "Code generation", businessType = BusinessType.UPDATE)
     @GetMapping("/synchDb/{tableName}")
     public AjaxResult synchDb(@PathVariable("tableName") String tableName)
     {
@@ -190,10 +190,10 @@ public class GenController extends BaseController
     }
 
     /**
-     * 批量生成代码
+     * Batch generate code
      */
     @RequiresPermissions("tool:gen:code")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
+    @Log(title = "Code generation", businessType = BusinessType.GENCODE)
     @GetMapping("/batchGenCode")
     public void batchGenCode(HttpServletResponse response, String tables) throws IOException
     {
@@ -203,7 +203,7 @@ public class GenController extends BaseController
     }
 
     /**
-     * 生成zip文件
+     * Generate zip file
      */
     private void genCode(HttpServletResponse response, byte[] data) throws IOException
     {

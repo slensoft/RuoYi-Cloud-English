@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 自定义xss校验注解
+ * Custom XSS validation annotation
  * 
  * @author ruoyi
  */
@@ -19,7 +19,7 @@ public @interface Xss
 {
     String message()
 
-    default "不允许任何脚本运行";
+    default "No scripts are allowed to run";
 
     Class<?>[] groups() default {};
 

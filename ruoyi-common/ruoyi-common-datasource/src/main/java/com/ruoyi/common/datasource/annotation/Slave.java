@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import com.baomidou.dynamic.datasource.annotation.DS;
 
 /**
- * 从库数据源
+ * Slave data source
  * 
  * @author ruoyi
  */

@@ -18,8 +18,8 @@ import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.system.api.model.LoginUser;
 
 /**
- * token 控制
- * 
+ * Token control
+ *
  * @author ruoyi
  */
 @RestController
@@ -34,9 +34,9 @@ public class TokenController
     @PostMapping("login")
     public R<?> login(@RequestBody LoginBody form)
     {
-        // 用户登录
+        // User login
         LoginUser userInfo = sysLoginService.login(form.getUsername(), form.getPassword());
-        // 获取登录token
+        // Get login token
         return R.ok(tokenService.createToken(userInfo));
     }
 
@@ -47,9 +47,9 @@ public class TokenController
         if (StringUtils.isNotEmpty(token))
         {
             String username = JwtUtils.getUserName(token);
-            // 删除用户缓存记录
+            // Delete user cache record
             AuthUtil.logoutByToken(token);
-            // 记录用户退出日志
+            // Record user logout log
             sysLoginService.logout(username);
         }
         return R.ok();
@@ -61,7 +61,7 @@ public class TokenController
         LoginUser loginUser = tokenService.getLoginUser(request);
         if (StringUtils.isNotNull(loginUser))
         {
-            // 刷新令牌有效期
+            // Refresh token validity period
             tokenService.refreshToken(loginUser);
             return R.ok();
         }
@@ -71,7 +71,7 @@ public class TokenController
     @PostMapping("register")
     public R<?> register(@RequestBody RegisterBody registerBody)
     {
-        // 用户注册
+        // User registration
         sysLoginService.register(registerBody.getUsername(), registerBody.getPassword());
         return R.ok();
     }

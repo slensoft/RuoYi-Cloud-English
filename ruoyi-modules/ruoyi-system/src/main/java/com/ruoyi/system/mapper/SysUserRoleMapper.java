@@ -5,58 +5,58 @@ import org.apache.ibatis.annotations.Param;
 import com.ruoyi.system.domain.SysUserRole;
 
 /**
- * 用户与角色关联表 数据层
+ * User and Role Association Table Data Layer
  * 
  * @author ruoyi
  */
 public interface SysUserRoleMapper
 {
     /**
-     * 通过用户ID删除用户和角色关联
+     * Delete user and role association by user ID
      * 
-     * @param userId 用户ID
-     * @return 结果
+     * @param userId User ID
+     * @return Result
      */
     public int deleteUserRoleByUserId(Long userId);
 
     /**
-     * 批量删除用户和角色关联
+     * Batch delete user and role associations
      * 
-     * @param ids 需要删除的数据ID
-     * @return 结果
+     * @param ids Data IDs to be deleted
+     * @return Result
      */
     public int deleteUserRole(Long[] ids);
 
     /**
-     * 通过角色ID查询角色使用数量
+     * Query role usage count by role ID
      * 
-     * @param roleId 角色ID
-     * @return 结果
+     * @param roleId Role ID
+     * @return Result
      */
     public int countUserRoleByRoleId(Long roleId);
 
     /**
-     * 批量新增用户角色信息
+     * Batch add user role information
      * 
-     * @param userRoleList 用户角色列表
-     * @return 结果
+     * @param userRoleList User role list
+     * @return Result
      */
     public int batchUserRole(List<SysUserRole> userRoleList);
 
     /**
-     * 删除用户和角色关联信息
+     * Delete user and role association information
      * 
-     * @param userRole 用户和角色关联信息
-     * @return 结果
+     * @param userRole User and role association information
+     * @return Result
      */
     public int deleteUserRoleInfo(SysUserRole userRole);
 
     /**
-     * 批量取消授权用户角色
+     * Batch revoke user role authorization
      * 
-     * @param roleId 角色ID
-     * @param userIds 需要删除的用户数据ID
-     * @return 结果
+     * @param roleId Role ID
+     * @param userIds User data IDs to be deleted
+     * @return Result
      */
     public int deleteUserRoleInfos(@Param("roleId") Long roleId, @Param("userIds") Long[] userIds);
 }

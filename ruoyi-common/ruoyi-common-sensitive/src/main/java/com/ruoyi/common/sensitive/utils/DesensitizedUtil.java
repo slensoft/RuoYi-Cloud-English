@@ -3,17 +3,17 @@ package com.ruoyi.common.sensitive.utils;
 import com.ruoyi.common.core.utils.StringUtils;
 
 /**
- * 脱敏工具类
+ * Desensitization utility class
  *
  * @author ruoyi
  */
 public class DesensitizedUtil
 {
     /**
-     * 密码的全部字符都用*代替，比如：******
+     * All characters of the password are replaced with *, e.g., ******
      *
-     * @param password 密码
-     * @return 脱敏后的密码
+     * @param password Password
+     * @return Desensitized password
      */
     public static String password(String password)
     {
@@ -25,10 +25,10 @@ public class DesensitizedUtil
     }
 
     /**
-     * 车牌中间用*代替，如果是错误的车牌，不处理
+     * Replace the middle of the license plate with *, if it is an incorrect license plate, do not process
      *
-     * @param carLicense 完整的车牌号
-     * @return 脱敏后的车牌
+     * @param carLicense Complete license plate number
+     * @return Desensitized license plate
      */
     public static String carLicense(String carLicense)
     {
@@ -36,14 +36,14 @@ public class DesensitizedUtil
         {
             return StringUtils.EMPTY;
         }
-        // 普通车牌
+        // Ordinary license plate
         if (carLicense.length() == 7)
         {
             carLicense = StringUtils.hide(carLicense, 3, 6);
         }
         else if (carLicense.length() == 8)
         {
-            // 新能源车牌
+            // New energy license plate
             carLicense = StringUtils.hide(carLicense, 3, 7);
         }
         return carLicense;

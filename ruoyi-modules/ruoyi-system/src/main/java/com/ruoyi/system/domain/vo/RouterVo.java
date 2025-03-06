@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
 /**
- * 路由配置信息
+ * Router configuration information
  * 
  * @author ruoyi
  */
@@ -12,47 +12,47 @@ import java.util.List;
 public class RouterVo
 {
     /**
-     * 路由名字
+     * Router name
      */
     private String name;
 
     /**
-     * 路由地址
+     * Router path
      */
     private String path;
 
     /**
-     * 是否隐藏路由，当设置 true 的时候该路由不会再侧边栏出现
+     * Whether to hide the router, when set to true, this router will not appear in the sidebar
      */
     private boolean hidden;
 
     /**
-     * 重定向地址，当设置 noRedirect 的时候该路由在面包屑导航中不可被点击
+     * Redirect address, when set to noRedirect, this router cannot be clicked in breadcrumb navigation
      */
     private String redirect;
 
     /**
-     * 组件地址
+     * Component path
      */
     private String component;
 
     /**
-     * 路由参数：如 {"id": 1, "name": "ry"}
+     * Router parameters: e.g. {"id": 1, "name": "ry"}
      */
     private String query;
 
     /**
-     * 当你一个路由下面的 children 声明的路由大于1个时，自动会变成嵌套的模式--如组件页面
+     * When you have more than 1 route declared in children under a route, it will automatically become nested mode--like component pages
      */
     private Boolean alwaysShow;
 
     /**
-     * 其他元素
+     * Other meta elements
      */
     private MetaVo meta;
 
     /**
-     * 子路由
+     * Child routes
      */
     private List<RouterVo> children;
 

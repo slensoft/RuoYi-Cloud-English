@@ -3,7 +3,7 @@ package com.ruoyi.common.log.filter;
 import com.alibaba.fastjson2.filter.SimplePropertyPreFilter;
 
 /**
- * 排除JSON敏感属性
+ * Exclude JSON sensitive attributes
  * 
  * @author ruoyi
  */

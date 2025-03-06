@@ -1,8 +1,8 @@
 package com.ruoyi.common.core.exception.file;
 
 /**
- * 文件名称超长限制异常类
- * 
+ * File name length limit exceeded exception class
+ *
  * @author ruoyi
  */
 public class FileNameLengthLimitExceededException extends FileException

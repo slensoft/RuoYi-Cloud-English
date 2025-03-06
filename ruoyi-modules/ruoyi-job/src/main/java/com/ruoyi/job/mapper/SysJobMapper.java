@@ -4,64 +4,64 @@ import java.util.List;
 import com.ruoyi.job.domain.SysJob;
 
 /**
- * 调度任务信息 数据层
- * 
+ * Scheduling Task Information Data Layer
+ *
  * @author ruoyi
  */
 public interface SysJobMapper
 {
     /**
-     * 查询调度任务日志集合
-     * 
-     * @param job 调度信息
-     * @return 操作日志集合
+     * Query scheduling task list
+     *
+     * @param job Scheduling information
+     * @return Operation log list
      */
     public List<SysJob> selectJobList(SysJob job);
 
     /**
-     * 查询所有调度任务
-     * 
-     * @return 调度任务列表
+     * Query all scheduling tasks
+     *
+     * @return Scheduling task list
      */
     public List<SysJob> selectJobAll();
 
     /**
-     * 通过调度ID查询调度任务信息
-     * 
-     * @param jobId 调度ID
-     * @return 角色对象信息
+     * Query scheduling task information by ID
+     *
+     * @param jobId Scheduling ID
+     * @return Task information
      */
     public SysJob selectJobById(Long jobId);
 
     /**
-     * 通过调度ID删除调度任务信息
-     * 
-     * @param jobId 调度ID
-     * @return 结果
+     * Delete scheduling task by ID
+     *
+     * @param jobId Scheduling ID
+     * @return Result
      */
     public int deleteJobById(Long jobId);
 
     /**
-     * 批量删除调度任务信息
-     * 
-     * @param ids 需要删除的数据ID
-     * @return 结果
+     * Batch delete scheduling tasks
+     *
+     * @param ids IDs to delete
+     * @return Result
      */
     public int deleteJobByIds(Long[] ids);
 
     /**
-     * 修改调度任务信息
-     * 
-     * @param job 调度任务信息
-     * @return 结果
+     * Update scheduling task
+     *
+     * @param job Scheduling task
+     * @return Result
      */
     public int updateJob(SysJob job);
 
     /**
-     * 新增调度任务信息
-     * 
-     * @param job 调度任务信息
-     * @return 结果
+     * Create scheduling task
+     *
+     * @param job Scheduling task
+     * @return Result
      */
     public int insertJob(SysJob job);
 }

@@ -1,31 +1,31 @@
 package com.ruoyi.system.domain;
 
 /**
- * 当前在线会话
+ * Current Online Session
  * 
  * @author ruoyi
  */
 public class SysUserOnline
 {
-    /** 会话编号 */
+    /** Session ID */
     private String tokenId;
 
-    /** 用户名称 */
+    /** User Name */
     private String userName;
 
-    /** 登录IP地址 */
+    /** Login IP Address */
     private String ipaddr;
 
-    /** 登录地址 */
+    /** Login Location */
     private String loginLocation;
 
-    /** 浏览器类型 */
+    /** Browser Type */
     private String browser;
 
-    /** 操作系统 */
+    /** Operating System */
     private String os;
 
-    /** 登录时间 */
+    /** Login Time */
     private Long loginTime;
 
     public String getTokenId()

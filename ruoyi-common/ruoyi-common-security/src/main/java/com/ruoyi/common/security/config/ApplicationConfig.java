@@ -5,14 +5,14 @@ import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilde
 import org.springframework.context.annotation.Bean;
 
 /**
- * 系统配置
+ * System configuration
  *
  * @author ruoyi
  */
 public class ApplicationConfig
 {
     /**
-     * 时区配置
+     * Time zone configuration
      */
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jacksonObjectMapperCustomization()

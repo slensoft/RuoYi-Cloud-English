@@ -1,7 +1,7 @@
 package com.ruoyi.common.core.exception;
 
 /**
- * 全局异常
+ * Global Exception
  * 
  * @author ruoyi
  */
@@ -10,19 +10,19 @@ public class GlobalException extends RuntimeException
     private static final long serialVersionUID = 1L;
 
     /**
-     * 错误提示
+     * Error message
      */
     private String message;
 
     /**
-     * 错误明细，内部调试错误
+     * Error details, for internal debugging
      *
-     * 和 {@link CommonResult#getDetailMessage()} 一致的设计
+     * Consistent design with {@link CommonResult#getDetailMessage()}
      */
     private String detailMessage;
 
     /**
-     * 空构造方法，避免反序列化问题
+     * Empty constructor to avoid deserialization issues
      */
     public GlobalException()
     {

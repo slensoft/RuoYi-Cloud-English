@@ -16,7 +16,7 @@ import com.alibaba.nacos.common.notify.listener.Subscriber;
 import com.ruoyi.common.core.utils.StringUtils;
 
 /**
- * SpringDoc配置类
+ * SpringDoc configuration class
  *
  * @author ruoyi
  */
@@ -31,7 +31,7 @@ public class SpringDocConfig implements InitializingBean
     private DiscoveryClient discoveryClient;
 
     /**
-     * 在初始化后调用的方法
+     * Method called after initialization
      */
     @Override
     public void afterPropertiesSet()
@@ -41,7 +41,7 @@ public class SpringDocConfig implements InitializingBean
 }
 
 /**
- * Swagger文档注册器
+ * Swagger document registration
  */
 class SwaggerDocRegister extends Subscriber<InstancesChangeEvent>
 {
@@ -60,8 +60,8 @@ class SwaggerDocRegister extends Subscriber<InstancesChangeEvent>
     }
 
     /**
-     * 事件回调方法，处理InstancesChangeEvent事件
-     * @param event 事件对象
+     * Event callback method, handle InstancesChangeEvent event
+     * @param event Event object
      */
     @Override
     public void onEvent(InstancesChangeEvent event)
@@ -82,8 +82,8 @@ class SwaggerDocRegister extends Subscriber<InstancesChangeEvent>
     }
 
     /**
-     * 订阅类型方法，返回订阅的事件类型
-     * @return 订阅的事件类型
+     * Subscription type method, return the subscribed event type
+     * @return Subscribed event type
      */
     @Override
     public Class<? extends Event> subscribeType()

@@ -1,7 +1,7 @@
 package com.ruoyi.common.core.exception.file;
 
 /**
- * 文件名大小限制异常类
+ * File Size Limit Exception Class
  * 
  * @author ruoyi
  */

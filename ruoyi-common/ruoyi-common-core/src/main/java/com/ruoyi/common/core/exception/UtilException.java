@@ -1,7 +1,7 @@
 package com.ruoyi.common.core.exception;
 
 /**
- * 工具类异常
+ * Utility Class Exception
  * 
  * @author ruoyi
  */

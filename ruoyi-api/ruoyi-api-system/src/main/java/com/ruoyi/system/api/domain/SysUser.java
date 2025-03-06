@@ -13,80 +13,80 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
 import com.ruoyi.common.core.xss.Xss;
 
 /**
- * 用户对象 sys_user
- * 
+ * User object sys_user
+ *
  * @author ruoyi
  */
 public class SysUser extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 用户ID */
-    @Excel(name = "用户序号", type = Type.EXPORT, cellType = ColumnType.NUMERIC, prompt = "用户编号")
+    /** User ID */
+    @Excel(name = "User ID", type = Type.EXPORT, cellType = ColumnType.NUMERIC, prompt = "User number")
     private Long userId;
 
-    /** 部门ID */
-    @Excel(name = "部门编号", type = Type.IMPORT)
+    /** Department ID */
+    @Excel(name = "Department ID", type = Type.IMPORT)
     private Long deptId;
 
-    /** 用户账号 */
-    @Excel(name = "登录名称")
+    /** User account */
+    @Excel(name = "Login name")
     private String userName;
 
-    /** 用户昵称 */
-    @Excel(name = "用户名称")
+    /** User nickname */
+    @Excel(name = "User name")
     private String nickName;
 
-    /** 用户邮箱 */
-    @Excel(name = "用户邮箱")
+    /** User email */
+    @Excel(name = "User email")
     private String email;
 
-    /** 手机号码 */
-    @Excel(name = "手机号码", cellType = ColumnType.TEXT)
+    /** Mobile number */
+    @Excel(name = "Mobile number", cellType = ColumnType.TEXT)
     private String phonenumber;
 
-    /** 用户性别 */
-    @Excel(name = "用户性别", readConverterExp = "0=男,1=女,2=未知")
+    /** User gender */
+    @Excel(name = "User gender", readConverterExp = "0=male,1=female,2=unknown")
     private String sex;
 
-    /** 用户头像 */
+    /** User avatar */
     private String avatar;
 
-    /** 密码 */
+    /** Password */
     private String password;
 
-    /** 帐号状态（0正常 1停用） */
-    @Excel(name = "帐号状态", readConverterExp = "0=正常,1=停用")
+    /** Account status (0 normal 1 disabled) */
+    @Excel(name = "Account status", readConverterExp = "0=normal,1=disabled")
     private String status;
 
-    /** 删除标志（0代表存在 2代表删除） */
+    /** Delete flag (0 represents existence 2 represents deletion) */
     private String delFlag;
 
-    /** 最后登录IP */
-    @Excel(name = "最后登录IP", type = Type.EXPORT)
+    /** Last login IP */
+    @Excel(name = "Last login IP", type = Type.EXPORT)
     private String loginIp;
 
-    /** 最后登录时间 */
-    @Excel(name = "最后登录时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
+    /** Last login time */
+    @Excel(name = "Last login time", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
     private Date loginDate;
 
-    /** 部门对象 */
+    /** Department object */
     @Excels({
-        @Excel(name = "部门名称", targetAttr = "deptName", type = Type.EXPORT),
-        @Excel(name = "部门负责人", targetAttr = "leader", type = Type.EXPORT)
+        @Excel(name = "Department name", targetAttr = "deptName", type = Type.EXPORT),
+        @Excel(name = "Department leader", targetAttr = "leader", type = Type.EXPORT)
     })
     private SysDept dept;
 
-    /** 角色对象 */
+    /** Role object */
     private List<SysRole> roles;
 
-    /** 角色组 */
+    /** Role group */
     private Long[] roleIds;
 
-    /** 岗位组 */
+    /** Post group */
     private Long[] postIds;
 
-    /** 角色ID */
+    /** Role ID */
     private Long roleId;
 
     public SysUser()
@@ -129,8 +129,8 @@ public class SysUser extends BaseEntity
         this.deptId = deptId;
     }
 
-    @Xss(message = "用户昵称不能包含脚本字符")
-    @Size(min = 0, max = 30, message = "用户昵称长度不能超过30个字符")
+    @Xss(message = "User nickname cannot contain script characters")
+    @Size(min = 0, max = 30, message = "User nickname length cannot exceed 30 characters")
     public String getNickName()
     {
         return nickName;
@@ -141,9 +141,9 @@ public class SysUser extends BaseEntity
         this.nickName = nickName;
     }
 
-    @Xss(message = "用户账号不能包含脚本字符")
-    @NotBlank(message = "用户账号不能为空")
-    @Size(min = 0, max = 30, message = "用户账号长度不能超过30个字符")
+    @Xss(message = "User account cannot contain script characters")
+    @NotBlank(message = "User account cannot be empty")
+    @Size(min = 0, max = 30, message = "User account length cannot exceed 30 characters")
     public String getUserName()
     {
         return userName;
@@ -154,8 +154,8 @@ public class SysUser extends BaseEntity
         this.userName = userName;
     }
 
-    @Email(message = "邮箱格式不正确")
-    @Size(min = 0, max = 50, message = "邮箱长度不能超过50个字符")
+    @Email(message = "Email format is incorrect")
+    @Size(min = 0, max = 50, message = "Email length cannot exceed 50 characters")
     public String getEmail()
     {
         return email;
@@ -166,7 +166,7 @@ public class SysUser extends BaseEntity
         this.email = email;
     }
 
-    @Size(min = 0, max = 11, message = "手机号码长度不能超过11个字符")
+    @Size(min = 0, max = 11, message = "Mobile number length cannot exceed 11 characters")
     public String getPhonenumber()
     {
         return phonenumber;

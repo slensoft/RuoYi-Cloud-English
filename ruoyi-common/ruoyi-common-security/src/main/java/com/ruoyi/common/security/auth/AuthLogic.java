@@ -19,22 +19,22 @@ import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.system.api.model.LoginUser;
 
 /**
- * Token 权限验证，逻辑实现类
+ * Token Permission Verification, Logic Implementation Class
  * 
  * @author ruoyi
  */
 public class AuthLogic
 {
-    /** 所有权限标识 */
+    /** All permission identifiers */
     private static final String ALL_PERMISSION = "*:*:*";
 
-    /** 管理员角色权限标识 */
+    /** Administrator role permission identifier */
     private static final String SUPER_ADMIN = "admin";
 
     public TokenService tokenService = SpringUtils.getBean(TokenService.class);
 
     /**
-     * 会话注销
+     * Session logout
      */
     public void logout()
     {
@@ -47,7 +47,7 @@ public class AuthLogic
     }
 
     /**
-     * 会话注销，根据指定Token
+     * Session logout by specified Token
      */
     public void logoutByToken(String token)
     {
@@ -55,7 +55,7 @@ public class AuthLogic
     }
 
     /**
-     * 检验用户是否已经登录，如未登录，则抛出异常
+     * Check if user is already logged in, if not, throw exception
      */
     public void checkLogin()
     {
@@ -63,30 +63,30 @@ public class AuthLogic
     }
 
     /**
-     * 获取当前用户缓存信息, 如果未登录，则抛出异常
+     * Get current user cache information, if not logged in, throw exception
      * 
-     * @return 用户缓存信息
+     * @return User cache information
      */
     public LoginUser getLoginUser()
     {
         String token = SecurityUtils.getToken();
         if (token == null)
         {
-            throw new NotLoginException("未提供token");
+            throw new NotLoginException("Token not provided");
         }
         LoginUser loginUser = SecurityUtils.getLoginUser();
         if (loginUser == null)
         {
-            throw new NotLoginException("无效的token");
+            throw new NotLoginException("Invalid token");
         }
         return loginUser;
     }
 
     /**
-     * 获取当前用户缓存信息, 如果未登录，则抛出异常
+     * Get current user cache information, if not logged in, throw exception
      * 
-     * @param token 前端传递的认证信息
-     * @return 用户缓存信息
+     * @param token Authentication information passed from frontend
+     * @return User cache information
      */
     public LoginUser getLoginUser(String token)
     {
@@ -94,9 +94,9 @@ public class AuthLogic
     }
 
     /**
-     * 验证当前用户有效期, 如果相差不足120分钟，自动刷新缓存
+     * Verify current user validity period, if difference is less than 120 minutes, automatically refresh cache
      * 
-     * @param loginUser 当前用户信息
+     * @param loginUser Current user information
      */
     public void verifyLoginUserExpire(LoginUser loginUser)
     {
@@ -104,10 +104,10 @@ public class AuthLogic
     }
 
     /**
-     * 验证用户是否具备某权限
+     * Verify if user has certain permission
      * 
-     * @param permission 权限字符串
-     * @return 用户是否具备某权限
+     * @param permission Permission string
+     * @return Whether user has certain permission
      */
     public boolean hasPermi(String permission)
     {
@@ -115,10 +115,10 @@ public class AuthLogic
     }
 
     /**
-     * 验证用户是否具备某权限, 如果验证未通过，则抛出异常: NotPermissionException
+     * Verify if user has certain permission, if verification fails, throw exception: NotPermissionException
      * 
-     * @param permission 权限字符串
-     * @return 用户是否具备某权限
+     * @param permission Permission string
+     * @return Whether user has certain permission
      */
     public void checkPermi(String permission)
     {
@@ -129,9 +129,9 @@ public class AuthLogic
     }
 
     /**
-     * 根据注解(@RequiresPermissions)鉴权, 如果验证未通过，则抛出异常: NotPermissionException
+     * Verify permissions based on annotation(@RequiresPermissions), if verification fails, throw exception: NotPermissionException
      * 
-     * @param requiresPermissions 注解对象
+     * @param requiresPermissions Annotation object
      */
     public void checkPermi(RequiresPermissions requiresPermissions)
     {
@@ -147,9 +147,9 @@ public class AuthLogic
     }
 
     /**
-     * 验证用户是否含有指定权限，必须全部拥有
+     * Verify if user has specified permissions, must have all
      *
-     * @param permissions 权限列表
+     * @param permissions Permission list
      */
     public void checkPermiAnd(String... permissions)
     {
@@ -164,9 +164,9 @@ public class AuthLogic
     }
 
     /**
-     * 验证用户是否含有指定权限，只需包含其中一个
+     * Verify if user has specified permissions, only need one of them
      * 
-     * @param permissions 权限码数组
+     * @param permissions Permission code array
      */
     public void checkPermiOr(String... permissions)
     {
@@ -185,10 +185,10 @@ public class AuthLogic
     }
 
     /**
-     * 判断用户是否拥有某个角色
+     * Check if user has certain role
      * 
-     * @param role 角色标识
-     * @return 用户是否具备某角色
+     * @param role Role identifier
+     * @return Whether user has certain role
      */
     public boolean hasRole(String role)
     {
@@ -196,9 +196,9 @@ public class AuthLogic
     }
 
     /**
-     * 判断用户是否拥有某个角色, 如果验证未通过，则抛出异常: NotRoleException
+     * Check if user has certain role, if verification fails, throw exception: NotRoleException
      * 
-     * @param role 角色标识
+     * @param role Role identifier
      */
     public void checkRole(String role)
     {
@@ -209,9 +209,9 @@ public class AuthLogic
     }
 
     /**
-     * 根据注解(@RequiresRoles)鉴权
+     * Verify permissions based on annotation(@RequiresRoles)
      * 
-     * @param requiresRoles 注解对象
+     * @param requiresRoles Annotation object
      */
     public void checkRole(RequiresRoles requiresRoles)
     {
@@ -226,9 +226,9 @@ public class AuthLogic
     }
 
     /**
-     * 验证用户是否含有指定角色，必须全部拥有
+     * Verify if user has specified roles, must have all
      * 
-     * @param roles 角色标识数组
+     * @param roles Role identifier array
      */
     public void checkRoleAnd(String... roles)
     {
@@ -243,9 +243,9 @@ public class AuthLogic
     }
 
     /**
-     * 验证用户是否含有指定角色，只需包含其中一个
+     * Verify if user has specified roles, only need one of them
      * 
-     * @param roles 角色标识数组
+     * @param roles Role identifier array
      */
     public void checkRoleOr(String... roles)
     {
@@ -264,9 +264,9 @@ public class AuthLogic
     }
 
     /**
-     * 根据注解(@RequiresLogin)鉴权
+     * Verify permissions based on annotation(@RequiresLogin)
      * 
-     * @param at 注解对象
+     * @param at Annotation object
      */
     public void checkByAnnotation(RequiresLogin at)
     {
@@ -274,9 +274,9 @@ public class AuthLogic
     }
 
     /**
-     * 根据注解(@RequiresRoles)鉴权
+     * Verify permissions based on annotation(@RequiresRoles)
      * 
-     * @param at 注解对象
+     * @param at Annotation object
      */
     public void checkByAnnotation(RequiresRoles at)
     {
@@ -292,9 +292,9 @@ public class AuthLogic
     }
 
     /**
-     * 根据注解(@RequiresPermissions)鉴权
+     * Verify permissions based on annotation(@RequiresPermissions)
      * 
-     * @param at 注解对象
+     * @param at Annotation object
      */
     public void checkByAnnotation(RequiresPermissions at)
     {
@@ -310,9 +310,9 @@ public class AuthLogic
     }
 
     /**
-     * 获取当前账号的角色列表
+     * Get current account's role list
      * 
-     * @return 角色列表
+     * @return Role list
      */
     public Set<String> getRoleList()
     {
@@ -328,9 +328,9 @@ public class AuthLogic
     }
 
     /**
-     * 获取当前账号的权限列表
+     * Get current account's permission list
      * 
-     * @return 权限列表
+     * @return Permission list
      */
     public Set<String> getPermiList()
     {
@@ -346,11 +346,11 @@ public class AuthLogic
     }
 
     /**
-     * 判断是否包含权限
+     * Check if contains permission
      * 
-     * @param authorities 权限列表
-     * @param permission 权限字符串
-     * @return 用户是否具备某权限
+     * @param authorities Permission list
+     * @param permission Permission string
+     * @return Whether user has certain permission
      */
     public boolean hasPermi(Collection<String> authorities, String permission)
     {
@@ -359,11 +359,11 @@ public class AuthLogic
     }
 
     /**
-     * 判断是否包含角色
+     * Check if contains role
      * 
-     * @param roles 角色列表
-     * @param role 角色
-     * @return 用户是否具备某角色权限
+     * @param roles Role list
+     * @param role Role
+     * @return Whether user has certain role permission
      */
     public boolean hasRole(Collection<String> roles, String role)
     {

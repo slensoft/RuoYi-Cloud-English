@@ -1,24 +1,24 @@
 package com.ruoyi.common.log.enums;
 
 /**
- * 操作人类别
+ * Operator type
  * 
  * @author ruoyi
  */
 public enum OperatorType
 {
     /**
-     * 其它
+     * Other
      */
     OTHER,
 
     /**
-     * 后台用户
+     * Backend user
      */
     MANAGE,
 
     /**
-     * 手机端用户
+     * Mobile user
      */
     MOBILE
 }

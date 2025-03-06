@@ -7,8 +7,8 @@ import org.springframework.core.annotation.Order;
 import com.ruoyi.gateway.handler.SentinelFallbackHandler;
 
 /**
- * 网关限流配置
- * 
+ * Gateway rate limiting configuration
+ *
  * @author ruoyi
  */
 @Configuration

@@ -14,7 +14,7 @@ import com.ruoyi.gateway.service.ValidateCodeService;
 import reactor.core.publisher.Mono;
 
 /**
- * 验证码获取
+ * Captcha acquisition
  *
  * @author ruoyi
  */

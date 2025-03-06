@@ -4,19 +4,19 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
- * 文件信息
+ * File information
  * 
  * @author ruoyi
  */
 public class SysFile
 {
     /**
-     * 文件名称
+     * File name
      */
     private String name;
 
     /**
-     * 文件地址
+     * File address
      */
     private String url;
 

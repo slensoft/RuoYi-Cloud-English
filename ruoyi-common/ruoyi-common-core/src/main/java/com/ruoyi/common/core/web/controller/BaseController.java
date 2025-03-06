@@ -15,7 +15,7 @@ import com.ruoyi.common.core.web.domain.AjaxResult;
 import com.ruoyi.common.core.web.page.TableDataInfo;
 
 /**
- * web层通用数据处理
+ * Common data processing for web layer
  * 
  * @author ruoyi
  */
@@ -24,12 +24,12 @@ public class BaseController
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * 将前台传递过来的日期格式的字符串，自动转化为Date类型
+     * Automatically convert date format strings passed from frontend to Date type
      */
     @InitBinder
     public void initBinder(WebDataBinder binder)
     {
-        // Date 类型转换
+        // Date type conversion
         binder.registerCustomEditor(Date.class, new PropertyEditorSupport()
         {
             @Override
@@ -41,7 +41,7 @@ public class BaseController
     }
 
     /**
-     * 设置请求分页数据
+     * Set request pagination data
      */
     protected void startPage()
     {
@@ -49,7 +49,7 @@ public class BaseController
     }
 
     /**
-     * 清理分页的线程变量
+     * Clear pagination thread variables
      */
     protected void clearPage()
     {
@@ -57,7 +57,7 @@ public class BaseController
     }
 
     /**
-     * 响应请求分页数据
+     * Response to request pagination data
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     protected TableDataInfo getDataTable(List<?> list)
@@ -65,13 +65,13 @@ public class BaseController
         TableDataInfo rspData = new TableDataInfo();
         rspData.setCode(HttpStatus.SUCCESS);
         rspData.setRows(list);
-        rspData.setMsg("查询成功");
+        rspData.setMsg("Query successful");
         rspData.setTotal(new PageInfo(list).getTotal());
         return rspData;
     }
 
     /**
-     * 返回成功
+     * Return success
      */
     public AjaxResult success()
     {
@@ -79,7 +79,7 @@ public class BaseController
     }
 
     /**
-     * 返回成功消息
+     * Return success message
      */
     public AjaxResult success(String message)
     {
@@ -87,7 +87,7 @@ public class BaseController
     }
 
     /**
-     * 返回成功消息
+     * Return success message
      */
     public AjaxResult success(Object data)
     {
@@ -95,7 +95,7 @@ public class BaseController
     }
 
     /**
-     * 返回失败消息
+     * Return failure message
      */
     public AjaxResult error()
     {
@@ -103,7 +103,7 @@ public class BaseController
     }
 
     /**
-     * 返回失败消息
+     * Return failure message
      */
     public AjaxResult error(String message)
     {
@@ -111,7 +111,7 @@ public class BaseController
     }
 
     /**
-     * 返回警告消息
+     * Return warning message
      */
     public AjaxResult warn(String message)
     {
@@ -119,10 +119,10 @@ public class BaseController
     }
 
     /**
-     * 响应返回结果
+     * Response return result
      * 
-     * @param rows 影响行数
-     * @return 操作结果
+     * @param rows Number of affected rows
+     * @return Operation result
      */
     protected AjaxResult toAjax(int rows)
     {
@@ -130,10 +130,10 @@ public class BaseController
     }
 
     /**
-     * 响应返回结果
+     * Response return result
      * 
-     * @param result 结果
-     * @return 操作结果
+     * @param result Result
+     * @return Operation result
      */
     protected AjaxResult toAjax(boolean result)
     {

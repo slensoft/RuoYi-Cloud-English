@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import com.ruoyi.gateway.handler.ValidateCodeHandler;
 
 /**
- * 路由配置信息
+ * Route configuration information
  * 
  * @author ruoyi
  */

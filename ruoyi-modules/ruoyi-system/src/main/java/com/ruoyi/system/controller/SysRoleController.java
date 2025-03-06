@@ -29,8 +29,8 @@ import com.ruoyi.system.service.ISysRoleService;
 import com.ruoyi.system.service.ISysUserService;
 
 /**
- * 角色信息
- * 
+ * Role Information
+ *
  * @author ruoyi
  */
 @RestController
@@ -55,18 +55,18 @@ public class SysRoleController extends BaseController
         return getDataTable(list);
     }
 
-    @Log(title = "角色管理", businessType = BusinessType.EXPORT)
+    @Log(title = "Role Management", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:role:export")
     @PostMapping("/export")
     public void export(HttpServletResponse response, SysRole role)
     {
         List<SysRole> list = roleService.selectRoleList(role);
         ExcelUtil<SysRole> util = new ExcelUtil<SysRole>(SysRole.class);
-        util.exportExcel(response, list, "角色数据");
+        util.exportExcel(response, list, "Role Data");
     }
 
     /**
-     * 根据角色编号获取详细信息
+     * Get detailed information by role ID
      */
     @RequiresPermissions("system:role:query")
     @GetMapping(value = "/{roleId}")
@@ -77,20 +77,20 @@ public class SysRoleController extends BaseController
     }
 
     /**
-     * 新增角色
+     * Add role
      */
     @RequiresPermissions("system:role:add")
-    @Log(title = "角色管理", businessType = BusinessType.INSERT)
+    @Log(title = "Role Management", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@Validated @RequestBody SysRole role)
     {
         if (!roleService.checkRoleNameUnique(role))
         {
-            return error("新增角色'" + role.getRoleName() + "'失败，角色名称已存在");
+            return error("Failed to add role '" + role.getRoleName() + "', role name already exists");
         }
         else if (!roleService.checkRoleKeyUnique(role))
         {
-            return error("新增角色'" + role.getRoleName() + "'失败，角色权限已存在");
+            return error("Failed to add role '" + role.getRoleName() + "', role permission already exists");
         }
         role.setCreateBy(SecurityUtils.getUsername());
         return toAjax(roleService.insertRole(role));
@@ -98,10 +98,10 @@ public class SysRoleController extends BaseController
     }
 
     /**
-     * 修改保存角色
+     * Modify and save role
      */
     @RequiresPermissions("system:role:edit")
-    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
+    @Log(title = "Role Management", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysRole role)
     {
@@ -109,21 +109,21 @@ public class SysRoleController extends BaseController
         roleService.checkRoleDataScope(role.getRoleId());
         if (!roleService.checkRoleNameUnique(role))
         {
-            return error("修改角色'" + role.getRoleName() + "'失败，角色名称已存在");
+            return error("Failed to modify role '" + role.getRoleName() + "', role name already exists");
         }
         else if (!roleService.checkRoleKeyUnique(role))
         {
-            return error("修改角色'" + role.getRoleName() + "'失败，角色权限已存在");
+            return error("Failed to modify role '" + role.getRoleName() + "', role permission already exists");
         }
         role.setUpdateBy(SecurityUtils.getUsername());
         return toAjax(roleService.updateRole(role));
     }
 
     /**
-     * 修改保存数据权限
+     * Modify and save data permissions
      */
     @RequiresPermissions("system:role:edit")
-    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
+    @Log(title = "Role Management", businessType = BusinessType.UPDATE)
     @PutMapping("/dataScope")
     public AjaxResult dataScope(@RequestBody SysRole role)
     {
@@ -133,10 +133,10 @@ public class SysRoleController extends BaseController
     }
 
     /**
-     * 状态修改
+     * Status modification
      */
     @RequiresPermissions("system:role:edit")
-    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
+    @Log(title = "Role Management", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus")
     public AjaxResult changeStatus(@RequestBody SysRole role)
     {
@@ -147,10 +147,10 @@ public class SysRoleController extends BaseController
     }
 
     /**
-     * 删除角色
+     * Delete role
      */
     @RequiresPermissions("system:role:remove")
-    @Log(title = "角色管理", businessType = BusinessType.DELETE)
+    @Log(title = "Role Management", businessType = BusinessType.DELETE)
     @DeleteMapping("/{roleIds}")
     public AjaxResult remove(@PathVariable Long[] roleIds)
     {
@@ -158,7 +158,7 @@ public class SysRoleController extends BaseController
     }
 
     /**
-     * 获取角色选择框列表
+     * Get role selection list
      */
     @RequiresPermissions("system:role:query")
     @GetMapping("/optionselect")
@@ -167,7 +167,7 @@ public class SysRoleController extends BaseController
         return success(roleService.selectRoleAll());
     }
     /**
-     * 查询已分配用户角色列表
+     * Query allocated user role list
      */
     @RequiresPermissions("system:role:list")
     @GetMapping("/authUser/allocatedList")
@@ -179,7 +179,7 @@ public class SysRoleController extends BaseController
     }
 
     /**
-     * 查询未分配用户角色列表
+     * Query unallocated user role list
      */
     @RequiresPermissions("system:role:list")
     @GetMapping("/authUser/unallocatedList")
@@ -191,10 +191,10 @@ public class SysRoleController extends BaseController
     }
 
     /**
-     * 取消授权用户
+     * Cancel user authorization
      */
     @RequiresPermissions("system:role:edit")
-    @Log(title = "角色管理", businessType = BusinessType.GRANT)
+    @Log(title = "Role Management", businessType = BusinessType.GRANT)
     @PutMapping("/authUser/cancel")
     public AjaxResult cancelAuthUser(@RequestBody SysUserRole userRole)
     {
@@ -202,10 +202,10 @@ public class SysRoleController extends BaseController
     }
 
     /**
-     * 批量取消授权用户
+     * Batch cancel user authorization
      */
     @RequiresPermissions("system:role:edit")
-    @Log(title = "角色管理", businessType = BusinessType.GRANT)
+    @Log(title = "Role Management", businessType = BusinessType.GRANT)
     @PutMapping("/authUser/cancelAll")
     public AjaxResult cancelAuthUserAll(Long roleId, Long[] userIds)
     {
@@ -213,10 +213,10 @@ public class SysRoleController extends BaseController
     }
 
     /**
-     * 批量选择用户授权
+     * Batch select user authorization
      */
     @RequiresPermissions("system:role:edit")
-    @Log(title = "角色管理", businessType = BusinessType.GRANT)
+    @Log(title = "Role Management", businessType = BusinessType.GRANT)
     @PutMapping("/authUser/selectAll")
     public AjaxResult selectAuthUserAll(Long roleId, Long[] userIds)
     {
@@ -225,7 +225,7 @@ public class SysRoleController extends BaseController
     }
 
     /**
-     * 获取对应角色部门树列表
+     * Get corresponding role department tree list
      */
     @RequiresPermissions("system:role:query")
     @GetMapping(value = "/deptTree/{roleId}")

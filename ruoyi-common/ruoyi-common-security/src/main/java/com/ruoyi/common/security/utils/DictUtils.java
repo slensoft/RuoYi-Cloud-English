@@ -10,17 +10,17 @@ import com.ruoyi.common.redis.service.RedisService;
 import com.ruoyi.system.api.domain.SysDictData;
 
 /**
- * 字典工具类
+ * Dictionary utility class
  * 
  * @author ruoyi
  */
 public class DictUtils
 {
     /**
-     * 设置字典缓存
+     * Set dictionary cache
      * 
-     * @param key 参数键
-     * @param dictDatas 字典数据列表
+     * @param key Parameter key
+     * @param dictDatas Dictionary data list
      */
     public static void setDictCache(String key, List<SysDictData> dictDatas)
     {
@@ -28,10 +28,10 @@ public class DictUtils
     }
 
     /**
-     * 获取字典缓存
+     * Get dictionary cache
      * 
-     * @param key 参数键
-     * @return dictDatas 字典数据列表
+     * @param key Parameter key
+     * @return dictDatas Dictionary data list
      */
     public static List<SysDictData> getDictCache(String key)
     {
@@ -44,9 +44,9 @@ public class DictUtils
     }
 
     /**
-     * 删除指定字典缓存
+     * Delete specified dictionary cache
      * 
-     * @param key 字典键
+     * @param key Dictionary key
      */
     public static void removeDictCache(String key)
     {
@@ -54,7 +54,7 @@ public class DictUtils
     }
 
     /**
-     * 清空字典缓存
+     * Clear dictionary cache
      */
     public static void clearDictCache()
     {
@@ -63,10 +63,10 @@ public class DictUtils
     }
 
     /**
-     * 设置cache key
+     * Set cache key
      * 
-     * @param configKey 参数键
-     * @return 缓存键key
+     * @param configKey Parameter key
+     * @return Cache key
      */
     public static String getCacheKey(String configKey)
     {

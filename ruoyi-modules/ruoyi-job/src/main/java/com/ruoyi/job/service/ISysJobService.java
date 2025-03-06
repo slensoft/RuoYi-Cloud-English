@@ -6,97 +6,97 @@ import com.ruoyi.common.core.exception.job.TaskException;
 import com.ruoyi.job.domain.SysJob;
 
 /**
- * 定时任务调度信息信息 服务层
+ * Scheduled Task Scheduling Information Service Layer
  * 
  * @author ruoyi
  */
 public interface ISysJobService
 {
     /**
-     * 获取quartz调度器的计划任务
+     * Get the scheduled task of the quartz scheduler
      * 
-     * @param job 调度信息
-     * @return 调度任务集合
+     * @param job Scheduling information
+     * @return Scheduling task collection
      */
     public List<SysJob> selectJobList(SysJob job);
 
     /**
-     * 通过调度任务ID查询调度信息
+     * Query scheduling information by task ID
      * 
-     * @param jobId 调度任务ID
-     * @return 调度任务对象信息
+     * @param jobId Task ID
+     * @return Task scheduling object information
      */
     public SysJob selectJobById(Long jobId);
 
     /**
-     * 暂停任务
+     * Pause task
      * 
-     * @param job 调度信息
-     * @return 结果
+     * @param job Scheduling information
+     * @return Result
      */
     public int pauseJob(SysJob job) throws SchedulerException;
 
     /**
-     * 恢复任务
+     * Resume task
      * 
-     * @param job 调度信息
-     * @return 结果
+     * @param job Scheduling information
+     * @return Result
      */
     public int resumeJob(SysJob job) throws SchedulerException;
 
     /**
-     * 删除任务后，所对应的trigger也将被删除
+     * Delete task and its corresponding trigger
      * 
-     * @param job 调度信息
-     * @return 结果
+     * @param job Scheduling information
+     * @return Result
      */
     public int deleteJob(SysJob job) throws SchedulerException;
 
     /**
-     * 批量删除调度信息
+     * Batch delete scheduling information
      * 
-     * @param jobIds 需要删除的任务ID
-     * @return 结果
+     * @param jobIds Task IDs to delete
+     * @return Result
      */
     public void deleteJobByIds(Long[] jobIds) throws SchedulerException;
 
     /**
-     * 任务调度状态修改
+     * Modify task scheduling status
      * 
-     * @param job 调度信息
-     * @return 结果
+     * @param job Scheduling information
+     * @return Result
      */
     public int changeStatus(SysJob job) throws SchedulerException;
 
     /**
-     * 立即运行任务
+     * Run task immediately
      * 
-     * @param job 调度信息
-     * @return 结果
+     * @param job Scheduling information
+     * @return Result
      */
     public boolean run(SysJob job) throws SchedulerException;
 
     /**
-     * 新增任务
+     * Add new task
      * 
-     * @param job 调度信息
-     * @return 结果
+     * @param job Scheduling information
+     * @return Result
      */
     public int insertJob(SysJob job) throws SchedulerException, TaskException;
 
     /**
-     * 更新任务
+     * Update task
      * 
-     * @param job 调度信息
-     * @return 结果
+     * @param job Scheduling information
+     * @return Result
      */
     public int updateJob(SysJob job) throws SchedulerException, TaskException;
 
     /**
-     * 校验cron表达式是否有效
+     * Validate if cron expression is valid
      * 
-     * @param cronExpression 表达式
-     * @return 结果
+     * @param cronExpression Expression
+     * @return Result
      */
     public boolean checkCronExpressionIsValid(String cronExpression);
 }
