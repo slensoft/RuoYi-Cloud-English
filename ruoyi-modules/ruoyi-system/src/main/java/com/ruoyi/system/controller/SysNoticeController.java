@@ -22,7 +22,7 @@ import com.ruoyi.system.domain.SysNotice;
 import com.ruoyi.system.service.ISysNoticeService;
 
 /**
- * 公告 信息操作处理
+ * Announcement Information Operation Handler
  * 
  * @author ruoyi
  */
@@ -34,7 +34,7 @@ public class SysNoticeController extends BaseController
     private ISysNoticeService noticeService;
 
     /**
-     * 获取通知公告列表
+     * Get announcement list
      */
     @RequiresPermissions("system:notice:list")
     @GetMapping("/list")
@@ -46,7 +46,7 @@ public class SysNoticeController extends BaseController
     }
 
     /**
-     * 根据通知公告编号获取详细信息
+     * Get detailed information by announcement ID
      */
     @RequiresPermissions("system:notice:query")
     @GetMapping(value = "/{noticeId}")
@@ -56,10 +56,10 @@ public class SysNoticeController extends BaseController
     }
 
     /**
-     * 新增通知公告
+     * Add announcement
      */
     @RequiresPermissions("system:notice:add")
-    @Log(title = "通知公告", businessType = BusinessType.INSERT)
+    @Log(title = "Announcement", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@Validated @RequestBody SysNotice notice)
     {
@@ -68,10 +68,10 @@ public class SysNoticeController extends BaseController
     }
 
     /**
-     * 修改通知公告
+     * Modify announcement
      */
     @RequiresPermissions("system:notice:edit")
-    @Log(title = "通知公告", businessType = BusinessType.UPDATE)
+    @Log(title = "Announcement", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysNotice notice)
     {
@@ -80,10 +80,10 @@ public class SysNoticeController extends BaseController
     }
 
     /**
-     * 删除通知公告
+     * Delete announcement
      */
     @RequiresPermissions("system:notice:remove")
-    @Log(title = "通知公告", businessType = BusinessType.DELETE)
+    @Log(title = "Announcement", businessType = BusinessType.DELETE)
     @DeleteMapping("/{noticeIds}")
     public AjaxResult remove(@PathVariable Long[] noticeIds)
     {

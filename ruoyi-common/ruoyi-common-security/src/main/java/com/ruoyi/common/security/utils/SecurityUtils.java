@@ -10,14 +10,14 @@ import com.ruoyi.common.core.utils.StringUtils;
 import com.ruoyi.system.api.model.LoginUser;
 
 /**
- * 权限获取工具类
+ * Permission acquisition utility class
  * 
  * @author ruoyi
  */
 public class SecurityUtils
 {
     /**
-     * 获取用户ID
+     * Get user ID
      */
     public static Long getUserId()
     {
@@ -25,7 +25,7 @@ public class SecurityUtils
     }
 
     /**
-     * 获取用户名称
+     * Get user name
      */
     public static String getUsername()
     {
@@ -33,7 +33,7 @@ public class SecurityUtils
     }
 
     /**
-     * 获取用户key
+     * Get user key
      */
     public static String getUserKey()
     {
@@ -41,7 +41,7 @@ public class SecurityUtils
     }
 
     /**
-     * 获取登录用户信息
+     * Get login user information
      */
     public static LoginUser getLoginUser()
     {
@@ -49,7 +49,7 @@ public class SecurityUtils
     }
 
     /**
-     * 获取请求token
+     * Get request token
      */
     public static String getToken()
     {
@@ -57,21 +57,21 @@ public class SecurityUtils
     }
 
     /**
-     * 根据request获取请求token
+     * Get request token based on request
      */
     public static String getToken(HttpServletRequest request)
     {
-        // 从header获取token标识
+        // Get token identifier from header
         String token = request.getHeader(SecurityConstants.AUTHORIZATION_HEADER);
         return replaceTokenPrefix(token);
     }
 
     /**
-     * 裁剪token前缀
+     * Trim token prefix
      */
     public static String replaceTokenPrefix(String token)
     {
-        // 如果前端设置了令牌前缀，则裁剪掉前缀
+        // If the front end sets a token prefix, trim the prefix
         if (StringUtils.isNotEmpty(token) && token.startsWith(TokenConstants.PREFIX))
         {
             token = token.replaceFirst(TokenConstants.PREFIX, "");
@@ -80,10 +80,10 @@ public class SecurityUtils
     }
 
     /**
-     * 是否为管理员
+     * Whether it is an administrator
      * 
-     * @param userId 用户ID
-     * @return 结果
+     * @param userId User ID
+     * @return Result
      */
     public static boolean isAdmin(Long userId)
     {
@@ -91,10 +91,10 @@ public class SecurityUtils
     }
 
     /**
-     * 生成BCryptPasswordEncoder密码
+     * Generate BCryptPasswordEncoder password
      *
-     * @param password 密码
-     * @return 加密字符串
+     * @param password Password
+     * @return Encrypted string
      */
     public static String encryptPassword(String password)
     {
@@ -103,11 +103,11 @@ public class SecurityUtils
     }
 
     /**
-     * 判断密码是否相同
+     * Determine whether the passwords are the same
      *
-     * @param rawPassword 真实密码
-     * @param encodedPassword 加密后字符
-     * @return 结果
+     * @param rawPassword Real password
+     * @param encodedPassword Encrypted character
+     * @return Result
      */
     public static boolean matchesPassword(String rawPassword, String encodedPassword)
     {

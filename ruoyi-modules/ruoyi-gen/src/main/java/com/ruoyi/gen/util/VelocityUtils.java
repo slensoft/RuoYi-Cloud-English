@@ -14,25 +14,25 @@ import com.ruoyi.gen.domain.GenTable;
 import com.ruoyi.gen.domain.GenTableColumn;
 
 /**
- * 模板工具类
+ * Template Utility Class
  * 
  * @author ruoyi
  */
 public class VelocityUtils
 {
-    /** 项目空间路径 */
+    /** Project space path */
     private static final String PROJECT_PATH = "main/java";
 
-    /** mybatis空间路径 */
+    /** MyBatis space path */
     private static final String MYBATIS_PATH = "main/resources/mapper";
 
-    /** 默认上级菜单，系统工具 */
+    /** Default parent menu, system tools */
     private static final String DEFAULT_PARENT_MENU_ID = "3";
 
     /**
-     * 设置模板变量信息
+     * Set template variable information
      *
-     * @return 模板列表
+     * @return template list
      */
     public static VelocityContext prepareContext(GenTable genTable)
     {
@@ -45,7 +45,7 @@ public class VelocityUtils
         VelocityContext velocityContext = new VelocityContext();
         velocityContext.put("tplCategory", genTable.getTplCategory());
         velocityContext.put("tableName", genTable.getTableName());
-        velocityContext.put("functionName", StringUtils.isNotEmpty(functionName) ? functionName : "【请填写功能名称】");
+        velocityContext.put("functionName", StringUtils.isNotEmpty(functionName) ? functionName : "Please fill in function name");
         velocityContext.put("ClassName", genTable.getClassName());
         velocityContext.put("className", StringUtils.uncapitalize(genTable.getClassName()));
         velocityContext.put("moduleName", genTable.getModuleName());
@@ -122,10 +122,10 @@ public class VelocityUtils
     }
 
     /**
-     * 获取模板信息
-     * @param tplCategory 生成的模板
-     * @param tplWebType 前端类型
-     * @return 模板列表
+     * Get template information
+     * @param tplCategory template to generate
+     * @param tplWebType frontend type
+     * @return template list
      */
     public static List<String> getTemplateList(String tplCategory, String tplWebType)
     {
@@ -160,19 +160,19 @@ public class VelocityUtils
     }
 
     /**
-     * 获取文件名
+     * Get file name
      */
     public static String getFileName(String template, GenTable genTable)
     {
-        // 文件名称
+        // File name
         String fileName = "";
-        // 包路径
+        // Package path
         String packageName = genTable.getPackageName();
-        // 模块名
+        // Module name
         String moduleName = genTable.getModuleName();
-        // 大写类名
+        // Uppercase class name
         String className = genTable.getClassName();
-        // 业务名称
+        // Business name
         String businessName = genTable.getBusinessName();
 
         String javaPath = PROJECT_PATH + "/" + StringUtils.replace(packageName, ".", "/");
@@ -227,10 +227,10 @@ public class VelocityUtils
     }
 
     /**
-     * 获取包前缀
+     * Get package prefix
      *
-     * @param packageName 包名称
-     * @return 包前缀名称
+     * @param packageName package name
+     * @return package prefix name
      */
     public static String getPackagePrefix(String packageName)
     {
@@ -239,10 +239,10 @@ public class VelocityUtils
     }
 
     /**
-     * 根据列类型获取导入包
+     * Get import packages based on column type
      * 
-     * @param genTable 业务表对象
-     * @return 返回需要导入的包列表
+     * @param genTable business table object
+     * @return list of packages to import
      */
     public static HashSet<String> getImportList(GenTable genTable)
     {
@@ -269,10 +269,10 @@ public class VelocityUtils
     }
 
     /**
-     * 根据列类型获取字典组
+     * Get dictionary data
      * 
-     * @param genTable 业务表对象
-     * @return 返回字典组
+     * @param genTable business table object
+     * @return dictionary data
      */
     public static String getDicts(GenTable genTable)
     {
@@ -288,10 +288,10 @@ public class VelocityUtils
     }
 
     /**
-     * 添加字典列表
+     * Add dictionary list
      * 
-     * @param dicts 字典列表
-     * @param columns 列集合
+     * @param dicts Dictionary list
+     * @param columns Column collection
      */
     public static void addDicts(Set<String> dicts, List<GenTableColumn> columns)
     {
@@ -307,11 +307,11 @@ public class VelocityUtils
     }
 
     /**
-     * 获取权限前缀
-     *
-     * @param moduleName 模块名称
-     * @param businessName 业务名称
-     * @return 返回权限前缀
+     * Get permission prefix
+     * 
+     * @param moduleName module name
+     * @param businessName business name
+     * @return permission prefix
      */
     public static String getPermissionPrefix(String moduleName, String businessName)
     {
@@ -319,10 +319,10 @@ public class VelocityUtils
     }
 
     /**
-     * 获取上级菜单ID字段
-     *
-     * @param paramsObj 生成其他选项
-     * @return 上级菜单ID字段
+     * Get parent menu ID
+     * 
+     * @param paramsObj parameter object
+     * @return parent menu ID
      */
     public static String getParentMenuId(JSONObject paramsObj)
     {
@@ -335,10 +335,10 @@ public class VelocityUtils
     }
 
     /**
-     * 获取树编码
-     *
-     * @param paramsObj 生成其他选项
-     * @return 树编码
+     * Get tree code
+     * 
+     * @param paramsObj parameter object
+     * @return tree code
      */
     public static String getTreecode(JSONObject paramsObj)
     {
@@ -350,10 +350,10 @@ public class VelocityUtils
     }
 
     /**
-     * 获取树父编码
-     *
-     * @param paramsObj 生成其他选项
-     * @return 树父编码
+     * Get tree parent code
+     * 
+     * @param paramsObj parameter object
+     * @return tree parent code
      */
     public static String getTreeParentCode(JSONObject paramsObj)
     {
@@ -365,10 +365,10 @@ public class VelocityUtils
     }
 
     /**
-     * 获取树名称
-     *
-     * @param paramsObj 生成其他选项
-     * @return 树名称
+     * Get tree name
+     * 
+     * @param paramsObj parameter object
+     * @return tree name
      */
     public static String getTreeName(JSONObject paramsObj)
     {
@@ -380,10 +380,10 @@ public class VelocityUtils
     }
 
     /**
-     * 获取需要在哪一列上面显示展开按钮
-     *
-     * @param genTable 业务表对象
-     * @return 展开按钮列序号
+     * Get expanded column
+     * 
+     * @param genTable business table object
+     * @return expanded column
      */
     public static int getExpandColumn(GenTable genTable)
     {

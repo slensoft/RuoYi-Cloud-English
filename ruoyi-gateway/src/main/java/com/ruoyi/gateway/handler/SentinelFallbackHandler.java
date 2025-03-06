@@ -9,7 +9,7 @@ import org.springframework.web.server.WebExceptionHandler;
 import reactor.core.publisher.Mono;
 
 /**
- * 自定义限流异常处理
+ * Custom rate limit exception handling
  *
  * @author ruoyi
  */
@@ -17,7 +17,7 @@ public class SentinelFallbackHandler implements WebExceptionHandler
 {
     private Mono<Void> writeResponse(ServerResponse response, ServerWebExchange exchange)
     {
-        return ServletUtils.webFluxResponseWriter(exchange.getResponse(), "请求超过最大数，请稍候再试");
+        return ServletUtils.webFluxResponseWriter(exchange.getResponse(), "Request exceeds the maximum number, please try again later");
     }
 
     @Override

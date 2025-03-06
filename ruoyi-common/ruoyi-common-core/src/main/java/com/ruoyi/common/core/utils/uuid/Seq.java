@@ -5,29 +5,29 @@ import com.ruoyi.common.core.utils.DateUtils;
 import com.ruoyi.common.core.utils.StringUtils;
 
 /**
- * @author ruoyi 序列生成类
+ * @author ruoyi Sequence Generator Class
  */
 public class Seq
 {
-    // 通用序列类型
+    // Common sequence type
     public static final String commSeqType = "COMMON";
 
-    // 上传序列类型
+    // Upload sequence type
     public static final String uploadSeqType = "UPLOAD";
 
-    // 通用接口序列数
+    // Common interface sequence counter
     private static AtomicInteger commSeq = new AtomicInteger(1);
 
-    // 上传接口序列数
+    // Upload interface sequence counter
     private static AtomicInteger uploadSeq = new AtomicInteger(1);
 
-    // 机器标识
+    // Machine identifier
     private static final String machineCode = "A";
 
     /**
-     * 获取通用序列号
+     * Get common sequence number
      * 
-     * @return 序列值
+     * @return Sequence value
      */
     public static String getId()
     {
@@ -35,9 +35,9 @@ public class Seq
     }
     
     /**
-     * 默认16位序列号 yyMMddHHmmss + 一位机器标识 + 3长度循环递增字符串
+     * Default 16-digit sequence number: yyMMddHHmmss + one machine identifier + 3-digit incrementing string
      * 
-     * @return 序列值
+     * @return Sequence value
      */
     public static String getId(String type)
     {
@@ -50,11 +50,11 @@ public class Seq
     }
 
     /**
-     * 通用接口序列号 yyMMddHHmmss + 一位机器标识 + length长度循环递增字符串
+     * Common interface sequence number: yyMMddHHmmss + one machine identifier + incrementing string of specified length
      * 
-     * @param atomicInt 序列数
-     * @param length 数值长度
-     * @return 序列值
+     * @param atomicInt Sequence counter
+     * @param length Value length
+     * @return Sequence value
      */
     public static String getId(AtomicInteger atomicInt, int length)
     {
@@ -65,22 +65,22 @@ public class Seq
     }
 
     /**
-     * 序列循环递增字符串[1, 10 的 (length)幂次方), 用0左补齐length位数
+     * Incrementing sequence string [1, 10^length), left-padded with zeros to length digits
      * 
-     * @return 序列值
+     * @return Sequence value
      */
     private synchronized static String getSeq(AtomicInteger atomicInt, int length)
     {
-        // 先取值再+1
+        // Get value then increment
         int value = atomicInt.getAndIncrement();
 
-        // 如果更新后值>=10 的 (length)幂次方则重置为1
+        // Reset to 1 if updated value >= 10^length
         int maxSeq = (int) Math.pow(10, length);
         if (atomicInt.get() >= maxSeq)
         {
             atomicInt.set(1);
         }
-        // 转字符串，用0左补齐
+        // Convert to string, left-pad with zeros
         return StringUtils.padl(value, length);
     }
 }

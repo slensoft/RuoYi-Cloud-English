@@ -22,7 +22,7 @@ import com.ruoyi.common.core.utils.html.EscapeUtil;
 import com.ruoyi.common.core.web.domain.AjaxResult;
 
 /**
- * 全局异常处理器
+ * Global exception handler
  *
  * @author ruoyi
  */
@@ -32,40 +32,40 @@ public class GlobalExceptionHandler
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
-     * 权限码异常
+     * Permission code exception
      */
     @ExceptionHandler(NotPermissionException.class)
     public AjaxResult handleNotPermissionException(NotPermissionException e, HttpServletRequest request)
     {
         String requestURI = request.getRequestURI();
-        log.error("请求地址'{}',权限码校验失败'{}'", requestURI, e.getMessage());
-        return AjaxResult.error(HttpStatus.FORBIDDEN, "没有访问权限，请联系管理员授权");
+        log.error("Request URL '{}', permission code verification failed '{}'", requestURI, e.getMessage());
+        return AjaxResult.error(HttpStatus.FORBIDDEN, "No access permission, please contact administrator for authorization");
     }
 
     /**
-     * 角色权限异常
+     * Role permission exception
      */
     @ExceptionHandler(NotRoleException.class)
     public AjaxResult handleNotRoleException(NotRoleException e, HttpServletRequest request)
     {
         String requestURI = request.getRequestURI();
-        log.error("请求地址'{}',角色权限校验失败'{}'", requestURI, e.getMessage());
-        return AjaxResult.error(HttpStatus.FORBIDDEN, "没有访问权限，请联系管理员授权");
+        log.error("Request URL '{}', role permission verification failed '{}'", requestURI, e.getMessage());
+        return AjaxResult.error(HttpStatus.FORBIDDEN, "No access permission, please contact administrator for authorization");
     }
 
     /**
-     * 请求方式不支持
+     * Request method not supported
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public AjaxResult handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException e, HttpServletRequest request)
     {
         String requestURI = request.getRequestURI();
-        log.error("请求地址'{}',不支持'{}'请求", requestURI, e.getMethod());
+        log.error("Request URL '{}', method '{}' not supported", requestURI, e.getMethod());
         return AjaxResult.error(e.getMessage());
     }
 
     /**
-     * 业务异常
+     * Business exception
      */
     @ExceptionHandler(ServiceException.class)
     public AjaxResult handleServiceException(ServiceException e, HttpServletRequest request)
@@ -76,18 +76,18 @@ public class GlobalExceptionHandler
     }
 
     /**
-     * 请求路径中缺少必需的路径变量
+     * Missing required path variable in request path
      */
     @ExceptionHandler(MissingPathVariableException.class)
     public AjaxResult handleMissingPathVariableException(MissingPathVariableException e, HttpServletRequest request)
     {
         String requestURI = request.getRequestURI();
-        log.error("请求路径中缺少必需的路径变量'{}',发生系统异常.", requestURI, e);
-        return AjaxResult.error(String.format("请求路径中缺少必需的路径变量[%s]", e.getVariableName()));
+        log.error("Required path variable missing in request path '{}', system exception occurred.", requestURI, e);
+        return AjaxResult.error(String.format("Required path variable [%s] missing in request path", e.getVariableName()));
     }
 
     /**
-     * 请求参数类型不匹配
+     * Request parameter type mismatch
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public AjaxResult handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e, HttpServletRequest request)
@@ -98,34 +98,34 @@ public class GlobalExceptionHandler
         {
             value = EscapeUtil.clean(value);
         }
-        log.error("请求参数类型不匹配'{}',发生系统异常.", requestURI, e);
-        return AjaxResult.error(String.format("请求参数类型不匹配，参数[%s]要求类型为：'%s'，但输入值为：'%s'", e.getName(), e.getRequiredType().getName(), value));
+        log.error("Parameter type mismatch at request URL '{}', system exception occurred.", requestURI, e);
+        return AjaxResult.error(String.format("Parameter type mismatch, parameter [%s] requires type: '%s', but input value was: '%s'", e.getName(), e.getRequiredType().getName(), value));
     }
 
     /**
-     * 拦截未知的运行时异常
+     * Intercept unknown runtime exceptions
      */
     @ExceptionHandler(RuntimeException.class)
     public AjaxResult handleRuntimeException(RuntimeException e, HttpServletRequest request)
     {
         String requestURI = request.getRequestURI();
-        log.error("请求地址'{}',发生未知异常.", requestURI, e);
+        log.error("Unknown exception occurred at request URL '{}'.", requestURI, e);
         return AjaxResult.error(e.getMessage());
     }
 
     /**
-     * 系统异常
+     * System exception
      */
     @ExceptionHandler(Exception.class)
     public AjaxResult handleException(Exception e, HttpServletRequest request)
     {
         String requestURI = request.getRequestURI();
-        log.error("请求地址'{}',发生系统异常.", requestURI, e);
+        log.error("System exception occurred at request URL '{}'.", requestURI, e);
         return AjaxResult.error(e.getMessage());
     }
 
     /**
-     * 自定义验证异常
+     * Custom validation exception
      */
     @ExceptionHandler(BindException.class)
     public AjaxResult handleBindException(BindException e)
@@ -136,7 +136,7 @@ public class GlobalExceptionHandler
     }
 
     /**
-     * 自定义验证异常
+     * Custom validation exception
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Object handleMethodArgumentNotValidException(MethodArgumentNotValidException e)
@@ -147,7 +147,7 @@ public class GlobalExceptionHandler
     }
 
     /**
-     * 内部认证异常
+     * Internal authentication exception
      */
     @ExceptionHandler(InnerAuthException.class)
     public AjaxResult handleInnerAuthException(InnerAuthException e)
@@ -156,11 +156,11 @@ public class GlobalExceptionHandler
     }
 
     /**
-     * 演示模式异常
+     * Demo mode exception
      */
     @ExceptionHandler(DemoModeException.class)
     public AjaxResult handleDemoModeException(DemoModeException e)
     {
-        return AjaxResult.error("演示模式，不允许操作");
+        return AjaxResult.error("Operation not allowed in demo mode");
     }
 }

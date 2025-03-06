@@ -4,45 +4,45 @@ import com.ruoyi.common.core.exception.UtilException;
 import com.ruoyi.common.core.utils.StringUtils;
 
 /**
- * sql操作工具类
+ * SQL Operation Utility Class
  * 
  * @author ruoyi
  */
 public class SqlUtil
 {
     /**
-     * 定义常用的 sql关键字
+     * Define common SQL keywords
      */
     public static String SQL_REGEX = "\u000B|and |extractvalue|updatexml|sleep|exec |insert |select |delete |update |drop |count |chr |mid |master |truncate |char |declare |or |union |like |+|/*|user()";
 
     /**
-     * 仅支持字母、数字、下划线、空格、逗号、小数点（支持多个字段排序）
+     * Only supports letters, numbers, underscores, spaces, commas, decimal points (supports multi-field sorting)
      */
     public static String SQL_PATTERN = "[a-zA-Z0-9_\\ \\,\\.]+";
 
     /**
-     * 限制orderBy最大长度
+     * Limit orderBy maximum length
      */
     private static final int ORDER_BY_MAX_LENGTH = 500;
 
     /**
-     * 检查字符，防止注入绕过
+     * Check characters to prevent injection bypass
      */
     public static String escapeOrderBySql(String value)
     {
         if (StringUtils.isNotEmpty(value) && !isValidOrderBySql(value))
         {
-            throw new UtilException("参数不符合规范，不能进行查询");
+            throw new UtilException("Parameter does not meet specifications, cannot perform query");
         }
         if (StringUtils.length(value) > ORDER_BY_MAX_LENGTH)
         {
-            throw new UtilException("参数已超过最大限制，不能进行查询");
+            throw new UtilException("Parameter has exceeded maximum limit, cannot perform query");
         }
         return value;
     }
 
     /**
-     * 验证 order by 语法是否符合规范
+     * Validate if order by syntax meets specifications
      */
     public static boolean isValidOrderBySql(String value)
     {
@@ -50,7 +50,7 @@ public class SqlUtil
     }
 
     /**
-     * SQL关键字检查
+     * SQL keyword check
      */
     public static void filterKeyword(String value)
     {
@@ -63,7 +63,7 @@ public class SqlUtil
         {
             if (StringUtils.indexOfIgnoreCase(value, sqlKeyword) > -1)
             {
-                throw new UtilException("参数存在SQL注入风险");
+                throw new UtilException("Parameter contains SQL injection risk");
             }
         }
     }

@@ -17,28 +17,28 @@ import com.ruoyi.common.core.utils.file.MimeTypeUtils;
 import com.ruoyi.common.core.utils.uuid.Seq;
 
 /**
- * 文件上传工具类
- * 
+ * File upload utility class
+ *
  * @author ruoyi
  */
 public class FileUploadUtils
 {
     /**
-     * 默认大小 50M
+     * Default size 50MB
      */
     public static final long DEFAULT_MAX_SIZE = 50 * 1024 * 1024L;
 
     /**
-     * 默认的文件名最大长度 100
+     * Default maximum file name length 100
      */
     public static final int DEFAULT_FILE_NAME_LENGTH = 100;
 
     /**
-     * 根据文件路径上传
+     * Upload based on file path
      *
-     * @param baseDir 相对应用的基目录
-     * @param file 上传的文件
-     * @return 文件名称
+     * @param baseDir Relative application base directory
+     * @param file Uploaded file
+     * @return File name
      * @throws IOException
      */
     public static final String upload(String baseDir, MultipartFile file) throws IOException
@@ -58,16 +58,16 @@ public class FileUploadUtils
     }
 
     /**
-     * 文件上传
+     * File upload
      *
-     * @param baseDir 相对应用的基目录
-     * @param file 上传的文件
-     * @param allowedExtension 上传文件类型
-     * @return 返回上传成功的文件名
-     * @throws FileSizeLimitExceededException 如果超出最大大小
-     * @throws FileNameLengthLimitExceededException 文件名太长
-     * @throws IOException 比如读写文件出错时
-     * @throws InvalidExtensionException 文件校验异常
+     * @param baseDir Relative application base directory
+     * @param file Uploaded file
+     * @param allowedExtension Allowed file types
+     * @return Returns the successfully uploaded file name
+     * @throws FileSizeLimitExceededException If it exceeds the maximum size
+     * @throws FileNameLengthLimitExceededException File name too long
+     * @throws IOException For example, when reading and writing files fails
+     * @throws InvalidExtensionException File validation exception
      */
     public static final String upload(String baseDir, MultipartFile file, String[] allowedExtension)
             throws FileSizeLimitExceededException, IOException, FileNameLengthLimitExceededException,
@@ -89,7 +89,7 @@ public class FileUploadUtils
     }
 
     /**
-     * 编码文件名
+     * Encode file name
      */
     public static final String extractFilename(MultipartFile file)
     {
@@ -118,11 +118,11 @@ public class FileUploadUtils
     }
 
     /**
-     * 文件大小校验
+     * File size validation
      *
-     * @param file 上传的文件
-     * @throws FileSizeLimitExceededException 如果超出最大大小
-     * @throws InvalidExtensionException 文件校验异常
+     * @param file Uploaded file
+     * @throws FileSizeLimitExceededException If it exceeds the maximum size
+     * @throws InvalidExtensionException File validation exception
      */
     public static final void assertAllowed(MultipartFile file, String[] allowedExtension)
             throws FileSizeLimitExceededException, InvalidExtensionException
@@ -165,10 +165,10 @@ public class FileUploadUtils
     }
 
     /**
-     * 判断MIME类型是否是允许的MIME类型
+     * Determine if the MIME type is an allowed MIME type
      *
-     * @param extension 上传文件类型
-     * @param allowedExtension 允许上传文件类型
+     * @param extension Uploaded file type
+     * @param allowedExtension Allowed file types
      * @return true/false
      */
     public static final boolean isAllowedExtension(String extension, String[] allowedExtension)

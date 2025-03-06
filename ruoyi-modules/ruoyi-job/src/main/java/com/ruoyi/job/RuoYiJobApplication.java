@@ -6,7 +6,7 @@ import com.ruoyi.common.security.annotation.EnableCustomConfig;
 import com.ruoyi.common.security.annotation.EnableRyFeignClients;
 
 /**
- * 定时任务
+ * Scheduled tasks
  * 
  * @author ruoyi
  */
@@ -18,7 +18,7 @@ public class RuoYiJobApplication
     public static void main(String[] args)
     {
         SpringApplication.run(RuoYiJobApplication.class, args);
-        System.out.println("(♥◠‿◠)ﾉﾞ  定时任务模块启动成功   ლ(´ڡ`ლ)ﾞ  \n" +
+        System.out.println("(♥◠‿◠)ﾉﾞ  Scheduled task module started successfully   ლ(´ڡ`ლ)ﾞ  \n" +
                 " .-------.       ____     __        \n" +
                 " |  _ _   \\      \\   \\   /  /    \n" +
                 " | ( ' )  |       \\  _. /  '       \n" +

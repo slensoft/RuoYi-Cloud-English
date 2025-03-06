@@ -7,7 +7,7 @@
 //import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 //
 ///**
-// * 定时任务配置（单机部署建议删除此类和qrtz数据库表，默认走内存会最高效）
+// * Scheduled Task Configuration (For single-machine deployment, it is recommended to delete this class and qrtz database tables, using memory by default will be most efficient)
 // * 
 // * @author ruoyi
 // */
@@ -20,36 +20,36 @@
 //        SchedulerFactoryBean factory = new SchedulerFactoryBean();
 //        factory.setDataSource(dataSource);
 //
-//        // quartz参数
+//        // Quartz parameters
 //        Properties prop = new Properties();
 //        prop.put("org.quartz.scheduler.instanceName", "RuoyiScheduler");
 //        prop.put("org.quartz.scheduler.instanceId", "AUTO");
-//        // 线程池配置
+//        // Thread pool configuration
 //        prop.put("org.quartz.threadPool.class", "org.quartz.simpl.SimpleThreadPool");
 //        prop.put("org.quartz.threadPool.threadCount", "20");
 //        prop.put("org.quartz.threadPool.threadPriority", "5");
-//        // JobStore配置
+//        // JobStore configuration
 //        prop.put("org.quartz.jobStore.class", "org.springframework.scheduling.quartz.LocalDataSourceJobStore");
-//        // 集群配置
+//        // Cluster configuration
 //        prop.put("org.quartz.jobStore.isClustered", "true");
 //        prop.put("org.quartz.jobStore.clusterCheckinInterval", "15000");
 //        prop.put("org.quartz.jobStore.maxMisfiresToHandleAtATime", "10");
 //        prop.put("org.quartz.jobStore.txIsolationLevelSerializable", "true");
 //
-//        // sqlserver 启用
+//        // Enable for SQL Server
 //        // prop.put("org.quartz.jobStore.selectWithLockSQL", "SELECT * FROM {0}LOCKS UPDLOCK WHERE LOCK_NAME = ?");
 //        prop.put("org.quartz.jobStore.misfireThreshold", "12000");
 //        prop.put("org.quartz.jobStore.tablePrefix", "QRTZ_");
 //        factory.setQuartzProperties(prop);
 //
 //        factory.setSchedulerName("RuoyiScheduler");
-//        // 延时启动
+//        // Delayed start
 //        factory.setStartupDelay(1);
 //        factory.setApplicationContextSchedulerContextKey("applicationContextKey");
-//        // 可选，QuartzScheduler
-//        // 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了
+//        // Optional, QuartzScheduler
+//        // Update existing Jobs at startup, so you don't need to delete the corresponding record in qrtz_job_details table every time you modify targetObject
 //        factory.setOverwriteExistingJobs(true);
-//        // 设置自动启动，默认为true
+//        // Set auto-startup, default is true
 //        factory.setAutoStartup(true);
 //
 //        return factory;

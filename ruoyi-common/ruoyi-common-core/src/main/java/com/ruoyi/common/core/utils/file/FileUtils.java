@@ -14,25 +14,25 @@ import org.apache.commons.lang3.ArrayUtils;
 import com.ruoyi.common.core.utils.StringUtils;
 
 /**
- * 文件处理工具类
+ * File Processing Utility Class
  * 
  * @author ruoyi
  */
 public class FileUtils
 {
-    /** 字符常量：斜杠 {@code '/'} */
+    /** Character constant: forward slash {@code '/'} */
     public static final char SLASH = '/';
 
-    /** 字符常量：反斜杠 {@code '\\'} */
+    /** Character constant: backslash {@code '\\'} */
     public static final char BACKSLASH = '\\';
 
     public static String FILENAME_PATTERN = "[a-zA-Z0-9_\\-\\|\\.\\u4e00-\\u9fa5]+";
 
     /**
-     * 输出指定文件的byte数组
+     * Output byte array of specified file
      * 
-     * @param filePath 文件路径
-     * @param os 输出流
+     * @param filePath File path
+     * @param os Output stream
      * @return
      */
     public static void writeBytes(String filePath, OutputStream os) throws IOException
@@ -85,16 +85,16 @@ public class FileUtils
     }
 
     /**
-     * 删除文件
+     * Delete file
      * 
-     * @param filePath 文件
+     * @param filePath File
      * @return
      */
     public static boolean deleteFile(String filePath)
     {
         boolean flag = false;
         File file = new File(filePath);
-        // 路径为文件且不为空则进行删除
+        // Path is a file and not empty then delete
         if (file.isFile() && file.exists())
         {
             flag = file.delete();
@@ -103,10 +103,10 @@ public class FileUtils
     }
 
     /**
-     * 文件名称验证
+     * File name verification
      * 
-     * @param filename 文件名称
-     * @return true 正常 false 非法
+     * @param filename File name
+     * @return true Normal false Illegal
      */
     public static boolean isValidFilename(String filename)
     {
@@ -114,28 +114,28 @@ public class FileUtils
     }
 
     /**
-     * 检查文件是否可下载
+     * Check if the file can be downloaded
      * 
-     * @param resource 需要下载的文件
-     * @return true 正常 false 非法
+     * @param resource File to be downloaded
+     * @return true Normal false Illegal
      */
     public static boolean checkAllowDownload(String resource)
     {
-        // 禁止目录上跳级别
+        // Prevent directory jumping level
         if (StringUtils.contains(resource, ".."))
         {
             return false;
         }
-        // 判断是否在允许下载的文件规则内
+        // Determine if it is within the allowed download file rule
         return ArrayUtils.contains(MimeTypeUtils.DEFAULT_ALLOWED_EXTENSION, FileTypeUtils.getFileType(resource));
     }
 
     /**
-     * 下载文件名重新编码
+     * Download file name re-encoding
      * 
-     * @param request 请求对象
-     * @param fileName 文件名
-     * @return 编码后的文件名
+     * @param request Request object
+     * @param fileName File name
+     * @return Encoded file name
      */
     public static String setFileDownloadHeader(HttpServletRequest request, String fileName) throws UnsupportedEncodingException
     {
@@ -143,33 +143,33 @@ public class FileUtils
         String filename = fileName;
         if (agent.contains("MSIE"))
         {
-            // IE浏览器
+            // IE browser
             filename = URLEncoder.encode(filename, "utf-8");
             filename = filename.replace("+", " ");
         }
         else if (agent.contains("Firefox"))
         {
-            // 火狐浏览器
+            // Firefox browser
             filename = new String(fileName.getBytes(), "ISO8859-1");
         }
         else if (agent.contains("Chrome"))
         {
-            // google浏览器
+            // Google browser
             filename = URLEncoder.encode(filename, "utf-8");
         }
         else
         {
-            // 其它浏览器
+            // Other browsers
             filename = URLEncoder.encode(filename, "utf-8");
         }
         return filename;
     }
 
     /**
-     * 返回文件名
+     * Return file name
      *
-     * @param filePath 文件
-     * @return 文件名
+     * @param filePath File
+     * @return File name
      */
     public static String getName(String filePath)
     {
@@ -184,7 +184,7 @@ public class FileUtils
         }
         if (isFileSeparator(filePath.charAt(len - 1)))
         {
-            // 以分隔符结尾的去掉结尾分隔符
+            // Remove the ending separator if it ends with a separator
             len--;
         }
 
@@ -195,7 +195,7 @@ public class FileUtils
             c = filePath.charAt(i);
             if (isFileSeparator(c))
             {
-                // 查找最后一个路径分隔符（/或者\）
+                // Find the last path separator (/ or \)
                 begin = i + 1;
                 break;
             }
@@ -205,11 +205,11 @@ public class FileUtils
     }
 
     /**
-     * 是否为Windows或者Linux（Unix）文件分隔符<br>
-     * Windows平台下分隔符为\，Linux（Unix）为/
+     * Whether it is a Windows or Linux (Unix) file separator<br>
+     * Windows platform separator is \, Linux (Unix) is /
      *
-     * @param c 字符
-     * @return 是否为Windows或者Linux（Unix）文件分隔符
+     * @param c Character
+     * @return Whether it is a Windows or Linux (Unix) file separator
      */
     public static boolean isFileSeparator(char c)
     {
@@ -217,10 +217,10 @@ public class FileUtils
     }
 
     /**
-     * 下载文件名重新编码
+     * Download file name re-encoding
      *
-     * @param response 响应对象
-     * @param realFileName 真实文件名
+     * @param response Response object
+     * @param realFileName Real file name
      * @return
      */
     public static void setAttachmentResponseHeader(HttpServletResponse response, String realFileName) throws UnsupportedEncodingException
@@ -240,10 +240,10 @@ public class FileUtils
     }
 
     /**
-     * 百分号编码工具方法
+     * Percent encoding utility method
      *
-     * @param s 需要百分号编码的字符串
-     * @return 百分号编码后的字符串
+     * @param s String to be percent encoded
+     * @return Percent encoded string
      */
     public static String percentEncode(String s) throws UnsupportedEncodingException
     {

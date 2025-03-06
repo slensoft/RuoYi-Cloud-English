@@ -14,7 +14,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
 /**
- * spring redis 工具类
+ * Spring Redis utility class
  * 
  * @author ruoyi
  **/
@@ -26,10 +26,10 @@ public class RedisService
     public RedisTemplate redisTemplate;
 
     /**
-     * 缓存基本的对象，Integer、String、实体类等
+     * Cache basic objects, such as Integer, String, entity classes, etc.
      *
-     * @param key 缓存的键值
-     * @param value 缓存的值
+     * @param key Cache key
+     * @param value Cache value
      */
     public <T> void setCacheObject(final String key, final T value)
     {
@@ -37,12 +37,12 @@ public class RedisService
     }
 
     /**
-     * 缓存基本的对象，Integer、String、实体类等
+     * Cache basic objects, such as Integer, String, entity classes, etc.
      *
-     * @param key 缓存的键值
-     * @param value 缓存的值
-     * @param timeout 时间
-     * @param timeUnit 时间颗粒度
+     * @param key Cache key
+     * @param value Cache value
+     * @param timeout Time
+     * @param timeUnit Time granularity
      */
     public <T> void setCacheObject(final String key, final T value, final Long timeout, final TimeUnit timeUnit)
     {
@@ -50,11 +50,11 @@ public class RedisService
     }
 
     /**
-     * 设置有效时间
+     * Set expiration time
      *
-     * @param key Redis键
-     * @param timeout 超时时间
-     * @return true=设置成功；false=设置失败
+     * @param key Redis key
+     * @param timeout Expiration time
+     * @return true=success; false=failure
      */
     public boolean expire(final String key, final long timeout)
     {
@@ -62,12 +62,12 @@ public class RedisService
     }
 
     /**
-     * 设置有效时间
+     * Set expiration time
      *
-     * @param key Redis键
-     * @param timeout 超时时间
-     * @param unit 时间单位
-     * @return true=设置成功；false=设置失败
+     * @param key Redis key
+     * @param timeout Expiration time
+     * @param unit Time unit
+     * @return true=success; false=failure
      */
     public boolean expire(final String key, final long timeout, final TimeUnit unit)
     {
@@ -75,10 +75,10 @@ public class RedisService
     }
 
     /**
-     * 获取有效时间
+     * Get expiration time
      *
-     * @param key Redis键
-     * @return 有效时间
+     * @param key Redis key
+     * @return Expiration time
      */
     public long getExpire(final String key)
     {
@@ -86,10 +86,10 @@ public class RedisService
     }
 
     /**
-     * 判断 key是否存在
+     * Check if key exists
      *
-     * @param key 键
-     * @return true 存在 false不存在
+     * @param key Key
+     * @return true if exists, false if not
      */
     public Boolean hasKey(String key)
     {
@@ -97,10 +97,10 @@ public class RedisService
     }
 
     /**
-     * 获得缓存的基本对象。
+     * Get cached basic object.
      *
-     * @param key 缓存键值
-     * @return 缓存键值对应的数据
+     * @param key Cache key
+     * @return Data corresponding to the cache key
      */
     public <T> T getCacheObject(final String key)
     {
@@ -109,7 +109,7 @@ public class RedisService
     }
 
     /**
-     * 删除单个对象
+     * Delete single object
      *
      * @param key
      */
@@ -119,9 +119,9 @@ public class RedisService
     }
 
     /**
-     * 删除集合对象
+     * Delete collection of objects
      *
-     * @param collection 多个对象
+     * @param collection Multiple objects
      * @return
      */
     public boolean deleteObject(final Collection collection)
@@ -130,11 +130,11 @@ public class RedisService
     }
 
     /**
-     * 缓存List数据
+     * Cache List data
      *
-     * @param key 缓存的键值
-     * @param dataList 待缓存的List数据
-     * @return 缓存的对象
+     * @param key Cache key
+     * @param dataList List data to be cached
+     * @return Cached object
      */
     public <T> long setCacheList(final String key, final List<T> dataList)
     {
@@ -143,10 +143,10 @@ public class RedisService
     }
 
     /**
-     * 获得缓存的list对象
+     * Get cached list object
      *
-     * @param key 缓存的键值
-     * @return 缓存键值对应的数据
+     * @param key Cache key
+     * @return Data corresponding to the cache key
      */
     public <T> List<T> getCacheList(final String key)
     {
@@ -154,11 +154,11 @@ public class RedisService
     }
 
     /**
-     * 缓存Set
+     * Cache Set
      *
-     * @param key 缓存键值
-     * @param dataSet 缓存的数据
-     * @return 缓存数据的对象
+     * @param key Cache key
+     * @param dataSet Cached data
+     * @return Cached data object
      */
     public <T> BoundSetOperations<String, T> setCacheSet(final String key, final Set<T> dataSet)
     {
@@ -172,7 +172,7 @@ public class RedisService
     }
 
     /**
-     * 获得缓存的set
+     * Get cached set
      *
      * @param key
      * @return
@@ -183,7 +183,7 @@ public class RedisService
     }
 
     /**
-     * 缓存Map
+     * Cache Map
      *
      * @param key
      * @param dataMap
@@ -196,7 +196,7 @@ public class RedisService
     }
 
     /**
-     * 获得缓存的Map
+     * Get cached Map
      *
      * @param key
      * @return
@@ -207,11 +207,11 @@ public class RedisService
     }
 
     /**
-     * 往Hash中存入数据
+     * Store data in Hash
      *
-     * @param key Redis键
-     * @param hKey Hash键
-     * @param value 值
+     * @param key Redis key
+     * @param hKey Hash key
+     * @param value Value
      */
     public <T> void setCacheMapValue(final String key, final String hKey, final T value)
     {
@@ -219,11 +219,11 @@ public class RedisService
     }
 
     /**
-     * 获取Hash中的数据
+     * Get data from Hash
      *
-     * @param key Redis键
-     * @param hKey Hash键
-     * @return Hash中的对象
+     * @param key Redis key
+     * @param hKey Hash key
+     * @return Object in Hash
      */
     public <T> T getCacheMapValue(final String key, final String hKey)
     {
@@ -232,11 +232,11 @@ public class RedisService
     }
 
     /**
-     * 获取多个Hash中的数据
+     * Get data from multiple Hashes
      *
-     * @param key Redis键
-     * @param hKeys Hash键集合
-     * @return Hash对象集合
+     * @param key Redis key
+     * @param hKeys Collection of Hash keys
+     * @return Collection of Hash objects
      */
     public <T> List<T> getMultiCacheMapValue(final String key, final Collection<Object> hKeys)
     {
@@ -244,11 +244,11 @@ public class RedisService
     }
 
     /**
-     * 删除Hash中的某条数据
+     * Delete a piece of data in Hash
      *
-     * @param key Redis键
-     * @param hKey Hash键
-     * @return 是否成功
+     * @param key Redis key
+     * @param hKey Hash key
+     * @return Whether successful
      */
     public boolean deleteCacheMapValue(final String key, final String hKey)
     {
@@ -256,10 +256,10 @@ public class RedisService
     }
 
     /**
-     * 获得缓存的基本对象列表
+     * Get cached basic object list
      *
-     * @param pattern 字符串前缀
-     * @return 对象列表
+     * @param pattern String prefix
+     * @return Object list
      */
     public Collection<String> keys(final String pattern)
     {

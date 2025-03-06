@@ -1,7 +1,7 @@
-# 基础镜像
+# Base image
 FROM mysql:5.7
 # author
 MAINTAINER ruoyi
 
-# 执行sql脚本
+# Execute sql scripts
 ADD ./db/*.sql /docker-entrypoint-initdb.d/

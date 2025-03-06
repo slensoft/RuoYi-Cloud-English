@@ -4,73 +4,73 @@ import java.util.List;
 import com.ruoyi.system.domain.SysConfig;
 
 /**
- * 参数配置 数据层
+ * Parameter Configuration Data Layer
  * 
  * @author ruoyi
  */
 public interface SysConfigMapper
 {
     /**
-     * 查询参数配置信息
+     * Query parameter configuration information
      * 
-     * @param config 参数配置信息
-     * @return 参数配置信息
+     * @param config Parameter configuration information
+     * @return Parameter configuration information
      */
     public SysConfig selectConfig(SysConfig config);
 
     /**
-     * 通过ID查询配置
+     * Query configuration by ID
      * 
-     * @param configId 参数ID
-     * @return 参数配置信息
+     * @param configId Parameter ID
+     * @return Parameter configuration information
      */
     public SysConfig selectConfigById(Long configId);
 
     /**
-     * 查询参数配置列表
+     * Query parameter configuration list
      * 
-     * @param config 参数配置信息
-     * @return 参数配置集合
+     * @param config Parameter configuration information
+     * @return Parameter configuration collection
      */
     public List<SysConfig> selectConfigList(SysConfig config);
 
     /**
-     * 根据键名查询参数配置信息
+     * Query parameter configuration information by key name
      * 
-     * @param configKey 参数键名
-     * @return 参数配置信息
+     * @param configKey Parameter key name
+     * @return Parameter configuration information
      */
     public SysConfig checkConfigKeyUnique(String configKey);
 
     /**
-     * 新增参数配置
+     * Add parameter configuration
      * 
-     * @param config 参数配置信息
-     * @return 结果
+     * @param config Parameter configuration information
+     * @return Result
      */
     public int insertConfig(SysConfig config);
 
     /**
-     * 修改参数配置
+     * Modify parameter configuration
      * 
-     * @param config 参数配置信息
-     * @return 结果
+     * @param config Parameter configuration information
+     * @return Result
      */
     public int updateConfig(SysConfig config);
 
     /**
-     * 删除参数配置
+     * Delete parameter configuration
      * 
-     * @param configId 参数ID
-     * @return 结果
+     * @param configId Parameter ID
+     * @return Result
      */
     public int deleteConfigById(Long configId);
 
     /**
-     * 批量删除参数信息
+     * Batch delete parameter information
      * 
-     * @param configIds 需要删除的参数ID
-     * @return 结果
+     * @param configIds Parameter IDs to be deleted
+     * @return Result
      */
     public int deleteConfigByIds(Long[] configIds);
 }

@@ -65,7 +65,7 @@ import com.ruoyi.common.core.utils.file.ImageUtils;
 import com.ruoyi.common.core.utils.reflect.ReflectUtils;
 
 /**
- * Excel相关处理
+ * Excel Related Processing
  *
  * @author ruoyi
  */
@@ -78,102 +78,102 @@ public class ExcelUtil<T>
     public static final String[] FORMULA_STR = { "=", "-", "+", "@" };
 
     /**
-     * Excel sheet最大行数，默认65536
+     * Maximum number of rows in Excel sheet, default 65536
      */
     public static final int sheetSize = 65536;
 
     /**
-     * 工作表名称
+     * Worksheet name
      */
     private String sheetName;
 
     /**
-     * 导出类型（EXPORT:导出数据；IMPORT：导入模板）
+     * Export type (EXPORT: export data; IMPORT: import template)
      */
     private Type type;
 
     /**
-     * 工作薄对象
+     * Workbook object
      */
     private Workbook wb;
 
     /**
-     * 工作表对象
+     * Worksheet object
      */
     private Sheet sheet;
 
     /**
-     * 样式列表
+     * Style list
      */
     private Map<String, CellStyle> styles;
 
     /**
-     * 导入导出数据列表
+     * Import/Export data list
      */
     private List<T> list;
 
     /**
-     * 注解列表
+     * Annotation list
      */
     private List<Object[]> fields;
 
     /**
-     * 当前行号
+     * Current row number
      */
     private int rownum;
 
     /**
-     * 标题
+     * Title
      */
     private String title;
 
     /**
-     * 最大高度
+     * Maximum height
      */
     private short maxHeight;
 
     /**
-     * 合并后最后行数
+     * Last row number after merging
      */
     private int subMergedLastRowNum = 0;
 
     /**
-     * 合并后开始行数
+     * First row number after merging
      */
     private int subMergedFirstRowNum = 1;
 
     /**
-     * 对象的子列表方法
+     * Object's sublist method
      */
     private Method subMethod;
 
     /**
-     * 对象的子列表属性
+     * Object's sublist properties
      */
     private List<Field> subFields;
 
     /**
-     * 统计列表
+     * Statistics list
      */
     private Map<Integer, Double> statistics = new HashMap<Integer, Double>();
 
     /**
-     * 数字格式
+     * Number format
      */
     private static final DecimalFormat DOUBLE_FORMAT = new DecimalFormat("######0.00");
 
     /**
-     * 实体对象
+     * Entity object
      */
     public Class<T> clazz;
 
     /**
-     * 需要显示列属性
+     * Properties to display
      */
     public String[] includeFields;
 
     /**
-     * 需要排除列属性
+     * Properties to exclude
      */
     public String[] excludeFields;
 
@@ -183,9 +183,9 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 仅在Excel中显示列属性
+     * Display column properties only in Excel
      *
-     * @param fields 列属性名 示例[单个"name"/多个"id","name"]
+     * @param fields Column property name Example [single "name"/multiple "id","name"]
      */
     public void showColumn(String... fields)
     {
@@ -193,9 +193,9 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 隐藏Excel中列属性
+     * Hide column properties in Excel
      *
-     * @param fields 列属性名 示例[单个"name"/多个"id","name"]
+     * @param fields Column property name Example [single "name"/multiple "id","name"]
      */
     public void hideColumn(String... fields)
     {
@@ -219,7 +219,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 创建excel第一行标题
+     * Create excel first row title
      */
     public void createTitle()
     {
@@ -240,7 +240,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 创建对象的子列表名称
+     * Create object's sublist names
      */
     public void createSubHead()
     {
@@ -277,10 +277,10 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 对excel表单默认第一个索引名转换成list
-     * 
-     * @param is 输入流
-     * @return 转换后集合
+     * Convert first index of excel sheet to list by default
+     *
+     * @param is Input stream
+     * @return Converted collection
      */
     public List<T> importExcel(InputStream is)
     {
@@ -288,11 +288,11 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 对excel表单默认第一个索引名转换成list
-     * 
-     * @param is 输入流
-     * @param titleNum 标题占用行数
-     * @return 转换后集合
+     * Convert first index of excel sheet to list by default
+     *
+     * @param is Input stream
+     * @param titleNum Number of rows occupied by title
+     * @return Converted collection
      */
     public List<T> importExcel(InputStream is, int titleNum)
     {
@@ -303,7 +303,7 @@ public class ExcelUtil<T>
         }
         catch (Exception e)
         {
-            log.error("导入Excel异常{}", e.getMessage());
+            log.error("Import Excel exception {}", e.getMessage());
             throw new UtilException(e.getMessage());
         }
         finally
@@ -314,32 +314,32 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 对excel表单指定表格索引名转换成list
-     * 
-     * @param sheetName 表格索引名
-     * @param titleNum 标题占用行数
-     * @param is 输入流
-     * @return 转换后集合
+     * Convert specified sheet index of excel to list
+     *
+     * @param sheetName Sheet index name
+     * @param titleNum Number of rows occupied by title
+     * @param is Input stream
+     * @return Converted collection
      */
     public List<T> importExcel(String sheetName, InputStream is, int titleNum) throws Exception
     {
         this.type = Type.IMPORT;
         this.wb = WorkbookFactory.create(is);
         List<T> list = new ArrayList<T>();
-        // 如果指定sheet名,则取指定sheet中的内容 否则默认指向第1个sheet
+        // If specified sheet name is specified, get content from specified sheet, otherwise default to the first sheet
         Sheet sheet = StringUtils.isNotEmpty(sheetName) ? wb.getSheet(sheetName) : wb.getSheetAt(0);
         if (sheet == null)
         {
-            throw new IOException("文件sheet不存在");
+            throw new IOException("File sheet does not exist");
         }
 
-        // 获取最后一个非空行的行下标，比如总行数为n，则返回的为n-1
+        // Get the index of the last non-empty row, for example, the returned is n-1 if the total row number is n
         int rows = sheet.getLastRowNum();
         if (rows > 0)
         {
-            // 定义一个map用于存放excel列的序号和field.
+            // Define a map to store the sequence number of excel columns and field.
             Map<String, Integer> cellMap = new HashMap<String, Integer>();
-            // 获取表头
+            // Get header
             Row heard = sheet.getRow(titleNum);
             for (int i = 0; i < heard.getPhysicalNumberOfCells(); i++)
             {
@@ -354,7 +354,7 @@ public class ExcelUtil<T>
                     cellMap.put(null, i);
                 }
             }
-            // 有数据时才处理 得到类的所有field.
+            // Only process when there is data, get all fields of the class.
             List<Object[]> fields = this.getFields();
             Map<Integer, Object[]> fieldsMap = new HashMap<Integer, Object[]>();
             for (Object[] objects : fields)
@@ -368,9 +368,9 @@ public class ExcelUtil<T>
             }
             for (int i = titleNum + 1; i <= rows; i++)
             {
-                // 从第2行开始取数据,默认第一行是表头.
+                // Start from the 2nd row to get data, the default first row is header.
                 Row row = sheet.getRow(i);
-                // 判断当前行是否是空行
+                // Determine if the current row is empty
                 if (isRowEmpty(row))
                 {
                     continue;
@@ -380,12 +380,12 @@ public class ExcelUtil<T>
                 {
                     Object val = this.getCellValue(row, entry.getKey());
 
-                    // 如果不存在实例则新建.
+                    // If there is no instance, create a new one.
                     entity = (entity == null ? clazz.newInstance() : entity);
-                    // 从map中得到对应列的field.
+                    // Get the corresponding column field from the map.
                     Field field = (Field) entry.getValue()[0];
                     Excel attr = (Excel) entry.getValue()[1];
-                    // 取得类型,并根据对象类型设置值.
+                    // Get type and set value based on object type.
                     Class<?> fieldType = field.getType();
                     if (String.class == fieldType)
                     {
@@ -467,12 +467,12 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 对list数据源将其里面的数据导入到excel表单
+     * Import data from list source to excel sheet
      *
-     * @param response 返回数据
-     * @param list 导出数据集合
-     * @param sheetName 工作表的名称
-     * @return 结果
+     * @param response Return data
+     * @param list Export data collection
+     * @param sheetName Worksheet name
+     * @return Result
      */
     public void exportExcel(HttpServletResponse response, List<T> list, String sheetName)
     {
@@ -480,13 +480,13 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 对list数据源将其里面的数据导入到excel表单
+     * Import data from list source to excel sheet
      *
-     * @param response 返回数据
-     * @param list 导出数据集合
-     * @param sheetName 工作表的名称
-     * @param title 标题
-     * @return 结果
+     * @param response Return data
+     * @param list Export data collection
+     * @param sheetName Worksheet name
+     * @param title Title
+     * @return Result
      */
     public void exportExcel(HttpServletResponse response, List<T> list, String sheetName, String title)
     {
@@ -497,10 +497,10 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 对list数据源将其里面的数据导入到excel表单
+     * Import data from list source to excel sheet
      *
-     * @param sheetName 工作表的名称
-     * @return 结果
+     * @param sheetName Worksheet name
+     * @return Result
      */
     public void importTemplateExcel(HttpServletResponse response, String sheetName)
     {
@@ -508,11 +508,11 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 对list数据源将其里面的数据导入到excel表单
+     * Import data from list source to excel sheet
      *
-     * @param sheetName 工作表的名称
-     * @param title 标题
-     * @return 结果
+     * @param sheetName Worksheet name
+     * @param title Title
+     * @return Result
      */
     public void importTemplateExcel(HttpServletResponse response, String sheetName, String title)
     {
@@ -523,9 +523,9 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 对list数据源将其里面的数据导入到excel表单
-     * 
-     * @return 结果
+     * Import data from list source to excel sheet
+     *
+     * @return Result
      */
     public void exportExcel(HttpServletResponse response)
     {
@@ -536,7 +536,7 @@ public class ExcelUtil<T>
         }
         catch (Exception e)
         {
-            log.error("导出Excel异常{}", e.getMessage());
+            log.error("Export Excel exception {}", e.getMessage());
         }
         finally
         {
@@ -545,20 +545,20 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 创建写入数据到Sheet
+     * Create and write data to Sheet
      */
     public void writeSheet()
     {
-        // 取出一共有多少个sheet.
+        // Get the total number of sheets.
         int sheetNo = Math.max(1, (int) Math.ceil(list.size() * 1.0 / sheetSize));
         for (int index = 0; index < sheetNo; index++)
         {
             createSheet(sheetNo, index);
 
-            // 产生一行
+            // Generate a row
             Row row = sheet.createRow(rownum);
             int column = 0;
-            // 写入各个字段的列头名称
+            // Write column header names
             for (Object[] os : fields)
             {
                 Field field = (Field) os[0];
@@ -585,17 +585,17 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 填充excel数据
-     * 
-     * @param index 序号
-     * @param row 单元格行
+     * Fill excel data
+     *
+     * @param index Index
+     * @param row Cell row
      */
     @SuppressWarnings("unchecked")
     public void fillExcelData(int index, Row row)
     {
         int startNo = index * sheetSize;
         int endNo = Math.min(startNo + sheetSize, list.size());
-        int currentRowNum = rownum + 1; // 从标题行后开始
+        int currentRowNum = rownum + 1; // Start from title row
 
         for (int i = startNo; i < endNo; i++)
         {
@@ -636,12 +636,12 @@ public class ExcelUtil<T>
                     }
                     catch (Exception e)
                     {
-                        log.error("填充集合数据失败", e);
+                        log.error("Fill collection data failed", e);
                     }
                 }
                 else
                 {
-                    // 创建单元格并设置值
+                    // Create cell and set value
                     addCell(excel, row, vo, field, column);
                     if (maxSubListSize > 1 && excel.needMerge())
                     {
@@ -655,7 +655,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 获取子列表最大数
+     * Get maximum number of sublists
      */
     private int getCurrentMaxSubListSize(T vo)
     {
@@ -675,7 +675,7 @@ public class ExcelUtil<T>
                 }
                 catch (Exception e)
                 {
-                    log.error("获取集合大小失败", e);
+                    log.error("Get collection size failed", e);
                 }
             }
         }
@@ -683,14 +683,14 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 创建表格样式
-     * 
-     * @param wb 工作薄对象
-     * @return 样式列表
+     * Create table styles
+     *
+     * @param wb Workbook object
+     * @return Style list
      */
     private Map<String, CellStyle> createStyles(Workbook wb)
     {
-        // 写入各条记录,每条记录对应excel表中的一行
+        // Write each record, each record corresponds to a row in excel table
         Map<String, CellStyle> styles = new HashMap<String, CellStyle>();
         CellStyle style = wb.createCellStyle();
         style.setAlignment(HorizontalAlignment.CENTER);
@@ -738,10 +738,10 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 根据Excel注解创建表格头样式
-     * 
-     * @param wb 工作薄对象
-     * @return 自定义样式列表
+     * Create table header styles based on Excel annotations
+     *
+     * @param wb Workbook object
+     * @return Custom style list
      */
     private Map<String, CellStyle> annotationHeaderStyles(Workbook wb, Map<String, CellStyle> styles)
     {
@@ -764,7 +764,7 @@ public class ExcelUtil<T>
                 headerFont.setBold(true);
                 headerFont.setColor(excel.headerColor().index);
                 style.setFont(headerFont);
-                // 设置表格头单元格文本形式
+                // Set table header cell text format
                 DataFormat dataFormat = wb.createDataFormat();
                 style.setDataFormat(dataFormat.getFormat("@"));
                 headerStyles.put(key, style);
@@ -774,10 +774,10 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 根据Excel注解创建表格列样式
-     * 
-     * @param wb 工作薄对象
-     * @return 自定义样式列表
+     * Create table column styles based on Excel annotations
+     *
+     * @param wb Workbook object
+     * @return Custom style list
      */
     private Map<String, CellStyle> annotationDataStyles(Workbook wb)
     {
@@ -806,11 +806,11 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 根据Excel注解创建表格列样式
-     * 
-     * @param styles 自定义样式列表
-     * @param field  属性列信息
-     * @param excel  注解信息
+     * Create table column styles based on Excel annotations
+     *
+     * @param styles Custom style list
+     * @param field Property column information
+     * @param excel Annotation information
      */
     public void annotationDataStyles(Map<String, CellStyle> styles, Field field, Excel excel)
     {
@@ -846,19 +846,19 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 创建单元格
+     * Create cell
      */
     public Cell createHeadCell(Excel attr, Row row, int column)
     {
-        // 创建列
+        // Create column
         Cell cell = row.createCell(column);
-        // 写入列信息
+        // Write column information
         cell.setCellValue(attr.name());
         setDataValidation(attr, row, column);
         cell.setCellStyle(styles.get(StringUtils.format("header_{}_{}", attr.headerColor(), attr.headerBackgroundColor())));
         if (isSubList())
         {
-            // 填充默认样式，防止合并单元格样式失效
+            // Fill default style to prevent merged cell style failure
             sheet.setDefaultColumnStyle(column, styles.get(StringUtils.format("data_{}_{}_{}_{}_{}", attr.align(), attr.color(), attr.backgroundColor(), attr.cellType(), attr.wrapText())));
             if (attr.needMerge())
             {
@@ -869,18 +869,18 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 设置单元格信息
-     * 
-     * @param value 单元格值
-     * @param attr 注解相关
-     * @param cell 单元格信息
+     * Set cell information
+     *
+     * @param value Cell value
+     * @param attr Annotation related
+     * @param cell Cell information
      */
     public void setCellVo(Object value, Excel attr, Cell cell)
     {
         if (ColumnType.STRING == attr.cellType() || ColumnType.TEXT == attr.cellType())
         {
             String cellValue = Convert.toStr(value);
-            // 对于任何以表达式触发字符 =-+@开头的单元格，直接使用tab字符作为前缀，防止CSV注入。
+            // For any cell with expression trigger character =-+@ at the beginning, directly use tab character as prefix to prevent CSV injection.
             if (StringUtils.startsWithAny(cellValue, FORMULA_STR))
             {
                 cellValue = RegExUtils.replaceFirst(cellValue, FORMULA_REGEX_STR, "\t$0");
@@ -912,7 +912,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 获取画布
+     * Get canvas
      */
     public static Drawing<?> getDrawingPatriarch(Sheet sheet)
     {
@@ -924,7 +924,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 获取图片类型,设置图片插入类型
+     * Get image type, set image insertion type
      */
     public int getImageType(byte[] value)
     {
@@ -941,7 +941,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 创建表格样式
+     * Create table style
      */
     public void setDataValidation(Excel attr, Row row, int column)
     {
@@ -951,38 +951,38 @@ public class ExcelUtil<T>
         }
         else
         {
-            // 设置列宽
+            // Set column width
             sheet.setColumnWidth(column, (int) ((attr.width() + 0.72) * 256));
         }
         if (StringUtils.isNotEmpty(attr.prompt()) || attr.combo().length > 0)
         {
             if (attr.combo().length > 15 || StringUtils.join(attr.combo()).length() > 255)
             {
-                // 如果下拉数大于15或字符串长度大于255，则使用一个新sheet存储，避免生成的模板下拉值获取不到
+                // If the number of drop-down options is greater than 15 or the string length is greater than 255, use a new sheet to store to avoid getting drop-down values from generated templates
                 setXSSFValidationWithHidden(sheet, attr.combo(), attr.prompt(), 1, 100, column, column);
             }
             else
             {
-                // 提示信息或只能选择不能输入的列内容.
+                // Prompt information or column content that can only be selected and not entered.
                 setPromptOrValidation(sheet, attr.combo(), attr.prompt(), 1, 100, column, column);
             }
         }
     }
 
     /**
-     * 添加单元格
+     * Add cell
      */
     public Cell addCell(Excel attr, Row row, T vo, Field field, int column)
     {
         Cell cell = null;
         try
         {
-            // 设置行高
+            // Set row height
             row.setHeight(maxHeight);
-            // 根据Excel中设置情况决定是否导出,有些情况需要保持为空,希望用户填写这一列.
+            // Determine whether to export based on Excel settings, some situations need to be kept empty, hoping users to fill in this column.
             if (attr.isExport())
             {
-                // 创建cell
+                // Create cell
                 cell = row.createCell(column);
                 if (isSubListValue(vo) && getListCellValue(vo).size() > 1 && attr.needMerge())
                 {
@@ -993,7 +993,7 @@ public class ExcelUtil<T>
                 }
                 cell.setCellStyle(styles.get(StringUtils.format("data_{}_{}_{}_{}_{}", attr.align(), attr.color(), attr.backgroundColor(), attr.cellType(), attr.wrapText())));
 
-                // 用于读取对象中的属性
+                // Used to read attribute values from objects
                 Object value = getTargetValue(vo, field, attr);
                 String dateFormat = attr.dateFormat();
                 String readConverterExp = attr.readConverterExp();
@@ -1017,7 +1017,7 @@ public class ExcelUtil<T>
                 }
                 else
                 {
-                    // 设置列类型
+                    // Set column type
                     setCellVo(value, attr, cell);
                 }
                 addStatisticsData(column, Convert.toStr(value), attr);
@@ -1025,21 +1025,21 @@ public class ExcelUtil<T>
         }
         catch (Exception e)
         {
-            log.error("导出Excel失败{}", e);
+            log.error("Export Excel exception {}", e.getMessage());
         }
         return cell;
     }
 
     /**
-     * 设置 POI XSSFSheet 单元格提示或选择框
-     * 
-     * @param sheet 表单
-     * @param textlist 下拉框显示的内容
-     * @param promptContent 提示内容
-     * @param firstRow 开始行
-     * @param endRow 结束行
-     * @param firstCol 开始列
-     * @param endCol 结束列
+     * Set POI XSSFSheet cell prompt or selection box
+     *
+     * @param sheet Form
+     * @param textlist Content to display in dropdown
+     * @param promptContent Prompt content
+     * @param firstRow Start row
+     * @param endRow End row
+     * @param firstCol Start column
+     * @param endCol End column
      */
     public void setPromptOrValidation(Sheet sheet, String[] textlist, String promptContent, int firstRow, int endRow,
             int firstCol, int endCol)
@@ -1050,11 +1050,11 @@ public class ExcelUtil<T>
         DataValidation dataValidation = helper.createValidation(constraint, regions);
         if (StringUtils.isNotEmpty(promptContent))
         {
-            // 如果设置了提示信息则鼠标放上去提示
+            // If prompt information is set, mouse over to prompt
             dataValidation.createPromptBox("", promptContent);
             dataValidation.setShowPromptBox(true);
         }
-        // 处理Excel兼容性问题
+        // Handle Excel compatibility issues
         if (dataValidation instanceof XSSFDataValidation)
         {
             dataValidation.setSuppressDropDownArrow(true);
@@ -1068,42 +1068,42 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 设置某些列的值只能输入预制的数据,显示下拉框（兼容超出一定数量的下拉框）.
-     * 
-     * @param sheet 要设置的sheet.
-     * @param textlist 下拉框显示的内容
-     * @param promptContent 提示内容
-     * @param firstRow 开始行
-     * @param endRow 结束行
-     * @param firstCol 开始列
-     * @param endCol 结束列
+     * Set data validation with hidden sheet
+     *
+     * @param sheet Sheet
+     * @param textlist Drop-down list data
+     * @param promptContent Prompt content
+     * @param firstRow Start row
+     * @param endRow End row
+     * @param firstCol Start column
+     * @param endCol End column
      */
     public void setXSSFValidationWithHidden(Sheet sheet, String[] textlist, String promptContent, int firstRow, int endRow, int firstCol, int endCol)
     {
         String hideSheetName = "combo_" + firstCol + "_" + endCol;
-        Sheet hideSheet = wb.createSheet(hideSheetName); // 用于存储 下拉菜单数据
+        Sheet hideSheet = wb.createSheet(hideSheetName); // Used to store drop-down menu data
         for (int i = 0; i < textlist.length; i++)
         {
             hideSheet.createRow(i).createCell(0).setCellValue(textlist[i]);
         }
-        // 创建名称，可被其他单元格引用
+        // Create name, can be referenced by other cells
         Name name = wb.createName();
         name.setNameName(hideSheetName + "_data");
         name.setRefersToFormula(hideSheetName + "!$A$1:$A$" + textlist.length);
         DataValidationHelper helper = sheet.getDataValidationHelper();
-        // 加载下拉列表内容
+        // Load drop-down list content
         DataValidationConstraint constraint = helper.createFormulaListConstraint(hideSheetName + "_data");
-        // 设置数据有效性加载在哪个单元格上,四个参数分别是：起始行、终止行、起始列、终止列
+        // Set data validity load on which cell, four parameters are: start row, end row, start column, end column
         CellRangeAddressList regions = new CellRangeAddressList(firstRow, endRow, firstCol, endCol);
-        // 数据有效性对象
+        // Data validity object
         DataValidation dataValidation = helper.createValidation(constraint, regions);
         if (StringUtils.isNotEmpty(promptContent))
         {
-            // 如果设置了提示信息则鼠标放上去提示
+            // If prompt information is set, mouse over to prompt
             dataValidation.createPromptBox("", promptContent);
             dataValidation.setShowPromptBox(true);
         }
-        // 处理Excel兼容性问题
+        // Handle Excel compatibility issues
         if (dataValidation instanceof XSSFDataValidation)
         {
             dataValidation.setSuppressDropDownArrow(true);
@@ -1115,17 +1115,17 @@ public class ExcelUtil<T>
         }
 
         sheet.addValidationData(dataValidation);
-        // 设置hiddenSheet隐藏
+        // Set hiddenSheet hidden
         wb.setSheetHidden(wb.getSheetIndex(hideSheet), true);
     }
 
     /**
-     * 解析导出值 0=男,1=女,2=未知
-     * 
-     * @param propertyValue 参数值
-     * @param converterExp 翻译注解
-     * @param separator 分隔符
-     * @return 解析后值
+     * Parse export value 0=Male,1=Female,2=Unknown
+     *
+     * @param propertyValue Parameter value
+     * @param converterExp Translation annotation
+     * @param separator Separator
+     * @return Parsed value
      */
     public static String convertByExp(String propertyValue, String converterExp, String separator)
     {
@@ -1157,12 +1157,12 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 反向解析值 男=0,女=1,未知=2
-     * 
-     * @param propertyValue 参数值
-     * @param converterExp 翻译注解
-     * @param separator 分隔符
-     * @return 解析后值
+     * Reverse parse value Male=0,Female=1,Unknown=2
+     *
+     * @param propertyValue Parameter value
+     * @param converterExp Translation annotation
+     * @param separator Separator
+     * @return Parsed value
      */
     public static String reverseByExp(String propertyValue, String converterExp, String separator)
     {
@@ -1194,10 +1194,10 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 数据处理器
+     * Data handler
      *
-     * @param value 数据值
-     * @param excel 数据注解
+     * @param value Data value
+     * @param excel Data annotation
      * @return
      */
     public String dataFormatHandlerAdapter(Object value, Excel excel, Cell cell)
@@ -1210,13 +1210,13 @@ public class ExcelUtil<T>
         }
         catch (Exception e)
         {
-            log.error("不能格式化数据 " + excel.handler(), e.getMessage());
+            log.error("Cannot format data " + excel.handler(), e.getMessage());
         }
         return Convert.toStr(value);
     }
 
     /**
-     * 合计统计信息
+     * Total statistics information
      */
     private void addStatisticsData(Integer index, String text, Excel entity)
     {
@@ -1239,7 +1239,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 创建统计行
+     * Create statistics row
      */
     public void addStatisticsRow()
     {
@@ -1249,7 +1249,7 @@ public class ExcelUtil<T>
             Set<Integer> keys = statistics.keySet();
             Cell cell = row.createCell(0);
             cell.setCellStyle(styles.get("total"));
-            cell.setCellValue("合计");
+            cell.setCellValue("Total");
 
             for (Integer key : keys)
             {
@@ -1262,12 +1262,12 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 获取bean中的属性值
+     * Get property value from bean
      *
-     * @param vo 实体对象
-     * @param field 字段
-     * @param excel 注解
-     * @return 最终的属性值
+     * @param vo Entity object
+     * @param field Field
+     * @param excel Annotation
+     * @return Final property value
      * @throws Exception
      */
     private Object getTargetValue(T vo, Field field, Excel excel) throws Exception
@@ -1294,7 +1294,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 以类的属性的get方法方法形式获取值
+     * Get value in the form of class property's get method
      *
      * @param o
      * @param name
@@ -1314,7 +1314,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 得到所有定义字段
+     * Get all defined fields
      */
     private void createExcelField()
     {
@@ -1324,7 +1324,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 获取字段注解信息
+     * Get field annotation information
      */
     public List<Object[]> getFields()
     {
@@ -1363,11 +1363,11 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 添加字段信息
+     * Add field information
      */
     public void addField(List<Object[]> fields, Field field)
     {
-        // 单注解
+        // Single annotation
         if (field.isAnnotationPresent(Excel.class))
         {
             Excel attr = field.getAnnotation(Excel.class);
@@ -1384,7 +1384,7 @@ public class ExcelUtil<T>
             }
         }
 
-        // 多注解
+        // Multiple annotations
         if (field.isAnnotationPresent(Excels.class))
         {
             Excels attrs = field.getAnnotation(Excels.class);
@@ -1412,7 +1412,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 根据注解获取最大行高
+     * Get maximum row height based on annotation
      */
     public short getRowHeight()
     {
@@ -1426,7 +1426,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 创建一个工作簿
+     * Create a workbook
      */
     public void createWorkbook()
     {
@@ -1437,14 +1437,14 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 创建工作表
-     * 
-     * @param sheetNo sheet数量
-     * @param index 序号
+     * Create worksheet
+     *
+     * @param sheetNo Number of sheets
+     * @param index Index
      */
     public void createSheet(int sheetNo, int index)
     {
-        // 设置工作表的名称.
+        // Set worksheet name.
         if (sheetNo > 1 && index > 0)
         {
             this.sheet = wb.createSheet();
@@ -1454,11 +1454,11 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 获取单元格值
-     * 
-     * @param row 获取的行
-     * @param column 获取单元格列号
-     * @return 单元格值
+     * Get cell value
+     *
+     * @param row Row to get
+     * @param column Cell column number to get
+     * @return Cell value
      */
     public Object getCellValue(Row row, int column)
     {
@@ -1477,7 +1477,7 @@ public class ExcelUtil<T>
                     val = cell.getNumericCellValue();
                     if (DateUtil.isCellDateFormatted(cell))
                     {
-                        val = DateUtil.getJavaDate((Double) val); // POI Excel 日期格式转换
+                        val = DateUtil.getJavaDate((Double) val); // POI Excel date format conversion
                     }
                     else
                     {
@@ -1514,9 +1514,9 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 判断是否是空行
-     * 
-     * @param row 判断的行
+     * Check if row is empty
+     *
+     * @param row Row to check
      * @return
      */
     private boolean isRowEmpty(Row row)
@@ -1537,11 +1537,11 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 格式化不同类型的日期对象
-     * 
-     * @param dateFormat 日期格式
-     * @param val 被格式化的日期对象
-     * @return 格式化后的日期字符
+     * Format different types of date objects
+     *
+     * @param dateFormat Date format
+     * @param val Date object to be formatted
+     * @return Formatted date string
      */
     public String parseDateToStr(String dateFormat, Object val)
     {
@@ -1570,7 +1570,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 是否有对象的子列表
+     * Whether object has sublist
      */
     public boolean isSubList()
     {
@@ -1578,7 +1578,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 是否有对象的子列表，集合不为空
+     * Whether object has sublist and collection is not empty
      */
     public boolean isSubListValue(T vo)
     {
@@ -1586,7 +1586,7 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 获取集合的值
+     * Get collection value
      */
     public Collection<?> getListCellValue(Object obj)
     {
@@ -1603,11 +1603,11 @@ public class ExcelUtil<T>
     }
 
     /**
-     * 获取对象的子列表方法
-     * 
-     * @param name 名称
-     * @param pojoClass 类对象
-     * @return 子列表方法
+     * Get object's sublist method
+     *
+     * @param name Name
+     * @param pojoClass Class object
+     * @return Sublist method
      */
     public Method getSubMethod(String name, Class<?> pojoClass)
     {
@@ -1621,7 +1621,7 @@ public class ExcelUtil<T>
         }
         catch (Exception e)
         {
-            log.error("获取对象异常{}", e.getMessage());
+            log.error("Get object exception {}", e.getMessage());
         }
         return method;
     }

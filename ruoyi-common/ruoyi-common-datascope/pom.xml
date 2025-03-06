@@ -12,7 +12,7 @@
     <artifactId>ruoyi-common-datascope</artifactId>
 	
     <description>
-        ruoyi-common-datascope权限范围
+        ruoyi-common-datascope permission scope
     </description>
 
     <dependencies>

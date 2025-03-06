@@ -1,19 +1,19 @@
 package com.ruoyi.auth.form;
 
 /**
- * 用户登录对象
- * 
+ * User login object
+ *
  * @author ruoyi
  */
 public class LoginBody
 {
     /**
-     * 用户名
+     * Username
      */
     private String username;
 
     /**
-     * 用户密码
+     * User password
      */
     private String password;
 

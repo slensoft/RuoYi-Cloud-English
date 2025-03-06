@@ -12,7 +12,7 @@
     <artifactId>ruoyi-common-log</artifactId>
 	
     <description>
-        ruoyi-common-log日志记录
+        ruoyi-common-log log recording
     </description>
 
     <dependencies>

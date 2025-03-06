@@ -8,7 +8,7 @@ import com.ruoyi.system.mapper.SysOperLogMapper;
 import com.ruoyi.system.service.ISysOperLogService;
 
 /**
- * 操作日志 服务层处理
+ * Operation Log Service Layer Implementation
  * 
  * @author ruoyi
  */
@@ -19,10 +19,10 @@ public class SysOperLogServiceImpl implements ISysOperLogService
     private SysOperLogMapper operLogMapper;
 
     /**
-     * 新增操作日志
+     * Add operation log
      * 
-     * @param operLog 操作日志对象
-     * @return 结果
+     * @param operLog Operation log object
+     * @return Result
      */
     @Override
     public int insertOperlog(SysOperLog operLog)
@@ -31,10 +31,10 @@ public class SysOperLogServiceImpl implements ISysOperLogService
     }
 
     /**
-     * 查询系统操作日志集合
+     * Query system operation log collection
      * 
-     * @param operLog 操作日志对象
-     * @return 操作日志集合
+     * @param operLog Operation log object
+     * @return Operation log collection
      */
     @Override
     public List<SysOperLog> selectOperLogList(SysOperLog operLog)
@@ -43,10 +43,10 @@ public class SysOperLogServiceImpl implements ISysOperLogService
     }
 
     /**
-     * 批量删除系统操作日志
+     * Batch delete system operation logs
      * 
-     * @param operIds 需要删除的操作日志ID
-     * @return 结果
+     * @param operIds Operation log IDs to be deleted
+     * @return Result
      */
     @Override
     public int deleteOperLogByIds(Long[] operIds)
@@ -55,10 +55,10 @@ public class SysOperLogServiceImpl implements ISysOperLogService
     }
 
     /**
-     * 查询操作日志详细
+     * Query operation log details
      * 
-     * @param operId 操作ID
-     * @return 操作日志对象
+     * @param operId Operation ID
+     * @return Operation log object
      */
     @Override
     public SysOperLog selectOperLogById(Long operId)
@@ -67,7 +67,7 @@ public class SysOperLogServiceImpl implements ISysOperLogService
     }
 
     /**
-     * 清空操作日志
+     * Clear operation logs
      */
     @Override
     public void cleanOperLog()

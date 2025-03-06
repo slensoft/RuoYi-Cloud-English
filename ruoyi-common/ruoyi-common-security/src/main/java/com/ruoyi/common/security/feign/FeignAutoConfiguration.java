@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import feign.RequestInterceptor;
 
 /**
- * Feign 配置注册
+ * Feign configuration registration
  *
  * @author ruoyi
  **/

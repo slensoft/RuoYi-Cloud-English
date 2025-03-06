@@ -4,7 +4,7 @@ import java.io.Serializable;
 import com.ruoyi.common.core.constant.Constants;
 
 /**
- * 响应信息主体
+ * Response information body
  *
  * @author ruoyi
  */
@@ -12,10 +12,10 @@ public class R<T> implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    /** 成功 */
+    /** Success */
     public static final int SUCCESS = Constants.SUCCESS;
 
-    /** 失败 */
+    /** Failure */
     public static final int FAIL = Constants.FAIL;
 
     private int code;

@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 权限认证：必须具有指定权限才能进入该方法
+ * Permission authentication: Must have specified permissions to access this method
  * 
  * @author ruoyi
  *
@@ -16,12 +16,12 @@ import java.lang.annotation.Target;
 public @interface RequiresPermissions
 {
     /**
-     * 需要校验的权限码
+     * Permission codes to be verified
      */
     String[] value() default {};
 
     /**
-     * 验证模式：AND | OR，默认AND
+     * Verification mode: AND | OR, default is AND
      */
     Logical logical() default Logical.AND;
 }

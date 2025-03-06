@@ -1,1 +1,1 @@
-存放sql目录下的所有脚本，用于docker自动执行。
+All scripts in the sql directory will be automatically executed by docker.

@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * 通用映射配置
+ * General mapping configuration
  * 
  * @author ruoyi
  */
@@ -16,13 +16,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class ResourcesConfig implements WebMvcConfigurer
 {
     /**
-     * 上传文件存储在本地的根路径
+     * Root path for storing uploaded files locally
      */
     @Value("${file.path}")
     private String localFilePath;
 
     /**
-     * 资源映射路径 前缀
+     * Resource mapping path prefix
      */
     @Value("${file.prefix}")
     public String localFilePrefix;
@@ -30,21 +30,21 @@ public class ResourcesConfig implements WebMvcConfigurer
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry)
     {
-        /** 本地文件上传路径 */
+        /** Local file upload path */
         registry.addResourceHandler(localFilePrefix + "/**")
                 .addResourceLocations("file:" + localFilePath + File.separator);
     }
     
     /**
-     * 开启跨域
+     * Enable cross-origin
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        // 设置允许跨域的路由
+        // Set allowed cross-origin routes
         registry.addMapping(localFilePrefix  + "/**")
-                // 设置允许跨域请求的域名
+                // Set allowed cross-origin request domains
                 .allowedOrigins("*")
-                // 设置允许的方法
+                // Set allowed methods
                 .allowedMethods("GET");
     }
 }

@@ -12,7 +12,7 @@ import com.ruoyi.common.core.utils.StringUtils;
 import com.ruoyi.common.security.annotation.InnerAuth;
 
 /**
- * 内部服务调用验证处理
+ * Internal service call verification processing
  * 
  * @author ruoyi
  */
@@ -24,24 +24,24 @@ public class InnerAuthAspect implements Ordered
     public Object innerAround(ProceedingJoinPoint point, InnerAuth innerAuth) throws Throwable
     {
         String source = ServletUtils.getRequest().getHeader(SecurityConstants.FROM_SOURCE);
-        // 内部请求验证
+        // Internal request verification
         if (!StringUtils.equals(SecurityConstants.INNER, source))
         {
-            throw new InnerAuthException("没有内部访问权限，不允许访问");
+            throw new InnerAuthException("No internal access permission, access denied");
         }
 
         String userid = ServletUtils.getRequest().getHeader(SecurityConstants.DETAILS_USER_ID);
         String username = ServletUtils.getRequest().getHeader(SecurityConstants.DETAILS_USERNAME);
-        // 用户信息验证
+        // User information verification
         if (innerAuth.isUser() && (StringUtils.isEmpty(userid) || StringUtils.isEmpty(username)))
         {
-            throw new InnerAuthException("没有设置用户信息，不允许访问 ");
+            throw new InnerAuthException("User information not set, access denied");
         }
         return point.proceed();
     }
 
     /**
-     * 确保在权限认证aop执行前执行
+     * Ensure execution before permission authentication AOP
      */
     @Override
     public int getOrder()

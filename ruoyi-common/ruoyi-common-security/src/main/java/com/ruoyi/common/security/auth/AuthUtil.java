@@ -5,19 +5,19 @@ import com.ruoyi.common.security.annotation.RequiresRoles;
 import com.ruoyi.system.api.model.LoginUser;
 
 /**
- * Token 权限验证工具类
+ * Token permission verification utility class
  * 
  * @author ruoyi
  */
 public class AuthUtil
 {
     /**
-     * 底层的 AuthLogic 对象
+     * Underlying AuthLogic object
      */
     public static AuthLogic authLogic = new AuthLogic();
 
     /**
-     * 会话注销
+     * Session logout
      */
     public static void logout()
     {
@@ -25,9 +25,9 @@ public class AuthUtil
     }
 
     /**
-     * 会话注销，根据指定Token
+     * Session logout, based on specified Token
      * 
-     * @param token 指定token
+     * @param token Specified token
      */
     public static void logoutByToken(String token)
     {
@@ -35,7 +35,7 @@ public class AuthUtil
     }
 
     /**
-     * 检验当前会话是否已经登录，如未登录，则抛出异常
+     * Check if the current session is logged in, if not, throw an exception
      */
     public static void checkLogin()
     {
@@ -43,10 +43,10 @@ public class AuthUtil
     }
 
     /**
-     * 获取当前登录用户信息
+     * Get current login user information
      * 
-     * @param token 指定token
-     * @return 用户信息
+     * @param token Specified token
+     * @return User information
      */
     public static LoginUser getLoginUser(String token)
     {
@@ -54,9 +54,9 @@ public class AuthUtil
     }
 
     /**
-     * 验证当前用户有效期
+     * Verify the validity period of the current user
      * 
-     * @param loginUser 用户信息
+     * @param loginUser User information
      */
     public static void verifyLoginUserExpire(LoginUser loginUser)
     {
@@ -64,10 +64,10 @@ public class AuthUtil
     }
 
     /**
-     * 当前账号是否含有指定角色标识, 返回true或false
+     * Whether the current account has a specified role identifier, return true or false
      * 
-     * @param role 角色标识
-     * @return 是否含有指定角色标识
+     * @param role Role identifier
+     * @return Whether it has the specified role identifier
      */
     public static boolean hasRole(String role)
     {
@@ -75,9 +75,9 @@ public class AuthUtil
     }
 
     /**
-     * 当前账号是否含有指定角色标识, 如果验证未通过，则抛出异常: NotRoleException
+     * Whether the current account has a specified role identifier, if the verification fails, throw an exception: NotRoleException
      * 
-     * @param role 角色标识
+     * @param role Role identifier
      */
     public static void checkRole(String role)
     {
@@ -85,9 +85,9 @@ public class AuthUtil
     }
 
     /**
-     * 根据注解传入参数鉴权, 如果验证未通过，则抛出异常: NotRoleException
+     * Authorization based on annotation parameters, if the verification fails, throw an exception: NotRoleException
      * 
-     * @param requiresRoles 角色权限注解
+     * @param requiresRoles Role permission annotation
      */
     public static void checkRole(RequiresRoles requiresRoles)
     {
@@ -95,9 +95,9 @@ public class AuthUtil
     }
 
     /**
-     * 当前账号是否含有指定角色标识 [指定多个，必须全部验证通过]
+     * Whether the current account has a specified role identifier [Specify multiple, all must pass verification]
      * 
-     * @param roles 角色标识数组
+     * @param roles Role identifier array
      */
     public static void checkRoleAnd(String... roles)
     {
@@ -105,9 +105,9 @@ public class AuthUtil
     }
 
     /**
-     * 当前账号是否含有指定角色标识 [指定多个，只要其一验证通过即可]
+     * Whether the current account has a specified role identifier [Specify multiple, only one needs to pass verification]
      * 
-     * @param roles 角色标识数组
+     * @param roles Role identifier array
      */
     public static void checkRoleOr(String... roles)
     {
@@ -115,10 +115,10 @@ public class AuthUtil
     }
 
     /**
-     * 当前账号是否含有指定权限, 返回true或false
+     * Whether the current account has a specified permission, return true or false
      * 
-     * @param permission 权限码
-     * @return 是否含有指定权限
+     * @param permission Permission code
+     * @return Whether it has the specified permission
      */
     public static boolean hasPermi(String permission)
     {
@@ -126,9 +126,9 @@ public class AuthUtil
     }
 
     /**
-     * 当前账号是否含有指定权限, 如果验证未通过，则抛出异常: NotPermissionException
+     * Whether the current account has a specified permission, if the verification fails, throw an exception: NotPermissionException
      * 
-     * @param permission 权限码
+     * @param permission Permission code
      */
     public static void checkPermi(String permission)
     {
@@ -136,9 +136,9 @@ public class AuthUtil
     }
 
     /**
-     * 根据注解传入参数鉴权, 如果验证未通过，则抛出异常: NotPermissionException
+     * Authorization based on annotation parameters, if the verification fails, throw an exception: NotPermissionException
      * 
-     * @param requiresPermissions 权限注解
+     * @param requiresPermissions Permission annotation
      */
     public static void checkPermi(RequiresPermissions requiresPermissions)
     {
@@ -146,9 +146,9 @@ public class AuthUtil
     }
 
     /**
-     * 当前账号是否含有指定权限 [指定多个，必须全部验证通过]
+     * Whether the current account has a specified permission [Specify multiple, all must pass verification]
      * 
-     * @param permissions 权限码数组
+     * @param permissions Permission code array
      */
     public static void checkPermiAnd(String... permissions)
     {
@@ -156,9 +156,9 @@ public class AuthUtil
     }
 
     /**
-     * 当前账号是否含有指定权限 [指定多个，只要其一验证通过即可]
+     * Whether the current account has a specified permission [Specify multiple, only one needs to pass verification]
      * 
-     * @param permissions 权限码数组
+     * @param permissions Permission code array
      */
     public static void checkPermiOr(String... permissions)
     {

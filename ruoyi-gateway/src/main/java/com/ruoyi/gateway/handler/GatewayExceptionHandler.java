@@ -13,7 +13,7 @@ import com.ruoyi.common.core.utils.ServletUtils;
 import reactor.core.publisher.Mono;
 
 /**
- * 网关统一异常处理
+ * Gateway unified exception handling
  *
  * @author ruoyi
  */
@@ -37,7 +37,7 @@ public class GatewayExceptionHandler implements ErrorWebExceptionHandler
 
         if (ex instanceof NotFoundException)
         {
-            msg = "服务未找到";
+            msg = "Service not found";
         }
         else if (ex instanceof ResponseStatusException)
         {
@@ -46,10 +46,10 @@ public class GatewayExceptionHandler implements ErrorWebExceptionHandler
         }
         else
         {
-            msg = "内部服务器错误";
+            msg = "Internal server error";
         }
 
-        log.error("[网关异常处理]请求路径:{},异常信息:{}", exchange.getRequest().getPath(), ex.getMessage());
+        log.error("[Gateway exception handling] Request path: {}, exception information: {}", exchange.getRequest().getPath(), ex.getMessage());
 
         return ServletUtils.webFluxResponseWriter(response, msg);
     }

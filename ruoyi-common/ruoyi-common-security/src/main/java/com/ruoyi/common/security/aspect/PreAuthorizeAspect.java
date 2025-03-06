@@ -13,7 +13,7 @@ import com.ruoyi.common.security.annotation.RequiresRoles;
 import com.ruoyi.common.security.auth.AuthUtil;
 
 /**
- * 基于 Spring Aop 的注解鉴权
+ * Annotation-based authorization using Spring AOP
  * 
  * @author kong
  */
@@ -22,21 +22,21 @@ import com.ruoyi.common.security.auth.AuthUtil;
 public class PreAuthorizeAspect
 {
     /**
-     * 构建
+     * Constructor
      */
     public PreAuthorizeAspect()
     {
     }
 
     /**
-     * 定义AOP签名 (切入所有使用鉴权注解的方法)
+     * Define AOP signature (intercept all methods using authorization annotations)
      */
     public static final String POINTCUT_SIGN = " @annotation(com.ruoyi.common.security.annotation.RequiresLogin) || "
             + "@annotation(com.ruoyi.common.security.annotation.RequiresPermissions) || "
             + "@annotation(com.ruoyi.common.security.annotation.RequiresRoles)";
 
     /**
-     * 声明AOP签名
+     * Declare AOP signature
      */
     @Pointcut(POINTCUT_SIGN)
     public void pointcut()
@@ -44,21 +44,21 @@ public class PreAuthorizeAspect
     }
 
     /**
-     * 环绕切入
+     * Around advice
      * 
-     * @param joinPoint 切面对象
-     * @return 底层方法执行后的返回值
-     * @throws Throwable 底层方法抛出的异常
+     * @param joinPoint Join point
+     * @return Return value after executing the underlying method
+     * @throws Throwable Exception thrown by the underlying method
      */
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable
     {
-        // 注解鉴权
+        // Annotation authorization
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         checkMethodAnnotation(signature.getMethod());
         try
         {
-            // 执行原有逻辑
+            // Execute original logic
             Object obj = joinPoint.proceed();
             return obj;
         }
@@ -69,25 +69,25 @@ public class PreAuthorizeAspect
     }
 
     /**
-     * 对一个Method对象进行注解检查
+     * Perform annotation check on a Method object
      */
     public void checkMethodAnnotation(Method method)
     {
-        // 校验 @RequiresLogin 注解
+        // Validate @RequiresLogin annotation
         RequiresLogin requiresLogin = method.getAnnotation(RequiresLogin.class);
         if (requiresLogin != null)
         {
             AuthUtil.checkLogin();
         }
 
-        // 校验 @RequiresRoles 注解
+        // Validate @RequiresRoles annotation
         RequiresRoles requiresRoles = method.getAnnotation(RequiresRoles.class);
         if (requiresRoles != null)
         {
             AuthUtil.checkRole(requiresRoles);
         }
 
-        // 校验 @RequiresPermissions 注解
+        // Validate @RequiresPermissions annotation
         RequiresPermissions requiresPermissions = method.getAnnotation(RequiresPermissions.class);
         if (requiresPermissions != null)
         {

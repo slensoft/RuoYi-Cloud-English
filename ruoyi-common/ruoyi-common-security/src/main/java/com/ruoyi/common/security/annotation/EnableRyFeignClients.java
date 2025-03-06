@@ -4,8 +4,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import java.lang.annotation.*;
 
 /**
- * 自定义feign注解
- * 添加basePackages路径
+ * Custom feign annotation
+ * Add basePackages path
  * 
  * @author ruoyi
  */

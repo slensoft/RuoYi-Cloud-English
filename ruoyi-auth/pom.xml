@@ -11,7 +11,7 @@
     <artifactId>ruoyi-auth</artifactId>
 	
     <description>
-        ruoyi-auth认证授权中心
+        ruoyi-auth authentication and authorization center
     </description>
     
     <dependencies>

@@ -12,7 +12,7 @@
     <artifactId>ruoyi-common-datasource</artifactId>
 
     <description>
-        ruoyi-common-datasource多数据源
+        ruoyi-common-datasource multiple data sources
     </description>
 
     <dependencies>

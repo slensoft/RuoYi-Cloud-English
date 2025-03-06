@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 
 /**
- * 文件上传异常类
+ * File Upload Exception Class
  * 
  * @author ruoyi
  */

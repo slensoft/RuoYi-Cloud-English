@@ -7,7 +7,7 @@ import com.ruoyi.common.core.annotation.Excel;
 import com.ruoyi.common.core.web.domain.BaseEntity;
 
 /**
- * 定时任务调度日志表 sys_job_log
+ * Scheduled task scheduling log table sys_job_log
  * 
  * @author ruoyi
  */
@@ -16,37 +16,37 @@ public class SysJobLog extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     /** ID */
-    @Excel(name = "日志序号")
+    @Excel(name = "Log ID")
     private Long jobLogId;
 
-    /** 任务名称 */
-    @Excel(name = "任务名称")
+    /** Task name */
+    @Excel(name = "Task name")
     private String jobName;
 
-    /** 任务组名 */
-    @Excel(name = "任务组名")
+    /** Task group name */
+    @Excel(name = "Task group name")
     private String jobGroup;
 
-    /** 调用目标字符串 */
-    @Excel(name = "调用目标字符串")
+    /** Invoke target string */
+    @Excel(name = "Invoke target string")
     private String invokeTarget;
 
-    /** 日志信息 */
-    @Excel(name = "日志信息")
+    /** Log information */
+    @Excel(name = "Log information")
     private String jobMessage;
 
-    /** 执行状态（0正常 1失败） */
-    @Excel(name = "执行状态", readConverterExp = "0=正常,1=失败")
+    /** Execution status (0 normal 1 failed) */
+    @Excel(name = "Execution status", readConverterExp = "0=normal,1=failed")
     private String status;
 
-    /** 异常信息 */
-    @Excel(name = "异常信息")
+    /** Exception information */
+    @Excel(name = "Exception information")
     private String exceptionInfo;
 
-    /** 开始时间 */
+    /** Start time */
     private Date startTime;
 
-    /** 停止时间 */
+    /** Stop time */
     private Date stopTime;
 
     public Long getJobLogId()

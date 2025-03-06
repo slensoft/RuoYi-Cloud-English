@@ -11,7 +11,7 @@
     <artifactId>ruoyi-visual-monitor</artifactId>
 
     <description>
-        ruoyi-visual-monitor监控中心
+        ruoyi-visual-monitor monitoring center
     </description>
 
     <dependencies>

@@ -26,7 +26,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * 跨站脚本过滤器
+ * Cross-Site Scripting (XSS) Filter
  *
  * @author ruoyi
  */
@@ -34,7 +34,7 @@ import reactor.core.publisher.Mono;
 @ConditionalOnProperty(value = "security.xss.enabled", havingValue = "true")
 public class XssFilter implements GlobalFilter, Ordered
 {
-    // 跨站脚本的 xss 配置，nacos自行添加
+    // Configuration for Cross-Site Scripting (XSS), added via Nacos
     @Autowired
     private XssProperties xss;
 
@@ -42,23 +42,23 @@ public class XssFilter implements GlobalFilter, Ordered
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain)
     {
         ServerHttpRequest request = exchange.getRequest();
-        // xss开关未开启 或 通过nacos关闭，不过滤
+        // If the XSS switch is not enabled or disabled via Nacos, do not filter
         if (!xss.getEnabled())
         {
             return chain.filter(exchange);
         }
-        // GET DELETE 不过滤
+        // Do not filter GET and DELETE requests
         HttpMethod method = request.getMethod();
         if (method == null || method == HttpMethod.GET || method == HttpMethod.DELETE)
         {
             return chain.filter(exchange);
         }
-        // 非json类型，不过滤
+        // Do not filter non-JSON requests
         if (!isJsonRequest(exchange))
         {
             return chain.filter(exchange);
         }
-        // excludeUrls 不过滤
+        // Do not filter requests to URLs in the excludeUrls list
         String url = request.getURI().getPath();
         if (StringUtils.matches(url, xss.getExcludeUrls()))
         {
@@ -84,9 +84,9 @@ public class XssFilter implements GlobalFilter, Ordered
                     join.read(content);
                     DataBufferUtils.release(join);
                     String bodyStr = new String(content, StandardCharsets.UTF_8);
-                    // 防xss攻击过滤
+                    // Filter to prevent XSS attacks
                     bodyStr = EscapeUtil.clean(bodyStr);
-                    // 转成字节
+                    // Convert to bytes
                     byte[] bytes = bodyStr.getBytes(StandardCharsets.UTF_8);
                     NettyDataBufferFactory nettyDataBufferFactory = new NettyDataBufferFactory(ByteBufAllocator.DEFAULT);
                     DataBuffer buffer = nettyDataBufferFactory.allocateBuffer(bytes.length);
@@ -100,7 +100,7 @@ public class XssFilter implements GlobalFilter, Ordered
             {
                 HttpHeaders httpHeaders = new HttpHeaders();
                 httpHeaders.putAll(super.getHeaders());
-                // 由于修改了请求体的body，导致content-length长度不确定，因此需要删除原先的content-length
+                // Since the request body has been modified, the content-length is uncertain, so the original content-length needs to be removed
                 httpHeaders.remove(HttpHeaders.CONTENT_LENGTH);
                 httpHeaders.set(HttpHeaders.TRANSFER_ENCODING, "chunked");
                 return httpHeaders;
@@ -111,9 +111,9 @@ public class XssFilter implements GlobalFilter, Ordered
     }
 
     /**
-     * 是否是Json请求
-     * 
-     * @param exchange HTTP请求
+     * Check if the request is a JSON request
+     *
+     * @param exchange HTTP request
      */
     public boolean isJsonRequest(ServerWebExchange exchange)
     {

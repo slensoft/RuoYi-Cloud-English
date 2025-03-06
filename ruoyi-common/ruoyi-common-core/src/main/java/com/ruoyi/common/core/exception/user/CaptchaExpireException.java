@@ -1,7 +1,7 @@
 package com.ruoyi.common.core.exception.user;
 
 /**
- * 验证码失效异常类
+ * Captcha Expiration Exception Class
  * 
  * @author ruoyi
  */

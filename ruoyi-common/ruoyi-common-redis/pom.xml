@@ -12,7 +12,7 @@
     <artifactId>ruoyi-common-redis</artifactId>
 	
     <description>
-        ruoyi-common-redis缓存服务
+        ruoyi-common-redis cache service
     </description>
 
     <dependencies>

@@ -12,7 +12,7 @@
     <artifactId>ruoyi-common-swagger</artifactId>
 	
     <description>
-        ruoyi-common-swagger系统接口
+        ruoyi-common-swagger system interface
     </description>
 
 	<dependencies>

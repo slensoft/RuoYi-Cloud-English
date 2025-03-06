@@ -12,7 +12,7 @@
     <artifactId>ruoyi-common-sensitive</artifactId>
 
     <description>
-        ruoyi-common-sensitive数据脱敏
+        ruoyi-common-sensitive data desensitization
     </description>
 
     <dependencies>

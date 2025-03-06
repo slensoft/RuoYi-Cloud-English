@@ -6,8 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Excel注解集
- * 
+ * Excel annotation set
+ *
  * @author ruoyi
  */
 @Target(ElementType.FIELD)

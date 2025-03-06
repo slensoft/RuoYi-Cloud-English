@@ -15,7 +15,7 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
 
 /**
- * Swagger 文档配置
+ * Swagger document configuration
  *
  * @author ruoyi
  */
@@ -28,7 +28,7 @@ public class SpringDocAutoConfiguration
     public OpenAPI openApi(SpringDocProperties properties)
     {
         return new OpenAPI().components(new Components()
-            // 设置认证的请求头
+            // Set the request header for authentication
             .addSecuritySchemes("apikey", securityScheme()))
             .addSecurityItem(new SecurityRequirement().addList("apikey"))
             .info(convertInfo(properties.getInfo()))

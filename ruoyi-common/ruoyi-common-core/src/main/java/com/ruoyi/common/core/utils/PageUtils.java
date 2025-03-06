@@ -6,14 +6,14 @@ import com.ruoyi.common.core.web.page.PageDomain;
 import com.ruoyi.common.core.web.page.TableSupport;
 
 /**
- * 分页工具类
+ * Pagination Utility Class
  * 
  * @author ruoyi
  */
 public class PageUtils extends PageHelper
 {
     /**
-     * 设置请求分页数据
+     * Set request pagination data
      */
     public static void startPage()
     {
@@ -26,7 +26,7 @@ public class PageUtils extends PageHelper
     }
 
     /**
-     * 清理分页的线程变量
+     * Clear pagination thread variables
      */
     public static void clearPage()
     {

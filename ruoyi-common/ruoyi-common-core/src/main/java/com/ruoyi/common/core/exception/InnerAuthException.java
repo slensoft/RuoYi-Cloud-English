@@ -1,7 +1,7 @@
 package com.ruoyi.common.core.exception;
 
 /**
- * 内部认证异常
+ * Internal Authentication Exception
  * 
  * @author ruoyi
  */

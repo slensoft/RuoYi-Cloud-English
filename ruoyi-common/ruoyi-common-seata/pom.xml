@@ -12,7 +12,7 @@
     <artifactId>ruoyi-common-seata</artifactId>
 
     <description>
-        ruoyi-common-seata分布式事务
+        ruoyi-common-seata distributed transaction
     </description>
 
     <dependencies>

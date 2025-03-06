@@ -7,19 +7,19 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * 文件类型工具类
+ * File Type Utility Class
  *
  * @author ruoyi
  */
 public class FileTypeUtils
 {
     /**
-     * 获取文件类型
+     * Get file type
      * <p>
-     * 例如: ruoyi.txt, 返回: txt
+     * Example: ruoyi.txt, returns: txt
      * 
-     * @param file 文件名
-     * @return 后缀（不含".")
+     * @param file filename
+     * @return suffix (without ".")
      */
     public static String getFileType(File file)
     {
@@ -31,12 +31,12 @@ public class FileTypeUtils
     }
 
     /**
-     * 获取文件类型
+     * Get file type
      * <p>
-     * 例如: ruoyi.txt, 返回: txt
+     * Example: ruoyi.txt, returns: txt
      *
-     * @param fileName 文件名
-     * @return 后缀（不含".")
+     * @param fileName filename
+     * @return suffix (without ".")
      */
     public static String getFileType(String fileName)
     {
@@ -49,10 +49,10 @@ public class FileTypeUtils
     }
 
     /**
-     * 获取文件名的后缀
+     * Get file extension
      * 
-     * @param file 表单文件
-     * @return 后缀名
+     * @param file form file
+     * @return extension name
      */
     public static final String getExtension(MultipartFile file)
     {
@@ -65,10 +65,10 @@ public class FileTypeUtils
     }
 
     /**
-     * 获取文件类型
+     * Get file type
      * 
-     * @param photoByte 文件字节码
-     * @return 后缀（不含".")
+     * @param photoByte file bytes
+     * @return suffix (without ".")
      */
     public static String getFileExtendName(byte[] photoByte)
     {

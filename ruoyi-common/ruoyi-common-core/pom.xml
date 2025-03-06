@@ -10,9 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ruoyi-common-core</artifactId>
-    
+
     <description>
-        ruoyi-common-core核心模块
+        ruoyi-common-core core module
     </description>
 
     <dependencies>
@@ -22,7 +22,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-        
+
         <!-- SpringCloud Loadbalancer -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -95,7 +95,7 @@
             <artifactId>commons-io</artifactId>
         </dependency>
 
-        <!-- excel工具 -->
+        <!-- excel -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>

@@ -7,7 +7,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * XSS跨站脚本配置
+ * XSS cross-site scripting configuration
  * 
  * @author ruoyi
  */
@@ -17,12 +17,12 @@ import org.springframework.context.annotation.Configuration;
 public class XssProperties
 {
     /**
-     * Xss开关
+     * Xss switch
      */
     private Boolean enabled;
 
     /**
-     * 排除路径
+     * Exclude paths
      */
     private List<String> excludeUrls = new ArrayList<>();
 

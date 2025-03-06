@@ -12,7 +12,7 @@
     <artifactId>ruoyi-modules-gen</artifactId>
 
     <description>
-        ruoyi-modules-gen代码生成
+        ruoyi-modules-gen code generation
     </description>
 
     <dependencies>

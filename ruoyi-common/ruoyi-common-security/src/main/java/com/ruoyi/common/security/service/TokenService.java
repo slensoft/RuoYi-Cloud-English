@@ -20,8 +20,8 @@ import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.system.api.model.LoginUser;
 
 /**
- * token验证处理
- * 
+ * Token verification processing
+ *
  * @author ruoyi
  */
 @Component
@@ -43,7 +43,7 @@ public class TokenService
     private final static Long TOKEN_REFRESH_THRESHOLD_MINUTES = CacheConstants.REFRESH_TIME * MILLIS_MINUTE;
 
     /**
-     * 创建令牌
+     * Create token
      */
     public Map<String, Object> createToken(LoginUser loginUser)
     {
@@ -56,13 +56,13 @@ public class TokenService
         loginUser.setIpaddr(IpUtils.getIpAddr());
         refreshToken(loginUser);
 
-        // Jwt存储信息
+        // Jwt storage information
         Map<String, Object> claimsMap = new HashMap<String, Object>();
         claimsMap.put(SecurityConstants.USER_KEY, token);
         claimsMap.put(SecurityConstants.DETAILS_USER_ID, userId);
         claimsMap.put(SecurityConstants.DETAILS_USERNAME, userName);
 
-        // 接口返回信息
+        // Interface return information
         Map<String, Object> rspMap = new HashMap<String, Object>();
         rspMap.put("access_token", JwtUtils.createToken(claimsMap));
         rspMap.put("expires_in", TOKEN_EXPIRE_TIME);
@@ -70,9 +70,9 @@ public class TokenService
     }
 
     /**
-     * 获取用户身份信息
+     * Get user identity information
      *
-     * @return 用户信息
+     * @return User information
      */
     public LoginUser getLoginUser()
     {
@@ -80,21 +80,21 @@ public class TokenService
     }
 
     /**
-     * 获取用户身份信息
+     * Get user identity information
      *
-     * @return 用户信息
+     * @return User information
      */
     public LoginUser getLoginUser(HttpServletRequest request)
     {
-        // 获取请求携带的令牌
+        // Get the token carried by the request
         String token = SecurityUtils.getToken(request);
         return getLoginUser(token);
     }
 
     /**
-     * 获取用户身份信息
+     * Get user identity information
      *
-     * @return 用户信息
+     * @return User information
      */
     public LoginUser getLoginUser(String token)
     {
@@ -110,13 +110,13 @@ public class TokenService
         }
         catch (Exception e)
         {
-            log.error("获取用户信息异常'{}'", e.getMessage());
+            log.error("Error getting user information '{}'", e.getMessage());
         }
         return user;
     }
 
     /**
-     * 设置用户身份信息
+     * Set user identity information
      */
     public void setLoginUser(LoginUser loginUser)
     {
@@ -127,7 +127,7 @@ public class TokenService
     }
 
     /**
-     * 删除用户缓存信息
+     * Delete user cache information
      */
     public void delLoginUser(String token)
     {
@@ -139,7 +139,7 @@ public class TokenService
     }
 
     /**
-     * 验证令牌有效期，相差不足120分钟，自动刷新缓存
+     * Verify token validity period, if the difference is less than 120 minutes, automatically refresh the cache
      *
      * @param loginUser
      */
@@ -154,15 +154,15 @@ public class TokenService
     }
 
     /**
-     * 刷新令牌有效期
+     * Refresh token validity period
      *
-     * @param loginUser 登录信息
+     * @param loginUser Login information
      */
     public void refreshToken(LoginUser loginUser)
     {
         loginUser.setLoginTime(System.currentTimeMillis());
         loginUser.setExpireTime(loginUser.getLoginTime() + TOKEN_EXPIRE_TIME * MILLIS_MINUTE);
-        // 根据uuid将loginUser缓存
+        // Cache loginUser based on uuid
         String userKey = getTokenKey(loginUser.getToken());
         redisService.setCacheObject(userKey, loginUser, TOKEN_EXPIRE_TIME, TimeUnit.MINUTES);
     }

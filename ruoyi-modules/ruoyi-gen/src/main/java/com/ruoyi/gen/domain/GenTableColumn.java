@@ -5,7 +5,7 @@ import com.ruoyi.common.core.utils.StringUtils;
 import com.ruoyi.common.core.web.domain.BaseEntity;
 
 /**
- * 代码生成业务字段表 gen_table_column
+ * Code generation business field table gen_table_column
  * 
  * @author ruoyi
  */
@@ -13,59 +13,59 @@ public class GenTableColumn extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 编号 */
+    /** ID */
     private Long columnId;
 
-    /** 归属表编号 */
+    /** Belonging table ID */
     private Long tableId;
 
-    /** 列名称 */
+    /** Column name */
     private String columnName;
 
-    /** 列描述 */
+    /** Column description */
     private String columnComment;
 
-    /** 列类型 */
+    /** Column type */
     private String columnType;
 
-    /** JAVA类型 */
+    /** JAVA type */
     private String javaType;
 
-    /** JAVA字段名 */
-    @NotBlank(message = "Java属性不能为空")
+    /** JAVA field name */
+    @NotBlank(message = "Java attribute cannot be empty")
     private String javaField;
 
-    /** 是否主键（1是） */
+    /** Is primary key (1 is) */
     private String isPk;
 
-    /** 是否自增（1是） */
+    /** Is auto-increment (1 is) */
     private String isIncrement;
 
-    /** 是否必填（1是） */
+    /** Is required (1 is) */
     private String isRequired;
 
-    /** 是否为插入字段（1是） */
+    /** Is insert field (1 is) */
     private String isInsert;
 
-    /** 是否编辑字段（1是） */
+    /** Is edit field (1 is) */
     private String isEdit;
 
-    /** 是否列表字段（1是） */
+    /** Is list field (1 is) */
     private String isList;
 
-    /** 是否查询字段（1是） */
+    /** Is query field (1 is) */
     private String isQuery;
 
-    /** 查询方式（EQ等于、NE不等于、GT大于、LT小于、LIKE模糊、BETWEEN范围） */
+    /** Query type (EQ equals, NE not equals, GT greater than, LT less than, LIKE fuzzy, BETWEEN range) */
     private String queryType;
 
-    /** 显示类型（input文本框、textarea文本域、select下拉框、checkbox复选框、radio单选框、datetime日期控件、image图片上传控件、upload文件上传控件、editor富文本控件） */
+    /** Display type (input text box, textarea text area, select drop-down box, checkbox check box, radio single selection box, datetime date control, image picture upload control, upload file upload control, editor rich text control) */
     private String htmlType;
 
-    /** 字典类型 */
+    /** Dictionary type */
     private String dictType;
 
-    /** 排序 */
+    /** Sort */
     private Integer sort;
 
     public void setColumnId(Long columnId)
@@ -344,7 +344,7 @@ public class GenTableColumn extends BaseEntity
 
     public static boolean isUsableColumn(String javaField)
     {
-        // isSuperColumn()中的名单用于避免生成多余Domain属性，若某些属性在生成页面时需要用到不能忽略，则放在此处白名单
+        // The list in isSuperColumn() is used to avoid generating redundant Domain properties. If certain properties need to be used when generating pages and cannot be ignored, put them in this whitelist
         return StringUtils.equalsAnyIgnoreCase(javaField, "parentId", "orderNum", "remark");
     }
 

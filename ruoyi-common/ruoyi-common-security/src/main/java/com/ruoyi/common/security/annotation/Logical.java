@@ -1,7 +1,7 @@
 package com.ruoyi.common.security.annotation;
 
 /**
- * 权限注解的验证模式
+ * Verification mode for permission annotations
  * 
  * @author ruoyi
  *
@@ -9,12 +9,12 @@ package com.ruoyi.common.security.annotation;
 public enum Logical
 {
     /**
-     * 必须具有所有的元素
+     * Must have all elements
      */
     AND,
 
     /**
-     * 只需具有其中一个元素
+     * Only need to have one of the elements
      */
     OR
 }

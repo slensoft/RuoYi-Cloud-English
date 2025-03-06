@@ -11,7 +11,7 @@
     <artifactId>ruoyi-gateway</artifactId>
 
     <description>
-        ruoyi-gateway网关模块
+        ruoyi-gateway gateway module
     </description>
 
     <dependencies>
@@ -57,14 +57,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        
+
         <!-- SpringCloud Loadbalancer -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-loadbalancer</artifactId>
         </dependency>
 
-        <!--验证码 -->
+        <!--Verification Code -->
         <dependency>
             <groupId>pro.fessional</groupId>
             <artifactId>kaptcha</artifactId>

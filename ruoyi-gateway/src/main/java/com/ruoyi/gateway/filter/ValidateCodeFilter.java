@@ -19,7 +19,7 @@ import com.ruoyi.gateway.service.ValidateCodeService;
 import reactor.core.publisher.Flux;
 
 /**
- * 验证码过滤器
+ * Captcha filter
  *
  * @author ruoyi
  */
@@ -44,7 +44,7 @@ public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object>
         return (exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
 
-            // 非登录/注册请求或验证码关闭，不处理
+            // Non-login/registration request or captcha closed, do not process
             if (!StringUtils.equalsAnyIgnoreCase(request.getURI().getPath(), VALIDATE_URL) || !captchaProperties.getEnabled())
             {
                 return chain.filter(exchange);
@@ -66,7 +66,7 @@ public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object>
 
     private String resolveBodyFromRequest(ServerHttpRequest serverHttpRequest)
     {
-        // 获取请求体
+        // Get request body
         Flux<DataBuffer> body = serverHttpRequest.getBody();
         AtomicReference<String> bodyRef = new AtomicReference<>();
         body.subscribe(buffer -> {

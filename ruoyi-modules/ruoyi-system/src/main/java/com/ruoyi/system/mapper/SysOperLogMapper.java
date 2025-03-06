@@ -4,45 +4,45 @@ import java.util.List;
 import com.ruoyi.system.api.domain.SysOperLog;
 
 /**
- * 操作日志 数据层
+ * Operation Log Data Layer
  * 
  * @author ruoyi
  */
 public interface SysOperLogMapper
 {
     /**
-     * 新增操作日志
+     * Add operation log
      * 
-     * @param operLog 操作日志对象
+     * @param operLog Operation log object
      */
     public int insertOperlog(SysOperLog operLog);
 
     /**
-     * 查询系统操作日志集合
+     * Query system operation log collection
      * 
-     * @param operLog 操作日志对象
-     * @return 操作日志集合
+     * @param operLog Operation log object
+     * @return Operation log collection
      */
     public List<SysOperLog> selectOperLogList(SysOperLog operLog);
 
     /**
-     * 批量删除系统操作日志
+     * Batch delete system operation logs
      * 
-     * @param operIds 需要删除的操作日志ID
-     * @return 结果
+     * @param operIds Operation log IDs to be deleted
+     * @return Result
      */
     public int deleteOperLogByIds(Long[] operIds);
 
     /**
-     * 查询操作日志详细
+     * Query operation log details
      * 
-     * @param operId 操作ID
-     * @return 操作日志对象
+     * @param operId Operation ID
+     * @return Operation log object
      */
     public SysOperLog selectOperLogById(Long operId);
 
     /**
-     * 清空操作日志
+     * Clear operation log
      */
     public void cleanOperLog();
 }

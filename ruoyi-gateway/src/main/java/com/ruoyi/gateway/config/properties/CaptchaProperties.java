@@ -5,7 +5,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 验证码配置
+ * Captcha configuration
  * 
  * @author ruoyi
  */
@@ -15,12 +15,12 @@ import org.springframework.context.annotation.Configuration;
 public class CaptchaProperties
 {
     /**
-     * 验证码开关
+     * Captcha switch
      */
     private Boolean enabled;
 
     /**
-     * 验证码类型（math 数组计算 char 字符）
+     * Captcha type (math array calculation char character)
      */
     private String type;
 

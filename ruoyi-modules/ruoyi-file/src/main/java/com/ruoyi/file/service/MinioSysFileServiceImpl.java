@@ -11,7 +11,7 @@ import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
 
 /**
- * Minio 文件存储
+ * Minio file storage
  *
  * @author ruoyi
  */
@@ -25,10 +25,10 @@ public class MinioSysFileServiceImpl implements ISysFileService
     private MinioClient client;
 
     /**
-     * Minio文件上传接口
+     * Minio file upload interface
      *
-     * @param file 上传的文件
-     * @return 访问地址
+     * @param file Uploaded file
+     * @return Access address
      * @throws Exception
      */
     @Override

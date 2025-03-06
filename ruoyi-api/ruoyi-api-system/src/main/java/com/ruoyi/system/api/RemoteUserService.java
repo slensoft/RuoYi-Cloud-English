@@ -15,39 +15,39 @@ import com.ruoyi.system.api.factory.RemoteUserFallbackFactory;
 import com.ruoyi.system.api.model.LoginUser;
 
 /**
- * 用户服务
- * 
+ * User service
+ *
  * @author ruoyi
  */
 @FeignClient(contextId = "remoteUserService", value = ServiceNameConstants.SYSTEM_SERVICE, fallbackFactory = RemoteUserFallbackFactory.class)
 public interface RemoteUserService
 {
     /**
-     * 通过用户名查询用户信息
+     * Query user information by username
      *
-     * @param username 用户名
-     * @param source 请求来源
-     * @return 结果
+     * @param username Username
+     * @param source Request source
+     * @return Result
      */
     @GetMapping("/user/info/{username}")
     public R<LoginUser> getUserInfo(@PathVariable("username") String username, @RequestHeader(SecurityConstants.FROM_SOURCE) String source);
 
     /**
-     * 注册用户信息
+     * Register user information
      *
-     * @param sysUser 用户信息
-     * @param source 请求来源
-     * @return 结果
+     * @param sysUser User information
+     * @param source Request source
+     * @return Result
      */
     @PostMapping("/user/register")
     public R<Boolean> registerUserInfo(@RequestBody SysUser sysUser, @RequestHeader(SecurityConstants.FROM_SOURCE) String source);
 
     /**
-     * 记录用户登录IP地址和登录时间
+     * Record user login IP address and login time
      *
-     * @param sysUser 用户信息
-     * @param source 请求来源
-     * @return 结果
+     * @param sysUser User information
+     * @param source Request source
+     * @return Result
      */
     @PutMapping("/user/recordlogin")
     public R<Boolean> recordUserLogin(@RequestBody SysUser sysUser, @RequestHeader(SecurityConstants.FROM_SOURCE) String source);

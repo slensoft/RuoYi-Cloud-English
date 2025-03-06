@@ -8,7 +8,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 /**
- * 监控权限配置
+ * Monitoring permission configuration
  * 
  * @author ruoyi
  */

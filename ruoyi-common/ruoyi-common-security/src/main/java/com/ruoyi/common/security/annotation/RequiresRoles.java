@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 角色认证：必须具有指定角色标识才能进入该方法
+ * Role authentication: Must have specified role identifier to access this method
  * 
  * @author ruoyi
  */
@@ -15,12 +15,12 @@ import java.lang.annotation.Target;
 public @interface RequiresRoles
 {
     /**
-     * 需要校验的角色标识
+     * Role identifiers to be verified
      */
     String[] value() default {};
 
     /**
-     * 验证逻辑：AND | OR，默认AND
+     * Verification logic: AND | OR, default is AND
      */
     Logical logical() default Logical.AND;
 }

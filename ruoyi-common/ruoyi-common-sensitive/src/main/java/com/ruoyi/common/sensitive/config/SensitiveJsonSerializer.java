@@ -14,7 +14,7 @@ import com.ruoyi.common.sensitive.annotation.Sensitive;
 import com.ruoyi.common.sensitive.enums.DesensitizedType;
 
 /**
- * 数据脱敏序列化过滤
+ * Data desensitization serialization filter
  *
  * @author ruoyi
  */
@@ -49,14 +49,14 @@ public class SensitiveJsonSerializer extends JsonSerializer<String> implements C
     }
 
     /**
-     * 是否需要脱敏处理
+     * Whether desensitization is needed
      */
     private boolean desensitization()
     {
         try
         {
             Long userId = SecurityContextHolder.getUserId();
-            // 管理员不脱敏
+            // Administrators are not desensitized
             return !UserConstants.isAdmin(userId);
         }
         catch (Exception e)

@@ -5,91 +5,91 @@ import org.apache.ibatis.annotations.Param;
 import com.ruoyi.system.api.domain.SysDictData;
 
 /**
- * 字典表 数据层
+ * Dictionary Table Data Layer
  * 
  * @author ruoyi
  */
 public interface SysDictDataMapper
 {
     /**
-     * 根据条件分页查询字典数据
+     * Query dictionary data by condition with pagination
      * 
-     * @param dictData 字典数据信息
-     * @return 字典数据集合信息
+     * @param dictData Dictionary data information
+     * @return Dictionary data collection information
      */
     public List<SysDictData> selectDictDataList(SysDictData dictData);
 
     /**
-     * 根据字典类型查询字典数据
+     * Query dictionary data by dictionary type
      * 
-     * @param dictType 字典类型
-     * @return 字典数据集合信息
+     * @param dictType Dictionary type
+     * @return Dictionary data collection information
      */
     public List<SysDictData> selectDictDataByType(String dictType);
 
     /**
-     * 根据字典类型和字典键值查询字典数据信息
+     * Query dictionary data information by dictionary type and dictionary value
      * 
-     * @param dictType 字典类型
-     * @param dictValue 字典键值
-     * @return 字典标签
+     * @param dictType Dictionary type
+     * @param dictValue Dictionary value
+     * @return Dictionary label
      */
     public String selectDictLabel(@Param("dictType") String dictType, @Param("dictValue") String dictValue);
 
     /**
-     * 根据字典数据ID查询信息
+     * Query information by dictionary data ID
      * 
-     * @param dictCode 字典数据ID
-     * @return 字典数据
+     * @param dictCode Dictionary data ID
+     * @return Dictionary data
      */
     public SysDictData selectDictDataById(Long dictCode);
 
     /**
-     * 查询字典数据
+     * Query dictionary data
      * 
-     * @param dictType 字典类型
-     * @return 字典数据
+     * @param dictType Dictionary type
+     * @return Dictionary data
      */
     public int countDictDataByType(String dictType);
 
     /**
-     * 通过字典ID删除字典数据信息
+     * Delete dictionary data information by dictionary ID
      * 
-     * @param dictCode 字典数据ID
-     * @return 结果
+     * @param dictCode Dictionary data ID
+     * @return Result
      */
     public int deleteDictDataById(Long dictCode);
 
     /**
-     * 批量删除字典数据信息
+     * Batch delete dictionary data information
      * 
-     * @param dictCodes 需要删除的字典数据ID
-     * @return 结果
+     * @param dictCodes Dictionary data IDs to be deleted
+     * @return Result
      */
     public int deleteDictDataByIds(Long[] dictCodes);
 
     /**
-     * 新增字典数据信息
+     * Add dictionary data information
      * 
-     * @param dictData 字典数据信息
-     * @return 结果
+     * @param dictData Dictionary data information
+     * @return Result
      */
     public int insertDictData(SysDictData dictData);
 
     /**
-     * 修改字典数据信息
+     * Modify dictionary data information
      * 
-     * @param dictData 字典数据信息
-     * @return 结果
+     * @param dictData Dictionary data information
+     * @return Result
      */
     public int updateDictData(SysDictData dictData);
 
     /**
-     * 同步修改字典类型
+     * Synchronously modify dictionary type
      * 
-     * @param oldDictType 旧字典类型
-     * @param newDictType 新旧字典类型
-     * @return 结果
+     * @param oldDictType Old dictionary type
+     * @param newDictType New dictionary type
+     * @return Result
      */
     public int updateDictDataType(@Param("oldDictType") String oldDictType, @Param("newDictType") String newDictType);
 }

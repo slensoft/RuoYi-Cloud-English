@@ -12,29 +12,29 @@ import com.ruoyi.system.api.domain.SysOperLog;
 import com.ruoyi.system.api.factory.RemoteLogFallbackFactory;
 
 /**
- * 日志服务
- * 
+ * Log service
+ *
  * @author ruoyi
  */
 @FeignClient(contextId = "remoteLogService", value = ServiceNameConstants.SYSTEM_SERVICE, fallbackFactory = RemoteLogFallbackFactory.class)
 public interface RemoteLogService
 {
     /**
-     * 保存系统日志
+     * Save system log
      *
-     * @param sysOperLog 日志实体
-     * @param source 请求来源
-     * @return 结果
+     * @param sysOperLog Log entity
+     * @param source Request source
+     * @return Result
      */
     @PostMapping("/operlog")
     public R<Boolean> saveLog(@RequestBody SysOperLog sysOperLog, @RequestHeader(SecurityConstants.FROM_SOURCE) String source) throws Exception;
 
     /**
-     * 保存访问记录
+     * Save access record
      *
-     * @param sysLogininfor 访问实体
-     * @param source 请求来源
-     * @return 结果
+     * @param sysLogininfor Access entity
+     * @param source Request source
+     * @return Result
      */
     @PostMapping("/logininfor")
     public R<Boolean> saveLogininfor(@RequestBody SysLogininfor sysLogininfor, @RequestHeader(SecurityConstants.FROM_SOURCE) String source);

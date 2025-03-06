@@ -21,7 +21,7 @@ import com.ruoyi.gateway.config.properties.CaptchaProperties;
 import com.ruoyi.gateway.service.ValidateCodeService;
 
 /**
- * 验证码实现处理
+ * Captcha implementation processing
  *
  * @author ruoyi
  */
@@ -41,20 +41,20 @@ public class ValidateCodeServiceImpl implements ValidateCodeService
     private CaptchaProperties captchaProperties;
 
     /**
-     * 生成验证码
+     * Generate captcha
      */
     @Override
     public AjaxResult createCaptcha() throws IOException, CaptchaException
     {
         AjaxResult ajax = AjaxResult.success();
-        boolean captchaEnabled = captchaProperties.getEnabled();
-        ajax.put("captchaEnabled", captchaEnabled);
-        if (!captchaEnabled)
+        boolean captchaOnOff = captchaProperties.getEnabled();
+        ajax.put("captchaOnOff", captchaOnOff);
+        if (!captchaOnOff)
         {
             return ajax;
         }
 
-        // 保存验证码信息
+        // Save captcha information
         String uuid = IdUtils.simpleUUID();
         String verifyKey = CacheConstants.CAPTCHA_CODE_KEY + uuid;
 
@@ -62,7 +62,7 @@ public class ValidateCodeServiceImpl implements ValidateCodeService
         BufferedImage image = null;
 
         String captchaType = captchaProperties.getType();
-        // 生成验证码
+        // Generate captcha
         if ("math".equals(captchaType))
         {
             String capText = captchaProducerMath.createText();
@@ -77,7 +77,7 @@ public class ValidateCodeServiceImpl implements ValidateCodeService
         }
 
         redisService.setCacheObject(verifyKey, code, Constants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);
-        // 转换流信息写出
+        // Convert stream information to output
         FastByteArrayOutputStream os = new FastByteArrayOutputStream();
         try
         {
@@ -94,25 +94,25 @@ public class ValidateCodeServiceImpl implements ValidateCodeService
     }
 
     /**
-     * 校验验证码
+     * Verify captcha
      */
     @Override
     public void checkCaptcha(String code, String uuid) throws CaptchaException
     {
         if (StringUtils.isEmpty(code))
         {
-            throw new CaptchaException("验证码不能为空");
+            throw new CaptchaException("Captcha cannot be empty");
         }
         String verifyKey = CacheConstants.CAPTCHA_CODE_KEY + StringUtils.nvl(uuid, "");
         String captcha = redisService.getCacheObject(verifyKey);
         if (captcha == null)
         {
-            throw new CaptchaException("验证码已失效");
+            throw new CaptchaException("Captcha has expired");
         }
         redisService.deleteObject(verifyKey);
         if (!code.equalsIgnoreCase(captcha))
         {
-            throw new CaptchaException("验证码错误");
+            throw new CaptchaException("Captcha error");
         }
     }
 }

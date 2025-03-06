@@ -6,7 +6,7 @@ import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.License;
 
 /**
- * Swagger 配置属性
+ * Swagger configuration properties
  *
  * @author ruoyi
  */
@@ -14,51 +14,50 @@ import io.swagger.v3.oas.models.info.License;
 public class SpringDocProperties
 {
     /**
-     * 网关
+     * Gateway
      */
     private String gatewayUrl;
 
     /**
-     * 文档基本信息
+     * Basic information of the document
      */
     @NestedConfigurationProperty
     private InfoProperties info = new InfoProperties();
 
     /**
      * <p>
-     * 文档的基础属性信息
+     * Basic attribute information of the document
      * </p>
-     *
      * @see io.swagger.v3.oas.models.info.Info
      *
-     * 为了 springboot 自动生产配置提示信息，所以这里复制一个类出来
+     * To automatically generate configuration prompt information for Spring Boot, a class is copied here
      */
     public static class InfoProperties
     {
         /**
-         * 标题
+         * Title
          */
         private String title = null;
 
         /**
-         * 描述
+         * Description
          */
         private String description = null;
 
         /**
-         * 联系人信息
+         * Contact information
          */
         @NestedConfigurationProperty
         private Contact contact = null;
 
         /**
-         * 许可证
+         * License
          */
         @NestedConfigurationProperty
         private License license = null;
 
         /**
-         * 版本
+         * Version
          */
         private String version = null;
 

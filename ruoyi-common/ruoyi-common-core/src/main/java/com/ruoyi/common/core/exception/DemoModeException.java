@@ -1,8 +1,8 @@
 package com.ruoyi.common.core.exception;
 
 /**
- * 演示模式异常
- * 
+ * Demo mode exception
+ *
  * @author ruoyi
  */
 public class DemoModeException extends RuntimeException

@@ -20,7 +20,7 @@ import com.ruoyi.job.domain.SysJobLog;
 import com.ruoyi.job.service.ISysJobLogService;
 
 /**
- * 调度日志操作处理
+ * Scheduling log operation processing
  * 
  * @author ruoyi
  */
@@ -32,7 +32,7 @@ public class SysJobLogController extends BaseController
     private ISysJobLogService jobLogService;
 
     /**
-     * 查询定时任务调度日志列表
+     * Query scheduled task scheduling log list
      */
     @RequiresPermissions("monitor:job:list")
     @GetMapping("/list")
@@ -44,20 +44,20 @@ public class SysJobLogController extends BaseController
     }
 
     /**
-     * 导出定时任务调度日志列表
+     * Export scheduled task scheduling log list
      */
     @RequiresPermissions("monitor:job:export")
-    @Log(title = "任务调度日志", businessType = BusinessType.EXPORT)
+    @Log(title = "Task scheduling log", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, SysJobLog sysJobLog)
     {
         List<SysJobLog> list = jobLogService.selectJobLogList(sysJobLog);
         ExcelUtil<SysJobLog> util = new ExcelUtil<SysJobLog>(SysJobLog.class);
-        util.exportExcel(response, list, "调度日志");
+        util.exportExcel(response, list, "Scheduling log");
     }
 
     /**
-     * 根据调度编号获取详细信息
+     * Get detailed information based on scheduling number
      */
     @RequiresPermissions("monitor:job:query")
     @GetMapping(value = "/{jobLogId}")
@@ -67,10 +67,10 @@ public class SysJobLogController extends BaseController
     }
 
     /**
-     * 删除定时任务调度日志
+     * Delete scheduled task scheduling log
      */
     @RequiresPermissions("monitor:job:remove")
-    @Log(title = "定时任务调度日志", businessType = BusinessType.DELETE)
+    @Log(title = "Scheduled task scheduling log", businessType = BusinessType.DELETE)
     @DeleteMapping("/{jobLogIds}")
     public AjaxResult remove(@PathVariable Long[] jobLogIds)
     {
@@ -78,10 +78,10 @@ public class SysJobLogController extends BaseController
     }
 
     /**
-     * 清空定时任务调度日志
+     * Clear scheduled task scheduling log
      */
     @RequiresPermissions("monitor:job:remove")
-    @Log(title = "调度日志", businessType = BusinessType.CLEAN)
+    @Log(title = "Scheduling log", businessType = BusinessType.CLEAN)
     @DeleteMapping("/clean")
     public AjaxResult clean()
     {

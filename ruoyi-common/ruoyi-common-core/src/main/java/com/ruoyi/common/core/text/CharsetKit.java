@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import com.ruoyi.common.core.utils.StringUtils;
 
 /**
- * 字符集工具类
+ * Character Set Utility Class
  * 
  * @author ruoyi
  */
@@ -26,9 +26,9 @@ public class CharsetKit
     public static final Charset CHARSET_GBK = Charset.forName(GBK);
 
     /**
-     * 转换为Charset对象
+     * Convert to Charset object
      * 
-     * @param charset 字符集，为空则返回默认字符集
+     * @param charset Character set, returns default charset if empty
      * @return Charset
      */
     public static Charset charset(String charset)
@@ -37,12 +37,12 @@ public class CharsetKit
     }
 
     /**
-     * 转换字符串的字符集编码
+     * Convert character set encoding of string
      * 
-     * @param source 字符串
-     * @param srcCharset 源字符集，默认ISO-8859-1
-     * @param destCharset 目标字符集，默认UTF-8
-     * @return 转换后的字符集
+     * @param source String
+     * @param srcCharset Source character set, default ISO-8859-1
+     * @param destCharset Target character set, default UTF-8
+     * @return Converted character set
      */
     public static String convert(String source, String srcCharset, String destCharset)
     {
@@ -50,12 +50,12 @@ public class CharsetKit
     }
 
     /**
-     * 转换字符串的字符集编码
+     * Convert character set encoding of string
      * 
-     * @param source 字符串
-     * @param srcCharset 源字符集，默认ISO-8859-1
-     * @param destCharset 目标字符集，默认UTF-8
-     * @return 转换后的字符集
+     * @param source String
+     * @param srcCharset Source character set, default ISO-8859-1
+     * @param destCharset Target character set, default UTF-8
+     * @return Converted character set
      */
     public static String convert(String source, Charset srcCharset, Charset destCharset)
     {
@@ -77,7 +77,7 @@ public class CharsetKit
     }
 
     /**
-     * @return 系统字符集编码
+     * @return System character set encoding
      */
     public static String systemCharset()
     {

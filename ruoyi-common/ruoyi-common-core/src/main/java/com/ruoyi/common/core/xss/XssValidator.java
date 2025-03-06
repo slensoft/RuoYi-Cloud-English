@@ -7,7 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 import com.ruoyi.common.core.utils.StringUtils;
 
 /**
- * 自定义xss校验注解实现
+ * Custom XSS validation annotation implementation
  * 
  * @author ruoyi
  */

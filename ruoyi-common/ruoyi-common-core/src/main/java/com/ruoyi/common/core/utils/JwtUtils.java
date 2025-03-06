@@ -9,7 +9,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 /**
- * Jwt工具类
+ * JWT Utility Class
  *
  * @author ruoyi
  */
@@ -18,10 +18,10 @@ public class JwtUtils
     public static String secret = TokenConstants.SECRET;
 
     /**
-     * 从数据声明生成令牌
+     * Generate token from claims data
      *
-     * @param claims 数据声明
-     * @return 令牌
+     * @param claims claims data
+     * @return token
      */
     public static String createToken(Map<String, Object> claims)
     {
@@ -30,10 +30,10 @@ public class JwtUtils
     }
 
     /**
-     * 从令牌中获取数据声明
+     * Get claims data from token
      *
-     * @param token 令牌
-     * @return 数据声明
+     * @param token token
+     * @return claims data
      */
     public static Claims parseToken(String token)
     {
@@ -41,10 +41,10 @@ public class JwtUtils
     }
 
     /**
-     * 根据令牌获取用户标识
+     * Get user identifier from token
      * 
-     * @param token 令牌
-     * @return 用户ID
+     * @param token token
+     * @return user ID
      */
     public static String getUserKey(String token)
     {
@@ -53,10 +53,10 @@ public class JwtUtils
     }
 
     /**
-     * 根据令牌获取用户标识
+     * Get user identifier from claims
      * 
-     * @param claims 身份信息
-     * @return 用户ID
+     * @param claims identity information
+     * @return user ID
      */
     public static String getUserKey(Claims claims)
     {
@@ -64,10 +64,10 @@ public class JwtUtils
     }
 
     /**
-     * 根据令牌获取用户ID
+     * Get user ID from token
      * 
-     * @param token 令牌
-     * @return 用户ID
+     * @param token token
+     * @return user ID
      */
     public static String getUserId(String token)
     {
@@ -76,10 +76,10 @@ public class JwtUtils
     }
 
     /**
-     * 根据身份信息获取用户ID
+     * Get user ID from claims
      * 
-     * @param claims 身份信息
-     * @return 用户ID
+     * @param claims identity information
+     * @return user ID
      */
     public static String getUserId(Claims claims)
     {
@@ -87,10 +87,10 @@ public class JwtUtils
     }
 
     /**
-     * 根据令牌获取用户名
+     * Get username from token
      * 
-     * @param token 令牌
-     * @return 用户名
+     * @param token token
+     * @return username
      */
     public static String getUserName(String token)
     {
@@ -99,10 +99,10 @@ public class JwtUtils
     }
 
     /**
-     * 根据身份信息获取用户名
+     * Get username from claims
      * 
-     * @param claims 身份信息
-     * @return 用户名
+     * @param claims identity information
+     * @return username
      */
     public static String getUserName(Claims claims)
     {
@@ -110,11 +110,11 @@ public class JwtUtils
     }
 
     /**
-     * 根据身份信息获取键值
+     * Get value from claims by key
      * 
-     * @param claims 身份信息
-     * @param key 键
-     * @return 值
+     * @param claims identity information
+     * @param key key
+     * @return value
      */
     public static String getValue(Claims claims, String key)
     {

@@ -4,53 +4,53 @@ import java.util.List;
 import com.ruoyi.job.domain.SysJobLog;
 
 /**
- * 定时任务调度日志信息信息 服务层
+ * Scheduled Task Log Information Service Layer
  * 
  * @author ruoyi
  */
 public interface ISysJobLogService
 {
     /**
-     * 获取quartz调度器日志的计划任务
+     * Get scheduled tasks from quartz scheduler log
      * 
-     * @param jobLog 调度日志信息
-     * @return 调度任务日志集合
+     * @param jobLog Scheduling log information
+     * @return Scheduling task log collection
      */
     public List<SysJobLog> selectJobLogList(SysJobLog jobLog);
 
     /**
-     * 通过调度任务日志ID查询调度信息
+     * Query scheduling information by task log ID
      * 
-     * @param jobLogId 调度任务日志ID
-     * @return 调度任务日志对象信息
+     * @param jobLogId Task log ID
+     * @return Task log object information
      */
     public SysJobLog selectJobLogById(Long jobLogId);
 
     /**
-     * 新增任务日志
+     * Add task log
      * 
-     * @param jobLog 调度日志信息
+     * @param jobLog Scheduling log information
      */
     public void addJobLog(SysJobLog jobLog);
 
     /**
-     * 批量删除调度日志信息
+     * Batch delete scheduling log information
      * 
-     * @param logIds 需要删除的日志ID
-     * @return 结果
+     * @param logIds Log IDs to delete
+     * @return Result
      */
     public int deleteJobLogByIds(Long[] logIds);
 
     /**
-     * 删除任务日志
+     * Delete task log
      * 
-     * @param jobId 调度日志ID
-     * @return 结果
+     * @param jobId Scheduling log ID
+     * @return Result
      */
     public int deleteJobLogById(Long jobId);
 
     /**
-     * 清空任务日志
+     * Clear task logs
      */
     public void cleanJobLog();
 }

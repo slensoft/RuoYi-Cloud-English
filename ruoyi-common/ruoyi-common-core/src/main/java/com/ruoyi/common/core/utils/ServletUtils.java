@@ -28,14 +28,14 @@ import com.ruoyi.common.core.text.Convert;
 import reactor.core.publisher.Mono;
 
 /**
- * 客户端工具类
+ * Client Utility Class
  * 
  * @author ruoyi
  */
 public class ServletUtils
 {
     /**
-     * 获取String参数
+     * Get String parameter
      */
     public static String getParameter(String name)
     {
@@ -43,7 +43,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取String参数
+     * Get String parameter
      */
     public static String getParameter(String name, String defaultValue)
     {
@@ -51,7 +51,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取Integer参数
+     * Get Integer parameter
      */
     public static Integer getParameterToInt(String name)
     {
@@ -59,7 +59,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取Integer参数
+     * Get Integer parameter
      */
     public static Integer getParameterToInt(String name, Integer defaultValue)
     {
@@ -67,7 +67,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取Boolean参数
+     * Get Boolean parameter
      */
     public static Boolean getParameterToBool(String name)
     {
@@ -75,7 +75,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取Boolean参数
+     * Get Boolean parameter
      */
     public static Boolean getParameterToBool(String name, Boolean defaultValue)
     {
@@ -83,9 +83,9 @@ public class ServletUtils
     }
 
     /**
-     * 获得所有请求参数
+     * Get all request parameters
      *
-     * @param request 请求对象{@link ServletRequest}
+     * @param request Request object {@link ServletRequest}
      * @return Map
      */
     public static Map<String, String[]> getParams(ServletRequest request)
@@ -95,9 +95,9 @@ public class ServletUtils
     }
 
     /**
-     * 获得所有请求参数
+     * Get all request parameters
      *
-     * @param request 请求对象{@link ServletRequest}
+     * @param request Request object {@link ServletRequest}
      * @return Map
      */
     public static Map<String, String> getParamMap(ServletRequest request)
@@ -111,7 +111,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取request
+     * Get request
      */
     public static HttpServletRequest getRequest()
     {
@@ -126,7 +126,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取response
+     * Get response
      */
     public static HttpServletResponse getResponse()
     {
@@ -141,7 +141,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取session
+     * Get session
      */
     public static HttpSession getSession()
     {
@@ -188,10 +188,10 @@ public class ServletUtils
     }
 
     /**
-     * 将字符串渲染到客户端
+     * Render string to client
      * 
-     * @param response 渲染对象
-     * @param string 待渲染的字符串
+     * @param response Render object
+     * @param string String to be rendered
      */
     public static void renderString(HttpServletResponse response, String string)
     {
@@ -209,7 +209,7 @@ public class ServletUtils
     }
 
     /**
-     * 是否是Ajax异步请求
+     * Check if it's an Ajax asynchronous request
      * 
      * @param request
      */
@@ -238,10 +238,10 @@ public class ServletUtils
     }
 
     /**
-     * 内容编码
+     * Content encoding
      * 
-     * @param str 内容
-     * @return 编码后的内容
+     * @param str Content
+     * @return Encoded content
      */
     public static String urlEncode(String str)
     {
@@ -256,10 +256,10 @@ public class ServletUtils
     }
 
     /**
-     * 内容解码
+     * Content decoding
      * 
-     * @param str 内容
-     * @return 解码后的内容
+     * @param str Content
+     * @return Decoded content
      */
     public static String urlDecode(String str)
     {
@@ -274,10 +274,10 @@ public class ServletUtils
     }
 
     /**
-     * 设置webflux模型响应
+     * Set webflux model response
      *
      * @param response ServerHttpResponse
-     * @param value 响应内容
+     * @param value Response content
      * @return Mono<Void>
      */
     public static Mono<Void> webFluxResponseWriter(ServerHttpResponse response, Object value)
@@ -286,11 +286,11 @@ public class ServletUtils
     }
 
     /**
-     * 设置webflux模型响应
+     * Set webflux model response
      *
      * @param response ServerHttpResponse
-     * @param code 响应状态码
-     * @param value 响应内容
+     * @param code Response status code
+     * @param value Response content
      * @return Mono<Void>
      */
     public static Mono<Void> webFluxResponseWriter(ServerHttpResponse response, Object value, int code)
@@ -299,12 +299,12 @@ public class ServletUtils
     }
 
     /**
-     * 设置webflux模型响应
+     * Set webflux model response
      *
      * @param response ServerHttpResponse
-     * @param status http状态码
-     * @param code 响应状态码
-     * @param value 响应内容
+     * @param status HTTP status code
+     * @param code Response status code
+     * @param value Response content
      * @return Mono<Void>
      */
     public static Mono<Void> webFluxResponseWriter(ServerHttpResponse response, HttpStatus status, Object value, int code)
@@ -313,13 +313,13 @@ public class ServletUtils
     }
 
     /**
-     * 设置webflux模型响应
+     * Set webflux model response
      *
      * @param response ServerHttpResponse
      * @param contentType content-type
-     * @param status http状态码
-     * @param code 响应状态码
-     * @param value 响应内容
+     * @param status HTTP status code
+     * @param code Response status code
+     * @param value Response content
      * @return Mono<Void>
      */
     public static Mono<Void> webFluxResponseWriter(ServerHttpResponse response, String contentType, HttpStatus status, Object value, int code)

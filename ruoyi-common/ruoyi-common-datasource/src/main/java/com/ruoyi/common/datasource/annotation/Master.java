@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import com.baomidou.dynamic.datasource.annotation.DS;
 
 /**
- * 主库数据源
+ * Master data source
  * 
  * @author ruoyi
  */

@@ -12,7 +12,7 @@
     <artifactId>ruoyi-modules-file</artifactId>
 
     <description>
-        ruoyi-modules-file文件服务
+        ruoyi-modules-file file service
     </description>
 
     <dependencies>

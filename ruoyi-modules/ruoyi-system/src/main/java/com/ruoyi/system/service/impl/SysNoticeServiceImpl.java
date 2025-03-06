@@ -8,7 +8,7 @@ import com.ruoyi.system.mapper.SysNoticeMapper;
 import com.ruoyi.system.service.ISysNoticeService;
 
 /**
- * 公告 服务层实现
+ * Notice Service Layer Implementation
  * 
  * @author ruoyi
  */
@@ -19,10 +19,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     private SysNoticeMapper noticeMapper;
 
     /**
-     * 查询公告信息
+     * Query notice information
      * 
-     * @param noticeId 公告ID
-     * @return 公告信息
+     * @param noticeId Notice ID
+     * @return Notice information
      */
     @Override
     public SysNotice selectNoticeById(Long noticeId)
@@ -31,10 +31,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     }
 
     /**
-     * 查询公告列表
+     * Query notice list
      * 
-     * @param notice 公告信息
-     * @return 公告集合
+     * @param notice Notice information
+     * @return Notice collection
      */
     @Override
     public List<SysNotice> selectNoticeList(SysNotice notice)
@@ -43,10 +43,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     }
 
     /**
-     * 新增公告
+     * Add notice
      * 
-     * @param notice 公告信息
-     * @return 结果
+     * @param notice Notice information
+     * @return Result
      */
     @Override
     public int insertNotice(SysNotice notice)
@@ -55,10 +55,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     }
 
     /**
-     * 修改公告
+     * Modify notice
      * 
-     * @param notice 公告信息
-     * @return 结果
+     * @param notice Notice information
+     * @return Result
      */
     @Override
     public int updateNotice(SysNotice notice)
@@ -67,10 +67,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     }
 
     /**
-     * 删除公告对象
+     * Delete notice object
      * 
-     * @param noticeId 公告ID
-     * @return 结果
+     * @param noticeId Notice ID
+     * @return Result
      */
     @Override
     public int deleteNoticeById(Long noticeId)
@@ -79,10 +79,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     }
 
     /**
-     * 批量删除公告信息
+     * Batch delete notice information
      * 
-     * @param noticeIds 需要删除的公告ID
-     * @return 结果
+     * @param noticeIds Notice IDs to be deleted
+     * @return Result
      */
     @Override
     public int deleteNoticeByIds(Long[] noticeIds)

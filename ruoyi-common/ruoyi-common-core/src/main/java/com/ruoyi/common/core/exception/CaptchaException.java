@@ -1,8 +1,8 @@
 package com.ruoyi.common.core.exception;
 
 /**
- * 验证码错误异常类
- * 
+ * Captcha error exception class
+ *
  * @author ruoyi
  */
 public class CaptchaException extends RuntimeException

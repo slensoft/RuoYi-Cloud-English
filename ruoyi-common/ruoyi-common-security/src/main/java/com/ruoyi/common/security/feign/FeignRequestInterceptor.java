@@ -11,7 +11,7 @@ import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
 /**
- * feign 请求拦截器
+ * Feign request interceptor
  * 
  * @author ruoyi
  */
@@ -25,7 +25,7 @@ public class FeignRequestInterceptor implements RequestInterceptor
         if (StringUtils.isNotNull(httpServletRequest))
         {
             Map<String, String> headers = ServletUtils.getHeaders(httpServletRequest);
-            // 传递用户信息请求头，防止丢失
+            // Pass user information request header to prevent loss
             String userId = headers.get(SecurityConstants.DETAILS_USER_ID);
             if (StringUtils.isNotEmpty(userId))
             {
@@ -47,7 +47,7 @@ public class FeignRequestInterceptor implements RequestInterceptor
                 requestTemplate.header(SecurityConstants.AUTHORIZATION_HEADER, authentication);
             }
 
-            // 配置客户端IP
+            // Configure client IP
             requestTemplate.header("X-Forwarded-For", IpUtils.getIpAddr());
         }
     }

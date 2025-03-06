@@ -11,8 +11,8 @@ import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.system.api.domain.SysUser;
 
 /**
- * 登录密码方法
- * 
+ * Login password method
+ *
  * @author ruoyi
  */
 @Component
@@ -29,10 +29,10 @@ public class SysPasswordService
     private SysRecordLogService recordLogService;
 
     /**
-     * 登录账户密码错误次数缓存键名
-     * 
-     * @param username 用户名
-     * @return 缓存键key
+     * Login account password error count cache key name
+     *
+     * @param username Username
+     * @return Cache key
      */
     private String getCacheKey(String username)
     {
@@ -52,7 +52,7 @@ public class SysPasswordService
 
         if (retryCount >= Integer.valueOf(maxRetryCount).intValue())
         {
-            String errMsg = String.format("密码输入错误%s次，帐户锁定%s分钟", maxRetryCount, lockTime);
+            String errMsg = String.format("Password entered incorrectly %s times, account locked for %s minutes", maxRetryCount, lockTime);
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL,errMsg);
             throw new ServiceException(errMsg);
         }
@@ -60,9 +60,9 @@ public class SysPasswordService
         if (!matches(user, password))
         {
             retryCount = retryCount + 1;
-            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, String.format("密码输入错误%s次", retryCount));
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, String.format("Password entered incorrectly %s times", retryCount));
             redisService.setCacheObject(getCacheKey(username), retryCount, lockTime, TimeUnit.MINUTES);
-            throw new ServiceException("用户不存在/密码错误");
+            throw new ServiceException("User does not exist/password is incorrect");
         }
         else
         {
